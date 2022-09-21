@@ -1,9 +1,10 @@
-# 🚀 AstroWind
+# 🚀 UI XNET 
 
 <img src="lighthouse-score.png" align="right"
      alt="AstroWind Lighthouse Score" width="100" height="358">
 
-**AstroWind** is a free and open-source template to make your website using **Astro + Tailwind CSS**. Ready to start a new project and designed taking into account best practices.
+**Oopen-source template** using **Astro** and Tailwind CSS**.   
+Ready to start a new project and designed taking into account best practices.
 
 ## Features
 
@@ -22,28 +23,9 @@
 
 <br>
 
-<details>
-<summary>Table of Contents</summary>
+## Site
 
-- [Demo](#demo)
-- [Getting started](#getting-started)
-  - [Project structure](#project-structure)
-  - [Commands](#commands)
-  - [Configuration](#configuration)
-  - [Deploy](#deploy)
-- [Roadmap](#roadmap)
-- [Frequently Asked Questions](#frequently-asked-questions)
-- [Contributing](#contributing)
-- [Acknowledgements](#acknowledgements)
-- [License](#license)
-
-</details>
-
-<br>
-
-## Demo
-
-[🌀 astrowind.vercel.app](https://astrowind.vercel.app/) 
+[🌀 uixnet.netlify.app](https://uixnet.netlify.app/) 
 
 <br>
 
@@ -52,7 +34,7 @@
 
 ### Project structure
 
-Inside AstroWind template, you'll see the following folders and files:
+Folders and files:
 
 ```
 /
@@ -228,8 +210,8 @@ Clone this repository on own GitHub account and deploy to Vercel:
 ## Frequently Asked Questions
 
 - Why?
-- 
--
+- What?
+- Who ?
 
 
 <br>
