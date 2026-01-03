@@ -1,0 +1,73 @@
+---
+import { Icon } from 'astro-icon';
+
+const items = [
+	{
+		title: 'Codemo Web Apps',
+		description:
+			'Modern web apps that run directly in your browser. No installation, no backend setup, and hosted freely on GitHub Pages.',
+		icon: 'fluent-color--cloud-24',
+	},
+	{
+		title: 'Portable Apps',
+		description:
+			'Click-and-run tools and system utilities. Download open-source binaries that require no installation and leave no trace.',
+		icon: 'flat-color-icons--usb',
+	},
+	{
+		title: 'Local AI',
+		description:
+			'Run powerful AI models and agents like Ollama or LM Studio entirely on your machine. Private, offline, and no fees.',
+		icon: 'fluent-color--bot-sparkle-24',
+	},
+	{
+		title: 'Home Lab',
+		description:
+			'Your hardware, your rules. From spinning up quick local dev servers (Python, PHP) to hosting permanent databases and services.',
+		icon: 'fluent-color--laptop-24',
+	},
+	{
+		title: 'Secure Tunneling',
+		description:
+			'Safely expose your local home lab to public internet using Cloudflare Tunnel or alternatives. No public IP needed.',
+		icon: 'fluent-color--globe-shield-24',
+	},
+	{
+		title: 'Knowledge Base',
+		description:
+			'Honest software reviews and beginner-friendly guides. Step-by-step tutorials to help you build your independence.',
+		icon: 'fluent-color--book-open-lightbulb-24',
+	},
+];
+---
+
+<section class="relative scroll-mt-16" id="overview">
+	<div class="absolute inset-0 bg-primary-50 dark:bg-zinc-950 pointer-events-none mb-32" aria-hidden="true"></div>
+	<div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+		<div class="py-4 pt-8 sm:py-6 lg:py-8 lg:pt-12">
+			<div class="mb-8 text-center">
+				<p class="text-base text-primary-600 dark:text-primary-500 font-semibold tracking-wide uppercase">Codemo Digital Nomad</p>
+				<h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+					Run Apps Anywhere
+				</h2>
+				<p class="max-w-3xl mx-auto text-center text-xl text-zinc-600 dark:text-zinc-400">
+					Open-source web apps and portable versions.
+				</p>
+			</div>
+			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start my-12 dark:text-white">
+				{
+					items.map(({ title, description, icon }) => (
+						<div class="relative flex flex-col p-6 bg-white dark:bg-zinc-800 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-zinc-700">
+							<div class="flex items-center mb-4">
+								<Icon name={icon} class="w-12 h-12" />
+
+								<div class="ml-4 text-xl font-bold">{title}</div>
+							</div>
+							<p class="text-gray-500 dark:text-gray-400 text-md">{description}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>

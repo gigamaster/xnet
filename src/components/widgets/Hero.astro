@@ -3,56 +3,32 @@ import { Icon } from 'astro-icon';
 import Picture from '~/components/core/Picture.astro';
 ---
 
-<section>
-	<div class="max-w-6xl mx-auto px-4 sm:px-6">
-		<div class="py-12 md:py-20">
-			<div class="text-center pb-10 md:pb-16">
+<section class="bg-gradient-to-b from-black to-zinc-900">
+	<div class="max-w-6xl h-[calc(100vh_-_100px)] mx-auto px-4 sm:px-6 bg-[url(~/assets/images/x-net-tools.jpg)] bg-bottom bg-center bg-no-repeat">
+		<div class="pt-4 pb-28l">
+			<div class="text-center pb-24 md:pb-16">
 				<h1 class="text-5xl md:text-[3.50rem] font-bold leading-tighter tracking-tighter mb-4 font-heading">
-					Your website with
-					<span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500">Astro</span> +
+					<span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-zinc-200">Tools</span>
 					<span
-						class="bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500 sm:whitespace-nowrap"
-						>Tailwind CSS</span
+						class="bg-clip-text text-transparent bg-gradient-to-r from-zinc-200 to-amber-600 sm:whitespace-nowrap"
+						>for digital independence</span
 					>
 				</h1>
 				<div class="max-w-3xl mx-auto">
-					<p class="text-xl text-gray-600 mb-8 dark:text-slate-400">
-						AstroWind is a production ready template to start your new website using Astro + Tailwind CSS. It has been
-						designed following Best Practices, SEO, Accessibility, <span class="inline sm:hidden">...</span><span
-							class="hidden sm:inline"
-							>Dark Mode, Great Page Speed, image optimization, sitemap generation and more.</span
-						>
+					<p class="text-xl text-zinc-600 mb-24 dark:text-zinc-300">
+						Run web apps from your laptop, host your own server safely from anywhere, and use lightweight AI models offline. 
+						All open source. No cloud lock-in.
 					</p>
-					<div class="max-w-none px-6 flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4">
+					<div class="max-w-none px-6 py-16 flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4">
 						<div class="flex w-full sm:w-auto">
 							<a
-								class="btn text-white border border-primary-600 bg-primary-600 hover:bg-primary-800 hover:border-primary-800 sm:mb-0 w-full"
-								href="https://github.com/onwidget/astrowind"
-								target="_blank"
-								rel="noopener"
+								class="btn text-white border border-zinc-500 bg-zinc-800 hover:bg-amber-800/70 hover:border-amber-300 shadow-xl sm:mb-0 w-full"
+								href="#overview"
 							>
-								<Icon name="tabler:download" class="w-5 h-5 mr-1 -ml-1.5" /> Get template
+								Explore the Ecosystem
 							</a>
 						</div>
-						<div class="flex w-full sm:w-auto">
-							<a
-								class="btn text-white bg-gray-900 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-800 w-full"
-								href="#features">Learn more</a
-							>
-						</div>
 					</div>
-				</div>
-			</div>
-			<div>
-				<div class="relative mb-8 m-auto max-w-3xl">
-					<Picture
-						src={import('~/assets/images/hero.jpg')}
-						class="mx-auto rounded-md shadow-lg bg-gray-400 dark:bg-slate-700 w-full"
-						widths={[400, 768]}
-						sizes=" (max-width: 767px) 400px, 768px"
-						alt="Hero Image"
-						aspectRatio="16:9"
-					/>
 				</div>
 			</div>
 		</div>

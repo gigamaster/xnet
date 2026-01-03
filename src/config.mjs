@@ -1,11 +1,11 @@
 export const SITE = {
-	name: 'UIX net',
+	name: 'UI xNet',
 
 	origin: 'https://uixnet.netlify.app',
 	basePathname: '/',
 
-	title: 'uixnet — Your website with Astro + Tailwind CSS',
-	description: '🚀 AstroWind is a free and ready to start template to make your website using Astro and Tailwind CSS.',
+	title: 'UI xNet — Tools for Digital Nomad Independence',
+	description: 'Local homelab, portable, web apps, tools, ai, llm, everything you need to build, run, and share on your terms',
 
 	googleAnalyticsId: false, // or "G-XXXXXXXXXX",
 	googleSiteVerificationId: '', // ex. 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',

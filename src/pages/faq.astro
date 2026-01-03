@@ -1,0 +1,23 @@
+---
+// src/pages/faq.astro
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import { SITE } from '~/config.mjs';
+
+const pageTitle = 'Terms of Use';
+const pageDescription = 'Terms of use for the open source ' + SITE.name + ' project';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <FAQs />
+	<Stats />
+	<CallToAction />
+
+  <Footer />
+</BaseLayout>

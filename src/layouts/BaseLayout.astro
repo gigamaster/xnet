@@ -11,9 +11,10 @@ const { meta = {} } = Astro.props;
 <html lang="en" class="motion-safe:scroll-smooth 2xl:text-[20px]">
 	<head>
 		<MetaTags {...meta} />
+		<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap" rel="stylesheet" />
 	</head>
 
-	<body class="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-white dark:bg-slate-900">
+	<body class="antialiased text-zinc-900 dark:text-zinc-300 tracking-tight bg-white dark:bg-zinc-900">
 		<slot />
 		<BasicScripts />
 		<style is:global>

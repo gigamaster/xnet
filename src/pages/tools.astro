@@ -1,0 +1,33 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import ToolsCard from '~/components/widgets/ToolsCard.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+
+const meta = {
+	title: SITE.title,
+	description: SITE.description,
+	canonical: getCanonical(getHomePermalink()),
+};
+---
+
+<Layout {meta}>
+
+  
+  <header class="mb-12 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Tools</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+      Discover our collection of tools designed to help you with your projects
+      </p>
+  </header>
+
+  <ToolsCard />
+
+  <Features3 />
+  
+  <Footer />
+</Layout>

@@ -7,10 +7,11 @@ module.exports = {
 		extend: {
 			colors: {
 				primary: colors.blue,
-				secondary: colors.pink,
+				secondary: colors.red,
 			},
 			fontFamily: {
-				sans: ["'InterVariable'", ...defaultTheme.fontFamily.sans],
+				sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+				heading: ['InterVariable', ...defaultTheme.fontFamily.sans],
 			},
 		},
 	},

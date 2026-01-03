@@ -1,0 +1,60 @@
+---
+// src/pages/about.astro
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import CorePrinciples from '~/components/widgets/CorePrinciples.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import { SITE } from '~/config.mjs';
+
+const pageTitle = 'About UI xNet';
+const pageDescription = 'Open source ' + SITE.name + ' Tools for Digital Independence';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <article class="container mx-auto px-4 py-8 max-w-4xl">
+    <header class="mb-8 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">xNet: Tools for Digital Independence</h1>
+      <p class="text-gray-600 dark:text-gray-400">Last updated: {new Date().toLocaleDateString()}</p>
+    </header>
+
+    <div class="prose prose-lg dark:prose-invert max-w-none">
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Introduction</h2>
+        <p>The purpose of {SITE.name} is to return the keys of digital infrastructure to the creator. 
+        Our goal is to replace platform dependency with true ownership, ensuring your freedom is hard-coded into the tools you use.
+        </p>
+        <p> 
+        Modern platforms track your data, throttle your reach, and can disappear overnight. 
+        We believe your digital infrastructure should be as mobile and independent as you are.</p>
+        <p>We curate, test, and simplify open-source tools that run locally—on your own hardware. No monthly "cloud rent," no tracking, no permissions required. Build here, share everywhere.</p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">The Nomad Protocol</h2>
+        <p>Everything you need to build, run, and share on your terms.</p>
+        <ul class="list-disc pl-6 mt-2 space-y-1">
+          <li>Portable apps (double-click, no install)</li>
+          <li>Web apps (run locally with one command)</li>
+          <li>Guides (step-by-step, no assumed expertise)</li>
+          <li>Local AI (small models, private, low-cost)</li>
+        </ul>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Sovereignty & Freedom</h2>
+        <p>No corporate roadmap. No hidden agenda. Built by the community. Open to all.</p>
+        <ul class="list-disc pl-6 mt-2 space-y-1">
+          <li>Digital nomads who code, write, or design on the move</li>
+          <li>Privacy-conscious developers tired of SaaS lock-in</li>
+          <li>Educators, creators, and tinkerers who value control over convenience theater</li>
+        </ul>
+      </section>
+
+    </div>
+  </article>
+
+  <CorePrinciples />
+  <Footer />
+</BaseLayout>

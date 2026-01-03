@@ -1,6 +1,7 @@
 ---
 import Picture from '~/components/core/Picture.astro';
 import PostTags from '~/components/atoms/Tags.astro';
+import RelatedPosts from '~/components/blog/RelatedPosts.astro';
 
 import { getFormattedDate } from '~/utils/utils';
 
@@ -39,5 +40,6 @@ const { post } = Astro.props;
 		<div class="container mx-auto px-8 sm:px-6 max-w-3xl mt-8">
 			<PostTags tags={post.tags} />
 		</div>
+		<RelatedPosts currentPost={post} />
 	</article>
 </section>

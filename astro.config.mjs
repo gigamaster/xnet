@@ -19,6 +19,9 @@ export default defineConfig({
 	base: SITE.basePathname,
 
 	output: 'static',
+		
+		// Enable islands for Astro 4.0+
+		// islands: true,
 
 	integrations: [
 		tailwind({

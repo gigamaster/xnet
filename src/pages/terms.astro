@@ -1,0 +1,59 @@
+---
+// src/pages/terms.astro
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import { SITE } from '~/config.mjs';
+
+const pageTitle = 'Terms of Use';
+const pageDescription = 'Terms of use for the open source ' + SITE.name + ' project';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <article class="container mx-auto px-4 py-8 max-w-4xl">
+    <header class="mb-8 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">Terms of Use</h1>
+      <p class="text-gray-600 dark:text-gray-400">Last updated: {new Date().toLocaleDateString()}</p>
+    </header>
+
+    <div class="prose prose-lg dark:prose-invert max-w-none">
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Introduction</h2>
+        <p>Welcome to {SITE.name}, an open source project released under the MIT License. This project is hosted on GitHub and deployed on Netlify.</p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">MIT License</h2>
+        <p>This project is released under the MIT License. You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, subject to the following conditions:</p>
+        <ul class="list-disc pl-6 mt-2 space-y-1">
+          <li>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the software</li>
+          <li>The software is provided "as is", without warranty of any kind</li>
+        </ul>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Platform Terms</h2>
+        <p>By using this project, you acknowledge and agree to comply with the terms of service of the following platforms:</p>
+        <ul class="list-disc pl-6 mt-2 space-y-1">
+          <li><a href="https://docs.github.com/en/site-policy/github-terms/github-terms-of-service" class="text-blue-600 hover:underline" target="_blank" rel="noopener">GitHub Terms of Service</a></li>
+          <li><a href="https://www.netlify.com/tos/" class="text-blue-600 hover:underline" target="_blank" rel="noopener">Netlify Terms of Service</a></li>
+        </ul>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Open Source Community Guidelines</h2>
+        <p>As an open source project, we encourage community participation and contribution. Please follow proper net etiquette when engaging with this project:</p>
+        <ul class="list-disc pl-6 mt-2 space-y-1">
+          <li>Respect other contributors and maintainers</li>
+          <li>Follow proper code of conduct</li>
+          <li>Contribute improvements back to the community</li>
+          <li>Report issues respectfully through GitHub Issues</li>
+        </ul>
+      </section>
+    </div>
+  </article>
+
+  <Footer />
+</BaseLayout>

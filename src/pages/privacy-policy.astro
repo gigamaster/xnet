@@ -1,0 +1,49 @@
+---
+// src/pages/privacy-policy.astro
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import { SITE } from '~/config.mjs';
+
+const pageTitle = 'Privacy Policy';
+const pageDescription = 'Privacy Policy for ' + SITE.name;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <article class="container mx-auto px-4 py-8 max-w-4xl">
+    <header class="mb-8 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">Privacy Policy</h1>
+      <p class="text-gray-600 dark:text-gray-400">Last updated: {new Date().toLocaleDateString()}</p>
+    </header>
+
+    <div class="prose prose-lg dark:prose-invert max-w-none">
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Introduction</h2>
+        <p>Welcome to {SITE.name}. This open source project does not collect any personal data from users. We respect your privacy and are committed to transparency about data practices.</p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Data Collection</h2>
+        <p>This open source project does not collect any personal data from users. The website is built using static site generation and does not implement any tracking or data collection mechanisms.</p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Third-Party Services</h2>
+        <p>While this project does not collect personal data, the website is hosted on third-party platforms that may collect information according to their own privacy policies:</p>
+        <ul class="list-disc pl-6 mt-2 space-y-1">
+          <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" class="text-blue-600 hover:underline" target="_blank" rel="noopener">GitHub Privacy Statement</a></li>
+          <li><a href="https://www.netlify.com/privacy/" class="text-blue-600 hover:underline" target="_blank" rel="noopener">Netlify Privacy Policy</a></li>
+        </ul>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Open Source Transparency</h2>
+        <p>This project is completely open source. You can review all source code on <a href="https://github.com/" class="text-blue-600 hover:underline" target="_blank" rel="noopener">GitHub</a> to verify that no data collection mechanisms are implemented. As an open source project, we encourage community review and contributions to maintain transparency.</p>
+      </section>
+    </div>
+  </article>
+
+  <Footer />
+</BaseLayout>
