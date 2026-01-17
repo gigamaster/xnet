@@ -1,10 +1,10 @@
 export const SITE = {
-	name: 'UI xNet',
+	name: 'UI Xnet',
 
 	origin: 'https://uixnet.netlify.app',
 	basePathname: '/',
 
-	title: 'UI xNet — Tools for Digital Nomad Independence',
+	title: 'UI Xnet — Tools for Digital Nomad Independence',
 	description: 'Local homelab, portable, web apps, tools, ai, llm, everything you need to build, run, and share on your terms',
 
 	googleAnalyticsId: false, // or "G-XXXXXXXXXX",

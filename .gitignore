@@ -1,4 +1,5 @@
 # build output
+backup/
 dist/
 .output/
 
