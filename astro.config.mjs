@@ -38,14 +38,10 @@ export default defineConfig({
 	// integrations: [sitemap()],
 	// try to bring back sitemap
 	integrations: [
-	sitemap({
-		filter: (page) => page !== undefined && page.trim() !== '',
-		serialize(item) {
-		// Ensure every item has a valid URL
-		if (!item.url) return undefined;
-		return item;
-		},
-	})
+		sitemap({
+			// Force the sitemap to ignore any "broken" or "undefined" routes
+			filter: (page) => page !== undefined,
+		})
 	],
 
 	vite: {
