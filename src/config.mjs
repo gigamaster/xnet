@@ -1,8 +1,8 @@
 export const SITE = {
 	name: 'UI Xnet',
 
-	origin: 'https://uixnet.netlify.app',
-	basePathname: '/',
+	origin: 'https://gigamaster.github.io/xnet/',
+	basePathname: '/xnet',
 
 	title: 'UI Xnet — Tools for Digital Nomad Independence',
 	description: 'Local homelab, portable, web apps, tools, ai, llm, everything you need to build, run, and share on your terms',

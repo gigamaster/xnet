@@ -14,6 +14,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
+	// site: 'https://yourusername.github.io/repository-name',
+    // base: '/repository-name',  // Add your GitHub repository name
+
 	// Astro uses this full URL to generate your sitemap and canonical URLs in your final build
 	site: SITE.origin,
 	base: SITE.basePathname,
