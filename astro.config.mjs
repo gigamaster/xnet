@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url';
 
 import { defineConfig } from 'astro/config';
 
-// import sitemap from '@astrojs/sitemap';
+import sitemap from '@astrojs/sitemap';
 
 import partytown from '@astrojs/partytown';
 
@@ -13,14 +13,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
-	// site: 'https://yourusername.github.io/repository-name',
-	// base: '/repository-name',  // Add your GitHub repository name
 
 	// Astro uses this full URL to generate your sitemap and canonical URLs in your final build
 	site: SITE.origin,
 	base: SITE.basePathname,
     trailingSlash: 'always',
-	outdir: 'dist',
+	outDir: 'dist',
 	output: 'static',
 	islands: true,
 	images: {
@@ -32,6 +30,17 @@ export default defineConfig({
 	// islands: true,
 
 	// integrations: [sitemap()],
+	// try to bring back sitemap
+	integrations: [
+	sitemap({
+		filter: (page) => page !== undefined && page.trim() !== '',
+		serialize(item) {
+		// Ensure every item has a valid URL
+		if (!item.url) return undefined;
+		return item;
+		},
+	})
+	],
 
 	vite: {
 		resolve: {
