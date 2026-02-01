@@ -14,7 +14,8 @@ jobs:
           node-version: 20
           
       - name: Install dependencies
-        run: npm install
+      # This flag forces npm to fetch missing optional binaries for Linux
+        run: npm install --include=optional
         
       - name: Build site
         run: npm run build
