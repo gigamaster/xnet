@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url';
 
 import { defineConfig } from 'astro/config';
 
-import sitemap from '@astrojs/sitemap';
+// import sitemap from '@astrojs/sitemap';
 
 import partytown from '@astrojs/partytown';
 
@@ -37,12 +37,12 @@ export default defineConfig({
 
 	// integrations: [sitemap()],
 	// try to bring back sitemap
-	integrations: [
-		sitemap({
-			// Force the sitemap to ignore any "broken" or "undefined" routes
-			filter: (page) => page !== undefined,
-		})
-	],
+	// integrations: [
+	// 	sitemap({
+	// 		// Force the sitemap to ignore any "broken" or "undefined" routes
+	// 		filter: (page) => page !== undefined,
+	// 	})
+	// ],
 
 	vite: {
 		resolve: {
