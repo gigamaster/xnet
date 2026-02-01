@@ -15,10 +15,16 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
 
 	// Astro uses this full URL to generate your sitemap and canonical URLs in your final build
-	site: SITE.origin,
-	base: SITE.basePathname,
-    trailingSlash: 'always',
-	outDir: 'dist',
+	// site: SITE.origin,
+	// base: SITE.basePathname,
+    // trailingSlash: 'always',
+	// outDir: 'dist',
+	// output: 'static',
+
+	site: 'https://gigamaster.github.io', // Just the domain
+    base: '/xnet',                        // The repo name
+    outDir: 'dist',                       // Capital D
+    trailingSlash: 'always',              // Vital for GitHub Pages folders
 	output: 'static',
 	islands: true,
 	images: {
