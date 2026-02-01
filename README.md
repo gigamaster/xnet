@@ -1,22 +1,12 @@
-# 🚀 UI XNET 
+# 🚀 UI XNET — Astrojs Playground
 
-<img src="lighthouse-score.png" align="right"
-     alt="AstroWind Lighthouse Score" width="100" height="358">
 
-**Oopen-source template** using **Astro** and Tailwind CSS**.   
-Ready to start a new project and designed taking into account best practices.
+**Open-source template** using **Astrojs v4** and **Tailwind CSS v4**.   
 
-## Features
+Playground with content from Homelab—Digital Nomad.
 
-- ✅ Integration with **Tailwind CSS** ([@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)).
-- ✅ Supports **Dark mode**.
-- ✅ **Fast and SEO friendly blog** with automatic **RSS feed** ([@astrojs/rss](https://docs.astro.build/en/guides/rss/)).
-- ✅ **Image optimization** ([astro:assets](https://docs.astro.build/en/guides/assets/) with Sharp by default).
-- ✅ Generation of **project sitemap** based on your routes ([@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)).
-- ✅ **Open Graph tags** for social media sharing
-- ✅ **Fonts optimization** at build time ([subfont](https://www.npmjs.com/package/subfont)).
-- ✅ **Production-ready** scores in [Lighthouse](https://web.dev/measure/) and [PageSpeed Insights](https://pagespeed.web.dev/) reports
-- ✅ **Modern Astro v3** with improved performance and features
+[🌀 gigamaster.github.io/xnet](https://gigamaster.github.io/xnet/) 
+
 
 <br>
 
@@ -24,12 +14,24 @@ Ready to start a new project and designed taking into account best practices.
 
 <br>
 
-## Site
+## Features
 
-[🌀 uixnet.netlify.app](https://uixnet.netlify.app/) 
+- ✅ **Astro v4** with improved performance and features
+- ✅ Integration with **Tailwind CSS** ([@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)).
+- ✅ Supports **Dark mode**.
+- ✅ **IconLocal** inline svg workaround to Sharp.
+- ✅ **Icon src from Inocify**.
+- ✅ **Image optimization** ([astro:assets](https://docs.astro.build/en/guides/assets/) with Sharp by default).
+- ✅ **Open Graph tags** for social media sharing
+- ✅ **Fonts optimization** at build time ([subfont](https://www.npmjs.com/package/subfont)).
+- ✅ **Production-ready** scores in [Lighthouse](https://web.dev/measure/) and [PageSpeed Insights](https://pagespeed.web.dev/)
+- ✅ **GitHub Pages** deploy (pnpm or github workflow)
 
-<br>
+Commented out due to build issues:
 
+> [!CAUTION]
+> Commented out due to build issues: **Fast and SEO friendly blog** with automatic **RSS feed** ([@astrojs/rss](https://docs.astro.build/en/guides/rss/)).
+> Generation of **project sitemap** based on your routes ([@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)).
 
 ## Getting started
 
@@ -84,13 +86,11 @@ Folders and files:
 
 Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Components are used for page's hero and re-usable elements `src/components/` (CardSmall, CardLink, IconLocal, Thumb, etc.)
 
-Any static assets, like images, can be placed in the `public/` directory if they do not require any transformation or in the `assets/` directory if they are imported directly.
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://githubbox.com/gigamaster/xnet/tree/main)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+> [!TIP]
+> Any static assets, like images, can be placed in the `public/` directory if they do not require any transformation or in the `assets/` directory if they are imported directly.
 
 <br>
 
@@ -104,6 +104,17 @@ All commands are run from the root of the project, from a terminal:
 | `npm run dev`     | Starts local dev server at `localhost:3000`  |
 | `npm run build`   | Build your production site to `./dist/`      |
 | `npm run preview` | Preview your build locally, before deploying |
+| `npm run preview` | Deploy to Github PAges                       |
+
+PNPM
+
+| Command           | Action                                       |
+| :---------------- | :------------------------------------------- |
+| `pnpm install`    | Installs dependencies                        |
+| `pnpm dev`        | Starts local dev server at `localhost:3000`  |
+| `pnpm build`      | Build your production site to `./dist/`      |
+| `pnpm preview`    | Preview your build locally, before deploying |
+| `pnpm deploy`     | Deploy to Github PAges                       |
 
 <br>
 
@@ -114,9 +125,9 @@ Basic configuration file: `./src/config.mjs`
 ```javascript
 export const SITE = {
   name: "Example",
-
-  origin: "https://example.com",
-  basePathname: "/", // Change this if you need to deploy to Github Pages, for example
+  
+  origin: "https://example.com", // Change this deploy to Github Pages: UserName.github.io
+  basePathname: "/", // deploy to Github Pages: /RepoName
 
   title: "Example - This is the homepage title of Example",
   description: "This is the homepage description of Example",
@@ -165,15 +176,20 @@ You can create an optimized production build with:
 npm run build
 ```
 
+However GitHub workflows/deploy.yml uses PNPM
+Node 20 to avoid depndencies conflict Linux/Windows
+
+```shell
+pnpm build
+```
+
 Now, your website is ready to be deployed. All generated files are located at
 `dist` folder, which you can deploy the folder to any hosting service you
-prefer.
+prefer. Or use `deploy` for GitHub Pages `gh-pages -d dist -t true `
 
-#### Deploy to Netlify
-
-Clone this repository on own GitHub account and deploy to Netlify:
-
-[![Netlify Deploy button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gigamaster/xnet)
+```shell
+pnpm deploy
+```
 
 #### Deploy to Vercel
 
@@ -204,6 +220,7 @@ Clone this repository on own GitHub account and deploy to Vercel:
   - Centralized Styling  
     Global icon sizing and color are now managed via `.local-icon` svg in base.css  
     allowing for easy Tailwind integration while maintaining clean SVG source files.
+  - Removed Netlify ( free tier too limited for a static site)
 - *SEO*:
   - Support SEO meta-tags (title, description, canonical, social sharing, ...)
 - *Blog*:
