@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://uixnet.netlify.app/sitemap-index.xml
