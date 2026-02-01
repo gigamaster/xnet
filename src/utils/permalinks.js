@@ -11,7 +11,19 @@ const trim = (str, ch) => {
 };
 
 const trimSlash = (s) => trim(trim(s, '/'));
-const createPath = (...params) => '/' + params.filter((el) => !!el).join('/');
+
+// Add a helper to ensure a trailing slash
+const withTrailingSlash = (path) => {
+  if (path === '/' || path.endsWith('/')) return path;
+  return path + '/';
+};
+
+// Update createPath to be more robust
+const createPath = (...params) => {
+  const path = '/' + params.filter((el) => !!el).join('/');
+  return withTrailingSlash(path);
+};
+
 
 const basePathname = trimSlash(SITE.basePathname);
 
@@ -25,24 +37,28 @@ export const TAG_BASE = cleanSlug(BLOG?.tag?.pathname);
 /** */
 export const getCanonical = (path = '') => new URL(path, SITE.origin);
 
-/** */
+/** Fixed path for blog base */
 export const getPermalink = (slug = '', type = 'page') => {
-	const _slug = cleanSlug(slug);
+    const _slug = cleanSlug(slug);
 
-	switch (type) {
-		case 'category':
-			return createPath(basePathname, CATEGORY_BASE, _slug);
-
-		case 'tag':
-			return createPath(basePathname, TAG_BASE, _slug);
-
-		case 'post':
-			return createPath(basePathname, POST_BASE, _slug);
-
-		case 'page':
-		default:
-			return createPath(basePathname, _slug);
-	}
+    let permalink;
+    switch (type) {
+        case 'category':
+            permalink = createPath(basePathname, CATEGORY_BASE, _slug);
+            break;
+        case 'tag':
+            permalink = createPath(basePathname, TAG_BASE, _slug);
+            break;
+        case 'post':
+            permalink = createPath(basePathname, POST_BASE, _slug);
+            break;
+        case 'page':
+        default:
+            permalink = createPath(basePathname, _slug);
+            break;
+    }
+    
+    return withTrailingSlash(permalink);
 };
 
 /** */

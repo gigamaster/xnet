@@ -1,16 +1,31 @@
 ---
 import IconLocal from '~/components/atoms/IconLocal.astro';
+import { getPermalink } from '~/utils/permalinks';
+
 const { prevUrl, nextUrl, prevText = 'Newer posts', nextText = 'Older posts' } = Astro.props;
+
+// Function to safely inject the base path if it's missing
+const formatPagingUrl = (url) => {
+  if (!url) return null;
+  // If the URL is already absolute and contains the base, leave it
+  if (url.startsWith(import.meta.env.BASE_URL)) return url;
+  // Otherwise, prefix it (ensuring no double slashes)
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  const path = url.startsWith('/') ? url : `/${url}`;
+  return `${base}${path}`;
+};
+
+const formattedPrev = formatPagingUrl(prevUrl);
+const formattedNext = formatPagingUrl(nextUrl);
 ---
 
 {
-	(prevUrl || nextUrl) && (
+	(formattedPrev || formattedNext) && (
 		<div class="container flex">
 			<div class="flex flex-row mx-auto container justify-between">
 				<a
-					href={prevUrl}
-					class={`btn px-2 font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white shadow-none mr-2
-      ${!prevUrl ? 'invisible' : ''}`}
+					href={formattedPrev}
+					class={`btn px-2 ... ${!formattedPrev ? 'invisible' : ''}`}
 				>
 					<div class="flex flex-row align-middle">
 						<IconLocal name="fluent--arrow-left-24-regular" class="w-6 h-6" />
@@ -18,10 +33,8 @@ const { prevUrl, nextUrl, prevText = 'Newer posts', nextText = 'Older posts' } =
 					</div>
 				</a>
 				<a
-					href={nextUrl}
-					class={`btn px-2 font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white shadow-none ${
-						!nextUrl ? 'invisible' : ''
-					}`}
+					href={formattedNext}
+					class={`btn px-2 ... ${!formattedNext ? 'invisible' : ''}`}
 				>
 					<div class="flex flex-row align-middle">
 						<span class="mr-2">{nextText}</span>

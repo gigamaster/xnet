@@ -14,21 +14,16 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 export default defineConfig({
 
-	// Astro uses this full URL to generate your sitemap and canonical URLs in your final build
-	// site: SITE.origin,
-	// base: SITE.basePathname,
-    // trailingSlash: 'always',
-	// outDir: 'dist',
-	// output: 'static',
-
-	site: 'https://gigamaster.github.io', // Just the domain
-    base: '/xnet',                        // The repo name
-    outDir: 'dist',                       // Capital D
-    trailingSlash: 'always',              // Vital for GitHub Pages folders
+	// Astro v4 fails to generate full URL of sitemap and canonical URLs in final build
+	site: SITE.origin,          // Just the domain
+	base: SITE.basePathname,   // The repo name
+   
+    outDir: 'dist',           // dist folder for GitHub Pages
+    trailingSlash: 'always', // Vital for GitHub Pages folders
 	output: 'static',
 	islands: true,
 	images: {
-		service: '@astrojs/sharp', // Force Sharp service, but seems to force webp
+		service: '@astrojs/sharp', // Force Sharp service, but it keeps using webp format
 		formats: ['avif', 'webp'],
 	},
 
@@ -36,7 +31,9 @@ export default defineConfig({
 	// islands: true,
 
 	// integrations: [sitemap()],
-	// try to bring back sitemap
+	// ------------------------------
+	// ⚠   Fail to build sitemap   ⚠
+	// ------------------------------
 	// integrations: [
 	// 	sitemap({
 	// 		// Force the sitemap to ignore any "broken" or "undefined" routes
