@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
 
+# Grant permissions required for the official GitHub Pages deployment
 permissions:
   contents: read
   pages: write
@@ -13,24 +14,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
-          
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+          # We REMOVE 'cache: npm' because that requires a lockfile to exist locally
+
+      - name: Clean Install (Bypasses Windows Lockfile Issues)
+        run: |
+          # Delete any lockfile pushed from Windows to avoid EBADPLATFORM errors
+          rm -f package-lock.json
+          # Force a fresh install based strictly on package.json
+          npm install
 
       - name: Build site
-        run: pnpm run build
+        # This will now find the correct @rollup/rollup-linux-x64-gnu module
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -42,5 +44,8 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
