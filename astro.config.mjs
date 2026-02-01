@@ -30,7 +30,7 @@ export default defineConfig({
 	// Enable islands for Astro 4.0+
 	// islands: true,
 
-	integrations: [sitemap()],
+	// integrations: [sitemap()],
 
 	vite: {
 		resolve: {
