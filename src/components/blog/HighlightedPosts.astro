@@ -6,10 +6,10 @@ import { findImage } from '~/utils/images';
 import { getPermalink } from '~/utils/permalinks';
 
 const ids = [
-	'backup-strategy-for-digital-nomads',
-	'web-apps-vs-portable-apps',
-	'free-resources-for-developers',
-	'local-ai-llm-for-low-ram-laptop',
+	'local-first-apps-for-digital-nomad',
+	'portable-app-vs-self-host',
+	'use-case-portable-apps',
+	'use-case-self-hosting',
 ];
 
 const items = await Promise.all(
@@ -20,11 +20,11 @@ const items = await Promise.all(
 <section class="px-4 py-16 mx-auto max-w-6xl lg:py-20" id="blogposts">
 	<div class="flex flex-col mb-6 lg:justify-between lg:flex-row md:mb-8">
 		<h2 class="max-w-lg mb-2 text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:mb-5 group font-heading">
-			<span class="inline-block mb-1 sm:mb-4">xNet Articles</span>
+			<span class="inline-block mb-1 sm:mb-4">Xnet Field Notes</span>
 		</h2>
 
-		<p class="text-gray-700 dark:text-slate-400 lg:text-sm lg:max-w-md">
-			Practical guides to set up, and run a local development environment with honest reviews and documentation that actually work.
+		<p class="text-zinc-700 dark:text-zinc-400 lg:text-sm lg:max-w-md">
+			Practical guides to set up and run a local development environment, featuring tutorials and honest reviews about what actually works.
 		</p>
 	</div>
 
@@ -34,21 +34,19 @@ const items = await Promise.all(
 				<article class="mb-6 transition">
 					<Picture
 						src={post.image}
-						class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
-						widths={[400, 900]}
+						class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-zinc-400 dark:bg-zinc-700"
 						sizes="(max-width: 900px) 400px, 900px"
 						alt={post.title}
-						aspectRatio="16:9"
 					/>
 					<h3 class="mb-2 text-xl font-bold leading-snug sm:text-2xl font-heading">
 						<a
-							href={getPermalink(post.slug, 'type')}
+							href={getPermalink(post.slug, 'post')}
 							class="hover:text-primary-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
 						>
 							{post.title}
 						</a>
 					</h3>
-					<p class="text-gray-700 dark:text-gray-400">{post.excerpt || post.description}</p>
+					<p class="text-zinc-700 dark:text-zinc-400">{post.excerpt || post.description}</p>
 				</article>
 			))
 		}

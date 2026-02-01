@@ -1,149 +1,164 @@
 ---
-import { Icon } from 'astro-icon';
-import { getHomePermalink } from '~/utils/permalinks';
+import IconLocal from '~/components/atoms/IconLocal.astro';
+import { getHomePermalink, getPermalink } from '~/utils/permalinks';
 ---
 
-<footer class="border-t border-gray-200 dark:border-slate-800">
+<footer class="border-t border-zinc-200 dark:border-zinc-800">
 	<div class="max-w-6xl mx-auto px-4 sm:px-6">
 		<div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
-			<div class="col-span-12 lg:col-span-4">
-				<div class="mb-2">
-					<a class="inline-block font-bold text-xl" href={getHomePermalink()}>xNet</a>
+			<div class="col-span-12 lg:col-span-4 flex flex-col">
+				<div class="mb-2 flex items-center">
+					<span
+					class="w-16 h-16 md:w-12 md:h-12 md:-mt-0.5 bg-cover mr-2 rounded-sm bg-[url(~/assets/images/xnet-180x180.png)]"
+					>
+					</span>
+					<a class="inline-block font-bold text-xl text-zinc-500 hover:text-lime-600" href={getHomePermalink()}>Xnet</a>
 				</div>
-				<div class="text-sm text-gray-500">
+				<div class="text-sm text-zinc-500 mt-2">
 					Open source tools for digital nomads independence.
 				</div>
 			</div>
 			<div class="col-span-6 md:col-span-3 lg:col-span-2">
-				<div class="text-gray-800 dark:text-gray-300 font-medium mb-2">Portable</div>
+				<div class="text-zinc-800 dark:text-zinc-300 font-medium mb-2">Resources</div>
 				<ul class="text-sm">
 					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Code Editors</a
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href={getPermalink('digital-nomad', 'tag')}
+							>Digital Nomad</a
 						>
 					</li>
 					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Note-Taking</a
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href={getPermalink('guide', 'category')}
+							>Guides</a
 						>
 					</li>
 					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Project Management</a
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href={getPermalink('review', 'category')}
+							>Reviews</a
 						>
 					</li>
 					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Graphics & Design</a
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href={getPermalink('tutorial', 'category')}
+							>Tutorials</a
 						>
 					</li>
 					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Communication </a
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/hardware"
+							>Hardware</a
 						>
 					</li>
 					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>File Sync & Backup</a
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/self-hosted"
+							>Self-Hosted OS</a
 						>
 					</li>
 					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>System Tools</a
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/portable"
+							>Portable Apps</a
 						>
 					</li>
 				</ul>
 			</div>
 			<div class="col-span-6 md:col-span-3 lg:col-span-2">
-				<div class="text-gray-800 dark:text-gray-300 font-medium mb-2">Platform</div>
+				<div class="text-zinc-800 dark:text-zinc-300 font-medium mb-2">Applications</div>
 				<ul class="text-sm">
 					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Applications</a
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/applications#communication-private"
+							>Communication</a
 						>
 					</li>
 					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/applications#creative-software"
+							>Creative Software</a
+						>
+					</li>
+					<li class="mb-2">
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/applications#finance"
+							>Finance & Capital</a
+						>
+					</li>
+					<li class="mb-2">
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/applications#knowledge"
+							>Knowledge Database</a
+						>
+					</li>
+					<li class="mb-2">
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/applications#local-ai-llm"
+							>Local AI & LLMs</a
+						>
+					</li>
+					<li class="mb-2">
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/applications#network-hosting"
+							>Network & Hosting</a
+						>
+					</li>
+					<li class="mb-2">
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/applications#productivity-office"
+							>Productivity & Office</a
+						>
+					</li>
+				</ul>
+			</div>
+			<div class="col-span-6 md:col-span-3 lg:col-span-2">
+				<div class="text-zinc-800 dark:text-zinc-300 font-medium mb-2">Stack</div>
+				<ul class="text-sm">
+					<li class="mb-2 border-l-4 border-blue-700 pl-2 rounded-sm">
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/stack-components"
+							>Components</a
+						>
+					</li>
+					<li class="mb-2 border-l-4 border-emerald-700 pl-2 rounded-sm">
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/stack-local-server"
 							>Local Server</a
 						>
 					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
+					<li class="mb-2 border-l-4 border-indigo-700 pl-2 rounded-sm">
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/stack-local-ai"
 							>Local AI</a
 						>
 					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
+					<li class="mb-2 border-l-4 border-sky-700 pl-2 rounded-sm">
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/stack-public"
 							>Secure Tunneling</a
 						>
 					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
+					<li class="mb-2 border-l-4 border-orange-700 pl-2 rounded-sm">
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/stack-multimedia"
 							>Multimedia</a
 						>
 					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
+					<li class="mb-2 border-l-4 border-indigo-700 pl-2 rounded-sm">
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/stack-privacy"
 							>Privacy & Security</a
 						>
 					</li>
 				</ul>
 			</div>
+
 			<div class="col-span-6 md:col-span-3 lg:col-span-2">
-				<div class="text-gray-800 dark:text-gray-300 font-medium mb-2">Resources</div>
+				<div class="text-zinc-800 dark:text-zinc-300 font-medium mb-2">Xnet</div>
 				<ul class="text-sm">
 					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Guides & Tutorials</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Documentation</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Open Source</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Community</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Project Status</a
-						>
-					</li>
-				</ul>
-			</div>
-			<div class="col-span-6 md:col-span-3 lg:col-span-2">
-				<div class="text-gray-800 dark:text-gray-300 font-medium mb-2">xNet</div>
-				<ul class="text-sm">
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="/about"
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/about"
 							>About</a
 						>
 					</li>
 					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="/faq"
-							>FAQ</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="/blog"
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/blog"
 							>Blog</a
 						>
 					</li>
 					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="/terms"
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/faq"
+							>FAQ</a
+						>
+					</li>
+					<li class="mb-2">
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/terms"
 							>Terms</a
 						>
 					</li>
 					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="/privacy-policy"
+						<a class="text-zinc-500 hover:text-lime-600 transition duration-150 ease-in-out" href="/privacy-policy"
 							>Privacy Policy</a
 						>
 					</li>
@@ -154,56 +169,52 @@ import { getHomePermalink } from '~/utils/permalinks';
 			<ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0">
 				<li>
 					<a
-						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+						class="text-zinc-600 hover:text-lime-600 focus:outline-none focus:ring-4 focus:ring-lime-700 rounded-lg text-sm p-2.5 inline-flex items-center"
 						aria-label="Twitter"
-						href="#"
+						href="/index"
 					>
-						<Icon name="tabler:brand-twitter" class="w-5 h-5" />
+						<IconLocal name="brand-twitter" class="w-5 h-5" />
 					</a>
 				</li>
 				<li>
 					<a
-						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+						class="text-zinc-600 hover:text-lime-600 focus:outline-none focus:ring-4 focus:ring-lime-700 rounded-lg text-sm p-2.5 inline-flex items-center"
 						aria-label="Instagram"
-						href="#"
+						href="/index"
 					>
-						<Icon name="tabler:brand-instagram" class="w-5 h-5" />
+						<IconLocal name="brand-instagram" class="w-5 h-5" />
 					</a>
 				</li>
 				<li>
 					<a
-						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+						class="text-zinc-600 hover:text-lime-600 focus:outline-none focus:ring-4 focus:ring-lime-700 rounded-lg text-sm p-2.5 inline-flex items-center"
 						aria-label="Facebook"
-						href="#"
+						href="/index"
 					>
-						<Icon name="tabler:brand-facebook" class="w-5 h-5" />
+						<IconLocal name="brand-facebook" class="w-5 h-5" />
 					</a>
 				</li>
 				<li>
 					<a
-						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-						aria-label="RSS"
-						href="/rss.xml"
-					>
-						<Icon name="tabler:rss" class="w-5 h-5" />
-					</a>
-				</li>
-				<li>
-					<a
-						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+						class="text-zinc-600 hover:text-lime-600 focus:outline-none focus:ring-4 focus:ring-lime-700 rounded-lg text-sm p-2.5 inline-flex items-center"
 						aria-label="Github"
 						href="https://github.com/gigamaster/xnet"
 					>
-						<Icon name="tabler:brand-github" class="w-5 h-5" />
+						<IconLocal name="brand-github" class="w-5 h-5" />
+					</a>
+				</li>
+				<li>
+					<a
+						class="text-zinc-600 hover:text-lime-600 focus:outline-none focus:ring-4 focus:ring-lime-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+						aria-label="RSS"
+						href="/rss.xml"
+					>
+						<IconLocal name="rss-24" class="w-5 h-5" />
 					</a>
 				</li>
 			</ul>
-			<div class="text-sm text-gray-700 mr-4 dark:text-slate-400">
-				<span
-					class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 float-left rounded-sm bg-[url(/favicon.svg)]"
-				>
-				</span>
-				© 2026 <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://github.com/gigamaster/xnet"> UI xNet</a> ·
+			<div class="text-sm text-zinc-700 mr-4 dark:text-zinc-400">
+				© 2026 <a class="text-blue-600 hover:underline dark:text-zinc-200" href="https://github.com/gigamaster/xnet"> UI Xnet</a> ·
 				Codemo Digital Nomad — Made with care, not cookies.
 			</div>
 		</div>

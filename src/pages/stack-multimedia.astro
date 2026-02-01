@@ -1,0 +1,247 @@
+---
+// src/pages/stack-multimedia.astro
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import HeroMultimedia from '~/components/widgets/HeroMultimedia.astro';
+import { CardLink, CardSmall, Icon, IconLocal, Thumb } from '~/components';
+import Footer from '~/components/widgets/Footer.astro';
+import { SITE } from '~/config.mjs';
+
+const meta = {
+	title: 'Self-Host Multimedia',
+	description: 'Manage, stream, and share your personal media library',
+};
+
+const refUrl = [
+  {
+    title: "Emby",
+    description: "Feature-rich media hub",
+    href: "https://emby.media/",
+    buttonText: "emby.media"
+  },
+  {
+    title: "Immich", 
+    description: "High-performance, photo management",
+    href: "https://immich.app/",
+    buttonText: "immich.app"
+  },
+  {
+    title: "Jellyfin", 
+    description: "Open-source media server",
+    href: "https://jellyfin.org/",
+    buttonText: "jellyfin.org"
+  },
+  {
+    title: "Photoprism", 
+    description: "AI-powered photo management",
+    href: "https://www.photoprism.app/",
+    buttonText: "photoprism.app"
+  },
+  {
+    title: "Plex", 
+    description: "Polished streaming with rich metadata",
+    href: "https://www.plex.tv/personal-media-server/",
+    buttonText: "plex.tv"
+  },
+  {
+    title: "Navidrome", 
+    description: "Server for streaming your music",
+    href: "https://www.navidrome.org/",
+    buttonText: "navidrome.org"
+  },
+];
+
+---
+
+<BaseLayout {meta}>
+  <Header />
+  <HeroMultimedia meta={meta} />
+
+  <article class="container mx-auto px-4 py-8 max-w-4xl">
+
+    <header class="mb-16">
+      <p>
+      A self-hosted multimedia stack lets you manage, stream, and share your personal media library: 
+      photos, music, videos, podcasts, without relying on YouTube, Spotify, iCloud, or Google Photos. 
+      Everything stays on your hardware, under your control.
+      </p>
+    </header>
+    
+    <section class="mb-16">
+
+      <h3 class="text-center text-2xl font-semibold mb-4">Choose Your Stack</h3>
+
+      <table class="min-w-full bg-black/20 border-separate border-spacing-2 rounded-md [&_th]:p-2 [&_td]:p-2">
+        <thead class="text-base font-medium border-b-2 border-zinc-500/20">
+          <tr>
+            <th>Use Case</th>
+            <th>Best Tool(s)</th>
+            <th>Why</th>
+          </tr>
+        </thead>
+        <tbody class="text-xs [&_tr:hover]:bg-zinc-500/10 [&_tr]:transition-colors [&_tr]:duration-200 [&_td]:rounded-md">
+          <tr>
+            <td>
+              <strong>Full family media hub</strong><br />
+              (movies, TV, music, photos, remote streaming)
+            </td>
+            <td>
+              <strong>Jellyfin</strong> (free)
+            </td>
+            <td>
+              Jellyfin is entirely free, open-source, and privacy-focused with free hardware acceleration, but requires more manual setup and technical skill.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Full family media hub</strong><br />
+              (movies, TV, music, photos, remote streaming)
+            </td>
+            <td>
+              <strong>Plex Free / Pass</strong> (paid)
+            </td>
+            <td>
+              Plex offers a polished experience and easy remote streaming, but charges for features like hardware transcoding.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Personal photo archive</strong><br />
+              (privacy-first, AI tagging)
+            </td>
+            <td><strong>Photoprism</strong></td>
+            <td>
+              Photoprism: facial recognition, map view.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Personal photo archive</strong><br />
+              (privacy-first, photo management)
+            </td>
+            <td><strong>Immich</strong></td>
+            <td>
+              Immich: faster, better for large libraries, offline-first.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Music-only streaming</strong><br />
+              (low resource, Subsonic-compatible)
+            </td>
+            <td><strong>Navidrome</strong></td>
+            <td>
+              Lightweight, works with DSub, Symfonium, etc. Runs on Raspberry Pi.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Podcasts + RSS</strong></td>
+            <td class="text-nowrap">
+              <strong>Podgrab</strong> + <strong>AntennaPod</strong> (client)
+            </td>
+            <td>Fully offline, no tracking, self-hosted downloader, auto-downloads episodes.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="text-sm bg-yellow-600/10 rounded-lg p-2">
+      💡 <strong>Don’t overbuild</strong>. Most homelabbers start with Jellyfin + direct play on modest hardware. Add Photoprism or Navidrome later as needs grow.
+      </p>
+    </section>
+
+    <section class="mb-16">
+      <h3 class="text-center text-2xl font-semibold mb-4">Hardware Guidance</h3>
+
+      <table class="min-w-full bg-black/20 border-separate border-spacing-2 rounded-md [&_th]:p-2 [&_td]:p-2">
+        <thead class="text-base font-medium border-b-2 border-zinc-500/20">
+          <tr>
+            <th>Scenario</th>
+            <th>CPU</th>
+            <th>RAM</th>
+            <th>Storage</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody class="text-xs [&_tr:hover]:bg-zinc-500/10 [&_tr]:transition-colors [&_tr]:duration-200 [&_td]:rounded-md">
+          <tr>
+            <td class="text-nowrap"><strong>Personal use</strong><br />
+            (direct play, local network)</td>
+            <td>Dual-core x86 or ARM<br />
+            (e.g., Raspberry Pi 4)</td>
+            <td>2–4 GB</td>
+            <td>As needed</td>
+            <td>No transcoding → low power, silent</td>
+          </tr>
+          <tr>
+            <td>
+            <strong>Family streaming</strong><br />
+            (remote access, 1080p/4K)
+            </td>
+            <td class="text-nowrap">
+            Quad-core x86, AVX2<br />
+            (e.g., Ryzen 5)
+            </td>
+            <td>8+ GB</td>
+            <td class="text-nowrap">NAS or multi-drive</td>
+            <td>
+              Enable hardware transcoding (Intel Quick Sync, AMD VCE, or NVIDIA NVENC)
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Public/internet streaming</strong><br />
+              (multiple users, high concurrency)
+            </td>
+            <td>6+ cores, GPU</td>
+            <td class="text-nowrap">16+ GB</td>
+            <td>RAID array</td>
+            <td>Use a backup, reverse proxy, and CDN cache if exposing publicly</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="text-sm bg-yellow-600/10 rounded-lg p-2">
+      💡 <strong>Key tip</strong>: If you only stream within your home network and your devices support the file format (direct play), you don’t need powerful hardware. Transcoding is the resource hog—not storage or playback.
+      </p>
+    </section>
+
+    <section class="mb-16">
+      <h3 class="text-2xl font-semibold mb-4">Why Use It</h3>
+
+      <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 space-y-1 mb-4">
+        <li>Own your memories: No algorithmic feeds, ads, or sudden policy changes deleting your content.</li>
+        <li>Unlimited storage: Scale with your own drives, not subscription tiers.</li>
+        <li>Custom playback: Stream 4K videos, lossless audio, or raw photo libraries across all your devices.</li>
+      </ul>
+
+      <p class="text-sm bg-yellow-600/10 rounded-lg p-2">
+      💡 Best For families, creators, archivists, and media enthusiasts who value ownership over convenience, and want their entertainment free from tracking or paywalls.
+      </p>
+    </section>
+
+    <hr class="h-[3px] border-none bg-radial-[at_50%_50%] from-zinc-200 to-zinc-50 dark:from-zinc-700 dark:to-zinc-950 to-100% my-16" />
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4"><IconLocal name="fluent-color--link-multiple-24" class="w-6 h-6 inline-block" /> Trusted Resources</h2>
+      <p class="text-sm italic bg-zinc-100 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-900 rounded-md p-4 mb-4">The external sites are not affiliated with us. 
+         We include them because they provide reliable, transparent, 
+         and community-driven information that aligns with our commitment 
+         to honest, open-source tooling.
+      </p>
+    </section>
+
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4 mb-8">
+    {refUrl.map((item) => (
+      <CardLink 
+        title={item.title}
+        description={item.description}
+        href={item.href}
+        buttonText={item.buttonText}
+      />
+    ))}
+    </div>
+
+  </article>
+
+  <Footer />
+</BaseLayout>

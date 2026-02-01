@@ -1,0 +1,32 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+
+const meta = {
+  title: 'TOC Test Page',
+  description: 'Testing TOC generation'
+};
+
+// Test data to verify TOC works
+const testHeadings = [
+  { level: 1, text: 'Introduction', id: 'introduction' },
+  { level: 2, text: 'Getting Started', id: 'getting-started' },
+  { level: 2, text: 'Configuration', id: 'configuration' },
+  { level: 1, text: 'Advanced Topics', id: 'advanced' }
+];
+---
+
+<BaseLayout {meta} tocHeadings={testHeadings}>
+  <article class="container mx-auto px-4 py-8 max-w-4xl">
+    <h1 id="introduction">Introduction</h1>
+    <p>This is the introduction section.</p>
+    
+    <h2 id="getting-started">Getting Started</h2>
+    <p>How to get started with the project.</p>
+    
+    <h2 id="configuration">Configuration</h2>
+    <p>How to configure the system.</p>
+    
+    <h1 id="advanced">Advanced Topics</h1>
+    <p>Advanced configuration and usage.</p>
+  </article>
+</BaseLayout>

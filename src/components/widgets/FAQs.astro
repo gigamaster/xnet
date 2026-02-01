@@ -1,19 +1,15 @@
 ---
-import { Icon } from 'astro-icon';
+import IconLocal from '~/components/atoms/IconLocal.astro';
 
 const items = [
 	[
 		{
-			question: 'What do I need to start?',
-			answer: `Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds.
-
-    Many say exploration is part of our destiny, but it’s actually our duty to future generations.`,
+			question: 'What is self-hosting?',
+			answer: `Self-hosting means running software (like a website, password manager, or file server) on your own hardware—instead of relying on cloud services like Google or Dropbox. You control the data, updates, and access, often using tools like Docker on a home server or mini-PC.`,
 		},
 		{
-			question: 'How to install the Astro + Tailwind CSS template?',
-			answer: `Well, the way they make shows is, they make one show. That show's called a pilot.
-
-    Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.`,
+			question: 'Is self-hosting secure?',
+			answer: `It can be—but security depends entirely on you. Keep software updated, avoid exposing admin panels to the public internet, use strong passwords, and leverage tools like Tailscale for encrypted private access. Never expose databases or internal services directly to the web.`,
 		},
 		{
 			question: "What's something that you completely don't understand?",
@@ -22,18 +18,44 @@ const items = [
 	],
 	[
 		{
-			question: "What's an example of when you changed your mind?",
-			answer: `Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.`,
+			question: "Do I need a domain name to self-host?",
+			answer: `No. For private use, local DNS (like umbrel.local) or Tailscale’s built-in names (e.g., umbrel.ison-spica.ts.net) work fine. For public access, services like Tailscale Funnel give you a free *.ts.net subdomain with automatic HTTPS—no custom domain needed.`,
 		},
 		{
-			question: 'What is something that you would really like to try again?',
-			answer: `A business big enough that it could be listed on the NASDAQ goes belly up. Disappears!
-
-      It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.`,
+			question: 'Can I run multiple web apps on one server?',
+			answer: `Yes. Use Docker Compose to isolate each app (e.g., blog, notes, portfolio), and serve them under different paths (/blog, /notes) or ports. A reverse proxy (like Caddy or Nginx) can unify them under one domain—but for simplicity, path-based routing in Apache or a single AMP stack also works well.`,
 		},
 		{
-			question: 'If you could only ask one question to each person you meet, what would that question be?',
-			answer: `This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.`,
+			question: 'What’s the difference between a web app and a portable app',
+			answer: `A web app runs on a server and is accessed through a browser (e.g., Nextcloud, WordPress). A portable app is a standalone program that runs directly on your computer without installation (e.g., a USB-drive version of Firefox or LibreOffice)—no server required.`,
+		},
+	],
+	[
+		{
+			question: "Will self-hosting slow down my home internet?",
+			answer: `Only if you allow large uploads/downloads from outside your network. For personal use over Tailscale or local Wi-Fi, bandwidth impact is negligible. Avoid public file-sharing or video streaming unless you have a strong upload connection (≥20 Mbps).`,
+		},
+		{
+			question: 'Can I access my self-hosted apps remotely?',
+			answer: `Yes—safely. Use Tailscale, ZeroTier, or WireGuard to create an encrypted private network. Avoid port forwarding unless absolutely necessary. Tailscale Funnel even lets you share select apps publicly with auto-renewing SSL, no router config needed.`,
+		},
+		{
+			question: 'How much storage do I need?',
+			answer: `It depends on your apps. A basic stack (password manager + notes + blog) uses <10 GB. Add media (photos, videos) or backups, and you’ll need more. Start with a 256 GB SSD (like yours) and expand via external USB drives if needed.`,
+		},
+	],
+	[
+		{
+			question: "Are self-hosted apps hard to update?",
+			answer: `Not if you use Docker. Most modern self-hosted apps update with one command (docker-compose pull && docker-compose up -d) or via GUI tools like Dockge. Always back up your data volume before major updates.`,
+		},
+		{
+			question: 'Why choose self-hosting over cloud services?',
+			answer: `Because you own your data, avoid ads and tracking, reduce subscription costs, and gain deeper technical understanding. It’s not always easier—but it’s more private, resilient, and aligned with digital independence.`,
+		},
+		{
+			question: 'Can I self-host without being a Linux expert?',
+			answer: `Yes. Modern tools like Umbrel, Docker, Dockge, and Tailscale are designed for non-experts. You don’t need to write code or memorize commands, many setups use simple copy-paste instructions, intuitive web UIs, and pre-built templates. Start with one app (like a password manager), follow a trusted guide, and expand as you grow confident. The homelab community is also very supportive—no question is too basic.`,
 		},
 	],
 ];
@@ -43,11 +65,12 @@ const items = [
 	<div class="max-w-xl sm:mx-auto lg:max-w-2xl">
 		<div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
 			<h2 class="max-w-lg mb-4 text-3xl font-bold leading-none tracking-tight sm:text-4xl md:mx-auto font-heading">
+			<IconLocal name="fluent-color--question-circle-24" class="w-8 h-8 inline-block" />
 				Frequently Asked Questions
 			</h2>
 		</div>
 	</div>
-	<div class="max-w-screen-xl sm:mx-auto">
+	<div class="max-w-(--breakpoint-xl) sm:mx-auto">
 		<div class="grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-x-16 md:grid-cols-2">
 			{
 				items.map((subitems) => (
@@ -55,11 +78,11 @@ const items = [
 						{subitems.map(({ question, answer }) => (
 							<div>
 								<p class="mb-4 text-xl font-bold">
-									<Icon name="tabler:arrow-down-right" class="w-7 h-7 text-primary-500 inline-block icon-bold" />
+									<IconLocal name="fluent--arrow-down-right-24-regular" class="w-7 h-7 text-primary-500 inline-block icon-bold" />
 									{question}
 								</p>
 								{answer.split('\n\n').map((paragraph) => (
-									<p class="text-gray-700 dark:text-gray-400 mb-2" set:html={paragraph} />
+									<p class="text-zinc-700 dark:text-zinc-400 mb-2" set:html={paragraph} />
 								))}
 							</div>
 						))}

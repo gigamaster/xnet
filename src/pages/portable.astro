@@ -1,0 +1,230 @@
+---
+// src/pages/self-hosted.astro
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import HeroPortable from '~/components/widgets/HeroPortable.astro';
+import AppStats from '~/components/widgets/AppStats.astro';
+import Picture from '~/components/core/Picture.astro';
+import { CardLink, Icon, IconLocal, Thumb } from '~/components';
+import Footer from '~/components/widgets/Footer.astro';
+import { SITE } from '~/config.mjs';
+
+// Page's Image for meta and layout
+import portableImage from '~/assets/images/portable-software.jpg';
+
+const meta = {
+	title: 'Portable Applications',
+	description: 'Carry your entire workspace on a thumb drive. Open source & offline-ready.',
+};
+
+const refurl = [
+  {
+    title: "Self-Hosted OS",
+    description: "Compare Operating Systems for Homelab",
+    href: "/self-hosted",
+    buttonText: "uixnet"
+  },
+  {
+    title: "Stack Components", 
+    description: "Vertical blueprint of software",
+    href: "/stack-components",
+    buttonText: "uixnet"
+  },
+  {
+    title: "Portable Apps", 
+    description: "Standalone open source & freeware",
+    href: "/portable",
+    buttonText: "uixnet"
+  },
+];
+---
+
+<BaseLayout {meta}>
+  <Header />
+  <HeroPortable {meta} />
+	<AppStats />
+
+  <article class="container mx-auto px-4 py-8 max-w-4xl">
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+
+      <div class="relative flex flex-col p-4">
+        <Picture 
+          src={portableImage}
+          alt="Description of image"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          class="w-full h-full object-cover rounded-lg"
+          loading = "lazy"
+        />
+      </div>
+
+      <div class="relative flex flex-col p-4 dark:border-zinc-700">
+        
+        <h3 class="text-2xl font-semibold mb-4">Privacy & Peace of Mind</h3>
+        <p class="mb-4">For the everyday user, self-hosting is the ultimate "exit ramp" from the cycle of 
+        big-tech subscriptions and data mining. 
+        It’s about creating a private digital sanctuary where your family photos aren't used to train AI 
+        and your smart home doesn't stop working just because a company went bankrupt. By hosting your own 
+        media, files, and services, you replace "Software as a Service" with "Software as a Sovereign", 
+        regaining total control over your costs, your privacy, and your digital legacy.
+        </p>
+
+        <h3 class="text-2xl font-semibold mb-4">Digital Autonomy</h3>
+        <p>For the nomad, self-hosting is a survival tactic, a lifeline in the “WiFi Roulette.” 
+        When you’re lost in the spotty signal of a remote café or a low-tier Airbnb, 
+        you can’t afford to wait for a lagging cloud server on another continent to respond. 
+        A self-hosted local stack paired with portable applications turns 
+        your machine into an independent workstation that doesn't "die" when the internet drops. 
+        It’s about having your CRM, your notes, and your development environment living exactly where you are, 
+        ensuring that your productivity stays as mobile and resilient as you are.
+        </p>
+      </div>
+
+    </section>
+
+  <section class="container max-w-4xl px-4 mx-auto mb-16">
+  
+
+
+    <table class="min-w-full border-spacing-4 [&_th]:p-2 [&_td]:p-2">
+    <caption class="text-center text-2xl text-zinc-500 py-4 my-8">Portable Must-Haves</caption>
+      <thead class="text-base font-medium border-b-2 border-zinc-500/20">
+          <tr>
+            <th>Category</th>
+            <th>Application</th>
+            <th>Nomad Benefit</th>
+            <th>Offline Mode</th>
+            <th>Site</th>
+          </tr>
+        </thead>
+        <tbody class="text-xs [&_tr:hover]:bg-zinc-500/10 [&_tr]:transition-colors [&_tr]:duration-200 [&_td]:rounded-md">
+          <tr>
+            <td><b>Connectivity</b></td>
+            <td>WiFi Map</td>
+            <td>Crowdsourced map of hotspots for emergency signal hunting.</td>
+            <td class="text-center">Offline Maps</td>
+            <td class="text-center">
+              <a href="https://www.wifimap.io/" target="_blank" title="WiFi Map website">
+                <IconLocal name="fluent-color--link-multiple-24" class="w-4 h-4" />
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Intelligence</b></td>
+            <td>Kiwix</td>
+            <td>Full offline copies of Wikipedia and StackOverflow.</td>
+            <td class="text-center">100% Offline</td>
+            <td class="text-center">
+              <a href="https://kiwix.org/" target="_blank" title="kiwix offline apps">
+                <IconLocal name="fluent-color--link-multiple-24" class="w-4 h-4" />
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Productivity</b></td>
+            <td>LibreOffice Portable</td>
+            <td>Complete office suite that requires no cloud login or subscription.</td>
+            <td class="text-center">100% Offline</td>
+            <td class="text-center">
+              <a href="https://www.libreoffice.org/" target="_blank" title="LibreOffice website">
+                <IconLocal name="fluent-color--link-multiple-24" class="w-4 h-4" />
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Communication</b></td>
+            <td>Ferdium (Portable)</td>
+            <td>Consolidates WhatsApp, Slack, and Discord into one local app.</td>
+            <td class="text-center">Sync Needed</td>
+            <td class="text-center">
+              <a href="https://ferdium.org/" target="_blank" title="Ferdium website">
+                <IconLocal name="fluent-color--link-multiple-24" class="w-4 h-4" />
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Creative</b></td>
+            <td>GIMP Portable</td>
+            <td>Pro-level image editing without the heavy Adobe installation.</td>
+            <td class="text-center">100% Offline</td>
+            <td class="text-center">
+              <a href="https://portableapps.com/apps/graphics_pictures/gimp_portable" target="_blank" title="PortableApps website">
+                <IconLocal name="fluent-color--link-multiple-24" class="w-4 h-4" />
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Security</b></td>
+            <td>KeePassXC</td>
+            <td>Local encrypted password vault; keeps keys off the cloud.</td>
+            <td class="text-center">100% Offline</td>
+            <td class="text-center">
+              <a href="https://keepassxc.org/" target="_blank" title="KeePassXC website">
+                <IconLocal name="fluent-color--link-multiple-24" class="w-4 h-4" />
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Utility</b></td>
+            <td>VLC Media Player</td>
+            <td>Universal codec support for offline movies and work assets.</td>
+            <td class="text-center">100% Offline</td>
+            <td class="text-center">
+              <a href="https://www.videolan.org/" target="_blank" title="Videolan website">
+                <IconLocal name="fluent-color--link-multiple-24" class="w-4 h-4" />
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Network</b></td>
+            <td>Angry IP Scanner</td>
+            <td>Diagnose local network issues in airbnbs and coworking spaces.</td>
+            <td class="text-center">Local Only</td>
+            <td class="text-center">
+              <a href="https://angryip.org/" target="_blank" title="Angryip website">
+                <IconLocal name="fluent-color--link-multiple-24" class="w-4 h-4" />
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Maps</b></td>
+            <td>Maps.me</td>
+            <td>OpenStreetMap-based navigation with superior hiking/rural detail.</td>
+            <td class="text-center">Offline GPS</td>
+            <td class="text-center">
+              <a href="https://maps.me/" target="_blank" title="maps.me website">
+                <IconLocal name="fluent-color--link-multiple-24" class="w-4 h-4" />
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </section>
+    
+    <hr class="h-[3px] border-none bg-radial-[at_50%_50%] from-zinc-200 to-zinc-50 dark:from-zinc-700 dark:to-zinc-950 to-100% my-16" />
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4"><IconLocal name="fluent-color--link-multiple-24" class="w-6 h-6 inline-block" /> Trusted Resources</h2>
+        <p class="text-sm italic bg-zinc-100 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-900 rounded-md p-4 mb-4">The external sites are not affiliated with us. 
+          We include them because they provide reliable, transparent, 
+          and community-driven information that aligns with our commitment 
+          to honest, open-source tooling.
+        </p>
+      </section>
+
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4 mb-8">
+      {refurl.map((item) => (
+        <CardLink 
+          title={item.title}
+          description={item.description}
+          href={item.href}
+          buttonText={item.buttonText}
+        />
+      ))}
+      </div>
+
+  </article>
+
+  <Footer />
+</BaseLayout>

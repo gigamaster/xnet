@@ -1,0 +1,305 @@
+---
+// src/pages/test.astro
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import { Code } from 'astro:components';
+import { CardLink, Icon, IconLocal,Thumb } from '~/components';
+import { SITE } from '~/config.mjs';
+
+
+
+const meta = {
+	title: 'Testing Page',
+	description: 'Test components and browser features for ' + SITE.name + ' project',
+};
+
+// Replace with the actual path to one of your broken icons
+import rawIcon from '../assets/icons/battery.svg?raw';
+
+const myCode = `
+function processData(data) {
+  const result = data.map(item => {
+    return {
+      id: item.id,
+      name: item.name.toUpperCase(),
+      processed: true
+    };
+  });
+  
+  return result.filter(item => item.processed);
+}
+`;
+
+const items = [
+  {
+    title: "Self-Hosted",
+    description: "Alternatives to popular software",
+    href: "https://selfh.st/apps/",
+    buttonText: "selfh.st"
+  },
+  {
+    title: "Visual Docker", 
+    description: "Compose manager for custom apps",
+    href: "https://dockge.kuma.pet/",
+    buttonText: "dockge.kuma.pet"
+  },
+  {
+    title: "Self-hosted PaaS", 
+    description: "supports Let’s Encrypt and databases",
+    href: "https://caprover.com/",
+    buttonText: "caprover.com"
+  },
+];
+
+---
+
+<BaseLayout {meta}>
+  <Header />
+
+    <article class="container mx-auto px-4 py-8 max-w-4xl">
+
+      <header class="mb-8 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">Testing Page</h1>
+        <p class="text-zinc-600 dark:text-zinc-400">Last updated: {new Date().toLocaleDateString()}</p>
+      </header>
+
+      <section class="flex gap-4 mb-8">
+        
+        <div class="w-32 flex-auto p-6 border rounded-lg bg-zinc-900 border-zinc-800 max-w-md">
+          
+          <h3 class="text-xl font-bold mb-4 text-white">Component IconLocal</h3>
+
+          <div class="inline-block icon-wrapper w-24 h-24 border-red-800">
+            <Fragment set:html={rawIcon} />
+          </div>
+
+          <IconLocal name="battery" class="w-16 h-16 inline-block" />
+          <IconLocal name="battery" class="w-8 h-8 inline-block" />
+          <IconLocal name="battery" class="w-4 h-4 inline-block" />
+
+          
+          <!-- Syntax highlight some JavaScript code. -->
+          <Code code={`<IconLocal name="battery" class="w-16 h-16 inline-block" />`} lang="html" />
+
+        </div>
+
+        <!-- Browser AI Check -->
+        <div class="w-64 flex-auto">
+          <div id="ai-check-card" class="p-6 border rounded-lg bg-zinc-900 border-zinc-800 max-w-md">
+            <h3 class="text-xl font-bold mb-4 text-white">Browser AI Sovereignty Check</h3>
+            <ul id="check-list" class="space-y-3 text-sm">
+              <li id="check-webgpu" class="flex justify-between items-center opacity-50">
+                <span>WebGPU Engine (Local Compute)</span>
+                <span class="status">Checking...</span>
+              </li>
+              <li id="check-builtin" class="flex justify-between items-center opacity-50">
+                <span>Built-in AI (Gemini Nano)</span>
+                <span class="status">Checking...</span>
+              </li>
+              <li id="check-wasm" class="flex justify-between items-center opacity-50">
+                <span>WebAssembly (Portable Logic)</span>
+                <span class="status">Checking...</span>
+              </li>
+            </ul>
+            <div id="final-verdict" class="mt-6 p-3 rounded bg-zinc-800 text-xs text-zinc-400 hidden">
+              </div>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="mb-8">
+          
+        <h3 class="text-zinc-500 text-xl font-bold my-4">Code-block multi-line</h3>
+
+          <Code code={`function hello() {
+            console.log('Hello World');
+            return true;
+          }`} lang="js" />
+
+        <h3 class="text-zinc-500 text-xl font-bold my-8">Code-block String</h3>
+
+          <Code code={myCode} lang="js" />
+      </section>
+
+
+      <section class="border rounded-lg bg-zinc-900 border-zinc-800 w-full mb-8 p-6">
+
+        <h4 class="text-white text-2xl font-bold mb-4">Component Thumb</h4>
+        <p class="mb-8">External image url requires width={400} height={400} values!</p>
+        
+        <div class="flex items-center gap-2 mb-8">
+          <Thumb 
+            thumbSrc="https://placehold.co/400x400"
+            width={400} height={400} 
+            thumbAlt="Description"
+            thumbClass="w-8 h-8 border-2 block border-emerald-600 rounded-md"
+          />
+          <Thumb 
+            thumbSrc="https://placehold.co/800x600"
+            width={800} height={600} 
+            thumbAlt="Description"
+            thumbClass="w-10 h-10 inline-block border-2 border-red-600 shadow-md"
+          />
+        </div>
+        
+        <div class="mb-8">
+        <Code code={`<Thumb 
+        thumbSrc="https://placehold.co/800x600"
+        width={800} height={600} 
+        thumbAlt="Description"
+        thumbClass="w-10 h-10 inline-block border-2 border-red-600 shadow-md"
+        />`} lang="html" />
+        </div>
+
+        <h4 class="text-2xl my-4">thumbSrc + thumbFull</h4>
+
+        <div class="flex items-center gap-2 mb-8">
+          <Thumb thumbSrc="https://placehold.co/720x720" fullSrc="https://placehold.co/720x720" width={700} height={700} thumbAlt="test thumb" fullAlt="test full" thumbClass="w-32 h-32" />
+          <Thumb thumbSrc="https://placehold.co/640x480" width={640} height={480} thumbAlt="test div 1" thumbClass="w-24 h-24" />
+        </div>
+
+        <!-- Flex row of thumbnails - corrected -->
+        <div class="flex flex-wrap gap-2">
+          <Thumb thumbSrc="https://placehold.co/500x500" width={700} height={700} thumbAlt="Image 1" thumbClass="w-24 h-24 border-4 border-red-500 rounded" />
+          <Thumb thumbSrc="https://placehold.co/600x600" width={700} height={700} thumbAlt="Image 2" thumbClass="w-64 h-64 border-4 border-blue-500 rounded" />
+          <Thumb thumbSrc="https://placehold.co/700x700" width={700} height={700} thumbAlt="Image 3" thumbClass="w-72 h-72 border-4 border-indigo-500 rounded" />
+        </div>
+
+    </section>
+
+
+    <section class="border rounded-lg bg-zinc-900 border-zinc-800 w-full mb-8 p-6">
+
+      <h4 class="text-2xl my-4">Testing Icon</h4>
+      <p class="mb-4">Iconify e.g. Icon icon="simple-icons:matrix"</p>
+      
+      <div class="flex flex-row gap-2 mb-4">
+        <Icon icon="simple-icons:matrix" class="w-16 h-16 text-blue-600" />
+        <Icon icon="simple-icons:github" class="inline-block w-6 h-6" />
+      </div>
+
+      <h4 class="text-2xl my-4">Testing IconLocal</h4>
+      <p class="mb-2">Iconify e.g. IconLocal name="rss-24"</p>
+      <p class="mb-4">Do not add extension 'svg' !</p>
+
+      <div class="flex flex-row gap-2">
+        <IconLocal name="rss-24" class="w-16 h-16 text-blue-600" />
+        <IconLocal name="rss-24" class="w-24 h-24 text-lime-600" />
+        <IconLocal name="rss-24" class="w-32 h-32 text-orange-600" />
+      </div>
+      
+    </section>
+
+    <!-- Testing button links -->
+
+    <hr class="h-[3px] border-none bg-radial-[at_50%_50%] from-zinc-700 to-zinc-950 to-100% my-16" />
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">
+      <IconLocal name="fluent-color--link-multiple-24" class="w-6 h-6 inline-block" /> Trusted Resources
+      </h2>
+      <p class="text-sm italic bg-indigo-900/20 border border-indigo-900 rounded-md p-4 mb-4">The external sites are not affiliated with us. 
+         We include them because they provide reliable, transparent, 
+         and community-driven information that aligns with our commitment 
+         to honest, open-source tooling.
+      </p>
+    </section>
+
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4 mb-8">
+    {items.map((item) => (
+      <CardLink 
+        title={item.title}
+        description={item.description}
+        href={item.href}
+        buttonText={item.buttonText}
+      />
+    ))}
+    </div>
+
+    </article>
+
+  <Footer />
+</BaseLayout>
+
+
+<style>
+  .icon-wrapper {
+    /* Control the size here */
+    width: 128px; 
+    height: 128px;
+    color: #ff4444; /* Your "red" */
+  }
+
+  /* This forces the injected SVG to ignore its internal 
+     hardcoded dimensions and fill the wrapper instead.
+  */
+  .icon-wrapper :global(svg) {
+    width: 100%;
+    height: 100%;
+    fill: currentColor; /* Inherits the 'red' from the wrapper */
+  }
+</style>
+
+<script>
+  async function runAICheck() {
+    const results = {
+      webgpu: false,
+      builtin: 'unavailable',
+      wasm: false
+    };
+
+    // 1. Check WebGPU (The Hardware "Muscle")
+    if (navigator.gpu) {
+      const adapter = await navigator.gpu.requestAdapter();
+      if (adapter) results.webgpu = true;
+    }
+
+    // 2. Check Built-in AI (Gemini Nano)
+    // Note: In 2026, we check LanguageModel instead of just window.ai
+    if (window.ai && window.ai.languageModel) {
+      try {
+        const availability = await window.ai.languageModel.availability();
+        results.builtin = availability; // 'available', 'downloadable', or 'unavailable'
+      } catch (e) {
+        results.builtin = 'unavailable';
+      }
+    }
+
+    // 3. Check WebAssembly (The "Portability" Layer)
+    results.wasm = typeof WebAssembly === "object" && typeof WebAssembly.instantiate === "function";
+
+    updateUI(results);
+  }
+
+  function updateUI(res) {
+    const update = (id, status, isGood) => {
+      const el = document.getElementById(id);
+      el.classList.remove('opacity-50');
+      el.querySelector('.status').innerText = status;
+      el.querySelector('.status').className = `status font-mono ${isGood ? 'text-green-500' : 'text-red-500'}`;
+    };
+
+    update('check-webgpu', res.webgpu ? 'READY' : 'MISSING', res.webgpu);
+    update('check-wasm', res.wasm ? 'READY' : 'MISSING', res.wasm);
+    
+    // Special handling for Gemini Nano availability states
+    const aiStatus = res.builtin.toUpperCase();
+    const isAiGood = res.builtin === 'available' || res.builtin === 'downloadable';
+    update('check-builtin', aiStatus, isAiGood);
+
+    // Provide the Verdict
+    const verdict = document.getElementById('final-verdict');
+    verdict.classList.remove('hidden');
+    
+    if (res.webgpu && res.wasm) {
+      verdict.innerText = "Sovereign Ready: You can run 100% offline-first apps on this machine.";
+    } else {
+      verdict.innerText = "Tethered: This browser may require an internet connection for complex tools.";
+    }
+  }
+
+  // Run on load
+  runAICheck();
+</script>

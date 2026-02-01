@@ -1,0 +1,69 @@
+---
+import { Image } from 'astro:assets';
+
+// Usage 
+// external url requires width and height
+// <Thumb thumbSrc="https://placehold.co/500x500" width={500} height={500} thumbAlt="Image 500" thumbClass="w-32 h-32" />
+// <Thumb thumbSrc="https://placehold.co/500x500" width={500} height={500} thumbAlt="Image 500" thumbClass="w-32 h-32" />
+
+interface Props {
+  thumbSrc: any;  // Accept image module or string
+  thumbAlt: string;
+  fullSrc?: any;   // Accept image module or string
+  fullAlt?: string;
+  thumbClass?: string;
+  width?: number;
+  height?: number;
+}
+
+const {
+  thumbSrc,
+  thumbAlt,
+  fullSrc = thumbSrc,  // Uses thumbSrc if not provided
+  fullAlt = thumbAlt,  // Inherits thumbAlt if not specified  
+  thumbClass = "",     // Additional classes for customization
+  width,
+  height
+} = Astro.props;
+
+const uniqueId = Math.random().toString(36).substr(2, 9);
+---
+
+<div class="relative inline-block group">
+  <!-- Hidden checkbox -->
+  <input type="checkbox" id={`modal-${uniqueId}`} class="peer absolute opacity-0 w-0 h-0">
+  
+  <!-- Thumbnail image -->
+  <label for={`modal-${uniqueId}`} class="cursor-pointer block">
+    <Image 
+      src={thumbSrc} 
+      alt={thumbAlt} 
+      class={`${thumbClass} object-cover`}
+      loading="lazy"
+      decoding="async"
+      {...(width && height ? { width, height } : {})}
+    />
+  </label>
+  
+  <!-- Hover caption overlay -->
+  <div class="absolute inset-0 bg-black/60 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 pointer-events-none">
+    <span class="text-white text-sm font-medium">{thumbAlt}</span>
+  </div>
+  
+  <!-- Modal overlay -->
+  <div 
+    class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center opacity-0 pointer-events-none peer-checked:opacity-100 peer-checked:pointer-events-auto transition-opacity duration-300 z-50"
+    onclick={`document.getElementById('modal-${uniqueId}').checked = false`}
+  >
+    <div class="relative">
+      <Image 
+        src={fullSrc} 
+        alt={fullAlt} 
+        class="max-w-full max-h-[90vh] sm:max-w-4xl sm:max-h-4xl rounded-lg"
+        loading="lazy"
+        decoding="async"
+      /*  {...(width && height ? { width, height } : {})}  //used for remote images */
+      />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,476 @@
+---
+// src/pages/self-hosted.astro
+
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import HeroSelfhost from '~/components/widgets/HeroSelfhost.astro';
+import AppStats from '~/components/widgets/AppStats.astro';
+import Picture from '~/components/core/Picture.astro';
+import { CardLink, Icon, IconLocal, Thumb } from '~/components';
+import OsHomelab from '~/components/widgets/OsHomelab.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import { SITE } from '~/config.mjs';
+
+// images
+import homelabImage from '~/assets/images/hero.jpg';
+
+import osCasaos from '~/assets/images/os-casaos.jpg';
+import osCosmos from '~/assets/images/os-cosmoscloud.jpg';
+import osOpenmedia from '~/assets/images/os-openmediavault.jpg';
+import osProxmox from '~/assets/images/os-proxmox-ve9.jpg';
+import osRuntipi from '~/assets/images/os-runtipi.jpg';
+import osStartos from '~/assets/images/os-startos9.jpg';
+import osTruenas from '~/assets/images/os-truenas.jpg';
+import osUmbrelos from '~/assets/images/os-umbrelos.jpg';
+import osYunohost from '~/assets/images/os-yunohost.jpg';
+import osZimaos from '~/assets/images/os-zimaos.jpg';
+
+const meta = {
+	title: 'Self-Hosted OS',
+	description: 'Applications & Services Running on Your Local Machine',
+  image: homelabImage,
+};
+
+const refurl = [
+  {
+    title: "HomeLab Hardware", 
+    description: "Your hardware, your rules",
+    href: "/hardware",
+    buttonText: "uixnet"
+  },
+  {
+    title: "Self-Hosted OS",
+    description: "Compare Operating Systems for Homelab",
+    href: "/self-hosted",
+    buttonText: "uixnet"
+  },
+  {
+    title: "Stack Components", 
+    description: "Vertical blueprint of software",
+    href: "/stack-components",
+    buttonText: "uixnet"
+  },
+];
+
+const osData = [
+  {
+    title: 'CasaOS',
+    img: osCasaos,
+    url: 'https://casaos.zimaspace.com/',
+    baseSystem: 'Debian/Ubuntu',
+    appStore: 'Yes',
+    bestFor: 'Media, Files',
+    userLevel: 'Beginner',
+    topFeature: 'Mac-style desktop dashboard'
+  },
+  {
+    title: 'Cosmos Cloud',
+    img: osCosmos,
+    url: 'https://cosmos-cloud.io/',
+    baseSystem: 'Debian/Docker',
+    appStore: 'Yes',
+    bestFor: 'Hosting, Security',
+    userLevel: 'Intermediate',
+    topFeature: 'Integrated Reverse Proxy/VPN'
+  },
+  {
+    title: 'OpenMediaVault',
+    img: osOpenmedia,
+    url: 'https://www.openmediavault.org/',
+    baseSystem: 'Debian',
+    appStore: 'Plugins',
+    bestFor: 'Files, Storage',
+    userLevel: 'Intermediate',
+    topFeature: 'Classic modular NAS stability'
+  },
+  {
+    title: 'Proxmox VE',
+    img: osProxmox,
+    url: 'https://www.proxmox.com/',
+    baseSystem: 'Debian',
+    appStore: 'Templates',
+    bestFor: 'Virtualization',
+    userLevel: 'Expert',
+    topFeature: 'Enterprise-grade VM management'
+  },
+  {
+    title: 'Runtipi',
+    img: osRuntipi,
+    url: 'https://runtipi.io/',
+    baseSystem: 'Ubuntu/Debian',
+    appStore: 'Yes',
+    bestFor: 'Self-hosting',
+    userLevel: 'Beginner',
+    topFeature: 'Ultra-minimalist Docker UI'
+  },
+  {
+    title: 'StartOS',
+    img: osStartos,
+    url: 'https://start9.com/',
+    baseSystem: 'Custom Linux',
+    appStore: 'Yes',
+    bestFor: 'Privacy, Nodes',
+    userLevel: 'Intermediate',
+    topFeature: 'One-click private service setup'
+  },
+  {
+    title: 'TrueNAS',
+    img: osTruenas,
+    url: 'https://www.truenas.com/',
+    baseSystem: 'FreeBSD / Debian',
+    appStore: 'Yes',
+    bestFor: 'Storage, Media',
+    userLevel: 'Expert',
+    topFeature: 'ZFS File System data safety'
+  },
+  {
+    title: 'UmbrelOS',
+    img: osUmbrelos,
+    url: 'https://umbrel.com/umbrelos',
+    baseSystem: 'Debian',
+    appStore: 'Yes',
+    bestFor: 'Home, Bitcoin',
+    userLevel: 'Beginner',
+    topFeature: 'Appliance-like ease of use'
+  },
+  {
+    title: 'Yunohost',
+    img: osYunohost,
+    url: 'https://yunohost.org/',
+    baseSystem: 'Debian',
+    appStore: 'Yes',
+    bestFor: 'Web Apps',
+    userLevel: 'Intermediate',
+    topFeature: 'LDAP / Single Sign-On (SSO)'
+  },
+  {
+    title: 'ZimaOS',
+    img: osZimaos,
+    url: 'https://www.zimaspace.com/zimaos',
+    baseSystem: 'Debian (Custom)',
+    appStore: 'Yes',
+    bestFor: 'Cloud, Media',
+    userLevel: 'Beginner',
+    topFeature: 'Seamless Local/Remote access'
+  },
+]
+---
+
+<BaseLayout {meta}>
+  <Header />
+  <HeroSelfhost {meta} />
+  <AppStats />
+
+  <article class="container mx-auto px-4 py-8 max-w-4xl">
+
+    <section class="mb-16">
+
+      <p class="mb-4"">
+      Self-hosted operating systems and platforms offer turnkey home servers with user-friendly interfaces, 
+      pre-configured apps, and simplified maintenance. 
+      They promise an ideal solution: polished dashboards, private cloud storage, and media streaming, all 
+      while keeping your data local and under your authority.
+      </p>
+
+      <p class="mb-8">But beneath the simplicity lies a critical first decision, one that shapes everything after.</p>
+
+      <h3 class="text-2xl font-semibold mb-2">Choose Your OS</h3> 
+      <p class="font-bold italic mb-4">Like you’re choosing your Homelab’s future, because you are.</p>
+
+      <p class="mb-4">
+      The right OS aligns with your long-term goals.
+      </p> 
+      <p class="mb-4">
+      Some prioritize a polish interface but gate advanced features behind subscriptions (e.g., Cloud Cosmos).<br /> 
+      Others specialize in media and file sharing but lack flexibility for general workloads.<br />
+      A few embrace full openness, at the cost of a steeper learning curve.
+      </p> 
+      <p class="mb-8">
+      Your choice defines your reality: data sovereignty, scalability, total cost, portability, maintainability, and freedom to tinker.
+      </p>
+
+      <table class="min-w-full border-separate border-spacing-2 [&_th]:p-2 [&_td]:p-2">
+        <caption class="text-center text-2xl mb-8">The Sovereign Reality: Owner vs. Digital Tenant</caption>
+        <thead class="text-base font-medium border-b-2 border-zinc-500/20">
+        <tr>
+          <th>OS Name</th>
+          <th>Business Model</th>
+          <th>Status</th>
+          <th colspan="2">The Digital Tenant Risk</th>
+        </tr>
+        </thead>
+        <tbody class="text-xs [&_tr:hover]:bg-zinc-500/10 [&_tr]:transition-colors [&_tr]:duration-200 [&_td]:rounded-md">
+          <tr>
+            <td><b>Debian + Docker</b></td>
+            <td>Pure Open Source</td>
+            <td class="bg-lime-800/20"><b>Absolute Owner</b></td>
+            <td><b class="text-lime-600">Low</b></td>
+            <td>You own the code, the data, and the configuration.</td>
+          </tr>
+          <tr>
+            <td><b>OpenMediaVault</b></td>
+            <td>Open Source</td>
+            <td class="bg-lime-800/20"><b>Absolute Owner</b></td>
+            <td><b class="text-lime-600">Low</b></td>
+            <td>Community-driven with no corporate gatekeepers.</td>
+          </tr>
+          <tr>
+            <td><b>Yunohost</b></td>
+            <td>Open Source</td>
+            <td class="bg-lime-800/20"><b>Absolute Owner</b></td>
+            <td><b class="text-lime-600">Low</b></td>
+            <td>Built specifically for family sovereignty without costs.</td>
+          </tr>
+          <tr>
+            <td><b>CasaOS</b></td>
+            <td>Open Source</td>
+            <td class="bg-orange-600/20"><b>Owner</b></td>
+            <td><b class="text-lime-600">Low</b></td>
+            <td>A UI layer that stays out of the way of your data.</td>
+          </tr>
+          <tr>
+            <td><b>Runtipi</b></td>
+            <td>Open Source</td>
+            <td class="bg-orange-600/20"><b>Owner</b></td>
+            <td><b class="text-lime-600">Low</b></td>
+            <td>Free, but the simple "walled store" limits deep tinkering.</td>
+          </tr>
+          <tr>
+            <td><b>TrueNAS</b></td>
+            <td>Open Source</td>
+            <td class="bg-orange-600/20"><b>Owner</b></td>
+            <td><b class="text-lime-600">Low</b></td>
+            <td>Professional grade, but hardware-intensive requirements.</td>
+          </tr>
+          <tr>
+            <td><b>StartOS</b></td>
+            <td>Sovereign Tech</td>
+            <td class="bg-orange-600/20"><b>Owner (Locked-in)</b></td>
+            <td><b class="text-orange-600">Moderate</b></td>
+            <td>You own the keys, but you are tied to their ecosystem.</td>
+          </tr>
+          <tr>
+            <td class="bg-red-700/20"><b>Proxmox VE</b></td>
+            <td class="bg-red-700/20">Freemium</td>
+            <td class="bg-red-700/20"><b>Owner (Nagged)</b></td>
+            <td><b class="text-lime-600">Low</b></td>
+            <td>Full control, but constant upsell popups for subscriptions.</td>
+          </tr>
+          <tr>
+            <td class="bg-red-700/20"><b>Cosmos Cloud</b></td>
+            <td class="bg-red-700/20">Freemium</td>
+            <td class="bg-red-700/20"><b>Digital Tenant</b></td>
+            <td><b class="text-red-600">High</b></td>
+            <td>Key security and family features are "leased" via subscription.</td>
+          </tr>
+          <tr>
+            <td class="bg-red-700/20"><b>UmbrelOS</b></td>
+            <td class="bg-red-700/20">Proprietary UI</td>
+            <td class="bg-red-700/20"><b>Digital Tenant</b></td>
+            <td><b class="text-red-600">High</b></td>
+            <td>The "landlord" controls the networking and UI limits.</td>
+          </tr>
+          <tr>
+            <td class="bg-red-700/20"><b>ZimaOS</b></td>
+            <td class="bg-red-700/20">License Fee</td>
+            <td class="bg-red-800/20"><b>Digital Tenant</b></td>
+            <td><b class="text-orange-600">Moderate</b></td>
+            <td>Pro features require a "permission key" to unlock.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </article>
+
+  <OsHomelab />
+  
+  <!-- Flex row of thumbnails -->
+  <div class="w-full flex flex-row justify-center flex-wrap gap-4 bg-black mx-auto py-16 mb-16">
+  {osData.map(item => (
+    <Thumb thumbSrc={item.img} thumbAlt={item.title} thumbClass="w-48 h-48 border-2 border-zinc-500/50 rounded-md" />
+  ))}
+  </div>
+
+  <section class="container max-w-4xl mx-auto mb-16">
+    <h2 class="text-center text-2xl text-black dark:text-white">The Reality Check</h2>
+
+    <table class="min-w-full border-separate border-spacing-2 [&_th]:p-2 [&_td]:p-2">
+      <caption class="text-center text-2xl text-zinc-500 py-4 mb-8">Overview of Operative Systems</caption>
+      <thead class="text-base font-medium border-b-2 border-zinc-500/20">
+        <tr>
+          <th>OS Name</th>
+          <th>Base System</th>
+          <th>App Store</th>
+          <th>Best For</th>
+          <th>User Level</th>
+          <th>Top Feature</th>
+          <th>Site</th>
+        </tr>
+      </thead>
+      <tbody class="text-xs [&_tr:hover]:bg-zinc-500/10 [&_tr]:transition-colors [&_tr]:duration-200 [&_td]:rounded-md">
+        {osData.map(item => (
+          <tr>
+            <td><h3>{item.title}</h3></td>
+            <td>{item.baseSystem}</td>
+            <td class="p-2 text-center {item.appStore === 'Yes' ? 'bg-lime-700/20 text-lime-600 rounded-lg' : ''}">{item.appStore}</td>
+            <td>{item.bestFor}</td>
+            <td class={`${
+              item.userLevel === 'Beginner' ? 'bg-lime-700/20' :
+              item.userLevel === 'Intermediate' ? 'bg-orange-600/20' :
+              'bg-red-700/20'
+            }`}>
+              {item.userLevel}
+            </td>
+            <td>{item.topFeature}</td>
+            <td class="p-2 text-center">
+              <a href={item.url} target="_blank" title={`${item.title} website`}>
+                <IconLocal name="fluent-color--link-multiple-24" class="w-4 h-4" />
+              </a>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+
+  </section>
+
+  <section class="container max-w-4xl px-4 mx-auto mb-16">
+
+    <table class="min-w-full border-separate border-spacing-2 [&_th]:p-2 [&_td]:p-2">
+      <caption class="text-center text-2xl text-zinc-500 py-4 mb-8">Popular Homelab OS: Transparency & Hidden Costs</caption>
+      <thead class="text-base font-medium border-b-2 border-amber-500/20">
+        <tr>
+          <th>OS Name</th>
+          <th class="text-nowrap">Base System</th>
+          <th class="text-nowrap">Business Model</th>
+          <th>The Trap</th>
+        </tr>
+      </thead>
+      <tbody class="text-xs [&_tr:hover]:bg-zinc-500/10 [&_tr]:transition-colors [&_tr]:duration-200 [&_td]:rounded-md">
+        <tr>
+          <td><b>CasaOS</b></td>
+          <td>Debian/Ubuntu</td>
+          <td class="bg-lime-700/20">Open Source (Free)</td>
+          <td>A simple "skin" for Docker. Great for beginners, but offers no advanced system or user management.</td>
+        </tr>
+        <tr>
+          <td><b>Cosmos Cloud</b></td>
+          <td>Debian/Docker</td>
+          <td class="bg-red-700/20">Freemium / Paid Tiers</td>
+          <td><b>The Paywall:</b> Modern versions lock advanced security and "Family/Multi-user" features behind a subscription.</td>
+        </tr>
+        <tr>
+          <td><b>OpenMediaVault</b></td>
+          <td>Debian</td>
+          <td class="bg-lime-700/20">Open Source (Donation)</td>
+          <td>Rock-solid but dated UI. Some professional-grade plugins (like LDAP) require deep technical knowledge to set up.</td>
+        </tr>
+        <tr>
+          <td><b>Proxmox VE</b></td>
+          <td>Debian</td>
+          <td class="bg-orange-600/20">Open Source (Freemium)</td>
+          <td><b>The "Nag":</b> Fully functional for free, but you get a "No Subscription" popup daily unless you pay for enterprise updates.</td>
+        </tr>
+        <tr>
+          <td><b>Runtipi</b></td>
+          <td>Ubuntu/Debian</td>
+          <td class="bg-lime-700/20">Open Source (Free)</td>
+          <td>Extreme simplicity means extreme lack of customization. If an app isn't in their specific store, it's a pain to add.</td>
+        </tr>
+        <tr>
+          <td><b>StartOS</b></td>
+          <td>Custom Linux</td>
+          <td class="bg-orange-600/20">Sovereign / Paid Registry</td>
+          <td><b>The Ecosystem:</b> While private, it's highly "opinionated." Moving your data to a non-StartOS system later can be difficult.</td>
+        </tr>
+        <tr>
+          <td><b>TrueNAS</b></td>
+          <td>FreeBSD / Debian</td>
+          <td class="bg-orange-600/20">Open Source (Freemium)</td>
+          <td><b>The Shift:</b> TrueNAS CORE (FreeBSD) is being sidelined for SCALE (Debian). Hardware requirements for ZFS are high (needs ECC RAM).</td>
+        </tr>
+        <tr>
+          <td><b>UmbrelOS</b></td>
+          <td>Debian</td>
+          <td class="bg-red-700/20">Proprietary / Free</td>
+          <td><b>The Walled Garden:</b> Beautiful but restrictive. Modifying the underlying Nginx or networking (like your Tailscale issue) is an uphill battle.</td>
+        </tr>
+        <tr>
+          <td><b>Yunohost</b></td>
+          <td>Debian</td>
+          <td class="bg-lime-700/20">Open Source (Free)</td>
+          <td>Excellent for multi-user/Family SSO, but the "App Scripts" break easily if you try to customize the server manually.</td>
+        </tr>
+        <tr>
+          <td><b>ZimaOS</b></td>
+          <td>Debian (Custom)</td>
+          <td class="bg-red-700/20">Freemium / $29 Lifetime</td>
+          <td><b>The Cap:</b> The "Community Edition" limits the number of apps and disks. You must pay a one-time fee to unlock a full "Family" setup.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="bg-zinc-700/20 border-l-2 border-zinc-700 p-4 my-16 max-w-2xl mx-auto">
+      <p class="text-center font-semibold">
+        A pretty dashboard is a fair trade for some, but for those seeking true autonomy, 
+        the distinction between owning your server and merely 'renting' its features is everything.
+      </p>
+    </div>
+
+  </section>
+
+  <section class="container max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto mb-8">
+    <div class="relative flex flex-col p-4 border border-orange-600 rounded-lg">
+      <h3 class="text-2xl font-semibold mb-4">
+      For the Everyday Home User
+      </h3>
+      <p class="font-bold italic mb-4">The Convenience Tax</p>
+      <p>
+      Some platforms offer a fair trade: skip the command line, keep photos off Big Tech, 
+      and enjoy a polished interface. 
+      However, the real cost is ongoing dependency. 
+      Hidden paywalls, updates, or ecosystem lock-in turn a self-hosted solution into a digital tenancy. 
+      It’s simplicity, but at the cost of digital sovereignty.
+      </p>
+    </div>
+
+    <div class="relative flex flex-col p-4 border border-amber-700 rounded-lg">
+      <h3 class="text-2xl font-semibold mb-4">
+      For the Digital Nomad
+      </h3>
+      <p class="font-bold italic mb-4">Local-First Autonomy</p>
+      <p>
+      “Self-hosted” also means fully offline-capable, zero-cost, and cloud-free. When you’re on unreliable internet, or remote location, any system that requires a license check or validation becomes a liability. True autonomy means your tools work without internet, payment, or permission. Just hardware and power.
+      </p>
+    </div>
+  </section>
+
+  <article class="container mx-auto px-4 pb-8 max-w-4xl">
+    
+    <hr class="h-[3px] border-none bg-radial-[at_50%_50%] from-zinc-200 to-zinc-50 dark:from-zinc-700 dark:to-zinc-950 to-100% my-16" />
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4"><IconLocal name="fluent-color--link-multiple-24" class="w-6 h-6 inline-block" /> Trusted Resources</h2>
+        <p class="text-sm italic bg-zinc-100 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-900 rounded-md p-4 mb-4">The external sites are not affiliated with us. 
+          We include them because they provide reliable, transparent, 
+          and community-driven information that aligns with our commitment 
+          to honest, open-source tooling.
+        </p>
+      </section>
+
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4 mb-8">
+      {refurl.map((item) => (
+        <CardLink 
+          title={item.title}
+          description={item.description}
+          href={item.href}
+          buttonText={item.buttonText}
+        />
+      ))}
+      </div>
+
+  </article>
+
+  <Footer />
+</BaseLayout>

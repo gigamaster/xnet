@@ -1,84 +1,103 @@
 ---
+import IconLocal from '~/components/atoms/IconLocal.astro';
+
 const items = [
 	[
 		{
-			title: 'Code Editors',
+			title: 'Communication',
 			description:
-				'Code Playground That Just Works, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+				'P2P messaging and protocols for decentralized, serverless team sync.',
+			icon: 'fluent-color--chat-multiple-24',
+			link: '/applications#communication-private',
 		},
 		{
-			title: 'Note-Taking',
+			title: 'Productivity & Office',
 			description:
-				'Code Playground That Just Works, quam nec venenatis lobortis, mi risus tempus nulla.',
+				'Local-first editors using Markdown and OpenDocument file formats.',
+			icon: 'fluent-color--document-folder-24',
+			link: '/applications#productivity-office',
 		},
 		{
-			title: 'Project Management',
+			title: 'Finance & Capital',
 			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+				'Self-custody assets and private multi-currency wealth management.',
+			icon: 'fluent-color--coin-multiple-24',
+			link: '/applications#finance',
 		},
+		{
+			title: 'Creative Suite',
+			description:
+				'Photo, video, and vector design tools without subscriptions.',
+			icon: 'fluent-color--design-ideas-24',
+			link: '/applications#creative-software',
+		},
+
 	],
 	[
 		{
-			title: 'Graphics & Design',
+			title: 'Local AI & LLMs',
 			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+				'Run language models and image generators on your hardware. No API fees, no data tracking.',
+			icon: 'fluent-color--bot-sparkle-24',
+			link: '/applications#local-ai-llm',
 		},
 		{
-			title: 'Web Design',
+			title: 'Network & Hosting',
 			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+				'Personal servers and cloud-in-a-box for total infrastructure control without a middleman.',
+			icon: 'fluent-color--globe-shield-24',
+			link: '/applications#network-hosting',
 		},
 		{
-			title: 'System Tools',
+			title: 'Privacy & Security',
 			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+				'Hardened browsers, encrypted vaults, and secure VPN tunnels.',
+			icon: 'fluent-color--shield-24',
+			link: '/stack-privacy',
+		},
+		{
+			title: 'Knowledge Database',
+			description:
+				'Permanent, queryable archives and linked-note second brains.',
+			icon: 'fluent-color--book-database-24',
+			link: '/applications#knowledge',
 		},
 	],
 ];
 ---
 
-<section class="scroll-mt-16" id="features">
+<section class="scroll-mt-16" id="apps">
 	<div class="px-4 py-16 mx-auto max-w-6xl lg:px-8 lg:py-20 bg-zinc-100 dark:bg-zinc-950/80 rounded-xl">
 		<div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
 			<p class="text-base text-primary-600 dark:text-primary-200 font-semibold tracking-wide uppercase">Applications</p>
 			<h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
 				Web Apps for <span
-					class="bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500 whitespace-nowrap"
+					class="bg-clip-text text-transparent bg-gradient-to-r from-zinc-200 via-amber-500 to-indigo-700"
 					>Digital Nomads</span
 				>
 			</h2>
-			<p class="max-w-3xl mx-auto sm:text-center text-xl text-gray-600 dark:text-slate-400">
-				Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa
-				quae.
+			<p class="max-w-3xl mx-auto sm:text-center text-xl text-zinc-600 dark:text-zinc-400">
+				Explore open-source alternatives. Every tool listed is selected for its portability, low resource footprint, and commitment to user autonomy.
 			</p>
 		</div>
-		<div class="grid mx-auto space-y-6 md:grid-cols-2 md:space-y-0">
+		<div class="grid mx-auto space-y-6 md:grid-cols-2 md:space-y-4">
 			{
 				items.map((subitems) => (
-					<div class="space-y-8 sm:px-8">
-						{subitems.map(({ title, description }) => (
-							<div class="flex flex-row max-w-md">
+					<div class="space-y-6 sm:px-6">
+						{subitems.map(({ title, description, icon, link }) => (
+							<a href={link} class="group">
+							<div class="flex flex-row mb-4 max-w-md group-hover:border-zinc-700 group-hover:shadow-xl transition-all duration-300">
 								<div class="mb-4 mr-4">
-									<div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-500">
-										<svg class="w-12 h-12 p-0.5" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-											<g fill="none" fill-rule="evenodd">
-												<rect class="fill-current text-primary-600" width="64" height="64" rx="32" />
-												<g stroke-linecap="square" stroke-width="2">
-													<path class="stroke-current text-white" d="M20.571 20.571h13.714v17.143H20.571z" />
-													<path
-														class="stroke-current text-primary-300"
-														d="M38.858 26.993l6.397 1.73-4.473 16.549-13.24-3.58"
-													/>
-												</g>
-											</g>
-										</svg>
+									<div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-900">
+										<IconLocal name={icon} class="w-10 h-10 p-0.5" />
 									</div>
 								</div>
 								<div>
-									<h3 class="mb-3 text-xl font-bold">{title}</h3>
-									<p>{description}</p>
+									<h5 class="mb-3 text-xl font-bold group-hover:text-lime-500 transition-colors duration-300">{title}</h3>
+									<p class="text-zinc-500 dark:text-zinc-400 text-md group-hover:text-zinc-700 dark:group-hover:text-zinc-300 transition-colors duration-300">{description}</p>
 								</div>
 							</div>
+							</a>
 						))}
 					</div>
 				))

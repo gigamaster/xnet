@@ -1,0 +1,80 @@
+---
+import IconLocal from '~/components/atoms/IconLocal.astro';
+import { Image } from 'astro:assets';
+
+const { meta = {} } = Astro.props;
+
+const items = [
+	{
+		title: 'Docker',
+		description:
+			'Run apps in isolated, portable containers. Ideal for developers who want full control over their stack—from LAMP to modern microservices—with one command.',
+		icon: 'brand-docker',
+	},
+	{
+		title: 'DevKinsta',
+		description:
+			'Design, develop, and deploy WordPress sites from your local machine. DevKinsta is free forever, and available for macOS, Windows, and Ubuntu.',
+		icon: 'brand-kinsta',
+	},
+	{
+		title: 'LocalWP (by Flywheel)',
+		description:
+			'A polished, user-friendly WordPress development environment. Perfect for designers and freelancers who need staging, SSL, and push-to-cloud workflows.',
+		icon: 'brand-local-wp',
+	},
+	{
+		title: 'Mamp',
+		description:
+			'Launch Apache, MySQL, and PHP/Python on macOS or Windows with a simple GUI. Great for beginners learning web development or testing PHP apps offline.',
+		icon: 'brand-mamp',
+	},
+	{
+		title: 'XAMPP',
+		description:
+			'A lightweight, open-source LAMP stack for Windows, macOS, and Linux. Best for quick local testing of PHP/MySQL projects—no setup required.',
+		icon: 'brand-xampp',
+	},
+	{
+		title: 'Self-Hosted PaaS',
+		description:
+			'Deploy and manage apps with PaaS tools for security and efficiency, monitor containers, databases, and services with a visual dashboard.',
+		icon: 'fluent-color--apps-24',
+	},
+];
+---
+
+<section class="relative">
+	<div class="absolute inset-0 bg-radial-[at_50%_25%] from-lime-900 via-emerald-950 to-zinc-900 to-90% pointer-events-none mb-16 aria-hidden="true"></div>
+	<div class="relative max-w-6xl mx-auto px-4">
+		<div class="text-zinc-300 py-4 pt-8">
+			<div class="mb-8 text-center">
+				<p class="text-base font-semibold tracking-wide uppercase">Stack</p>
+				{meta.title && 
+				<h2 class="text-zinc-100 text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+					{meta.title}
+				</h2>
+				}
+				{meta.description && 
+				<p class="max-w-3xl mx-auto text-center text-xl">
+					{meta.description}
+				</p>
+				}
+			</div>
+			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start my-8">
+				{
+					items.map(({ title, description, icon }) => (
+						<div class="relative flex flex-col p-6 bg-zinc-500/20 backdrop-blur-xs rounded-lg shadow-lg border border-zinc-700">
+							<div class="flex items-center mb-4">
+								<IconLocal name={icon} class="w-12 h-12" />
+
+								<div class="ml-4 text-xl font-bold">{title}</div>
+							</div>
+							<p class="text-md">{description}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>

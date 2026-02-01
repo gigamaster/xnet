@@ -3,9 +3,8 @@ import { fileURLToPath } from 'url';
 
 import { defineConfig } from 'astro/config';
 
-
 import sitemap from '@astrojs/sitemap';
-// import astroIcon from 'astro-icon';
+
 
 import partytown from '@astrojs/partytown';
 
@@ -33,22 +32,6 @@ export default defineConfig({
 
 		sitemap(),
 
-		// Removed astroIcon, replaced with component LocalIcon
-		// astroIcon({
-		// Keep it under assets or point this to a new location in public:
-		//iconDir: "public/icons", 
-		
-		// Since they are in 'public', you can usually remove 
-		// complex svgoOptions, but it seems to fail as they are forcely optimized
-		// by Astro during the standard build assets pass.
-		// svgoOptions: false, 
-		//}),
-
-		/* Disable this integration if you don't use Google Analytics (or other external script). 
-		partytown({
-			config: { forward: ['dataLayer.push'] },
-		}),
-		*/
 	],
 
 	vite: {
@@ -57,5 +40,7 @@ export default defineConfig({
 				'~': path.resolve(__dirname, './src'),
 			},
 		},
+		plugins: [
+		],
 	},
 });

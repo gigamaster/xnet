@@ -1,0 +1,332 @@
+---
+// src/pages/hardware.astro
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import HeroHardware from '~/components/widgets/HeroHardware.astro';
+import AppStats from '~/components/widgets/AppStats.astro';
+import { CardLink, Icon, IconLocal, Thumb } from '~/components';
+import Picture from '~/components/core/Picture.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import { SITE } from '~/config.mjs';
+
+// Page's Image for meta and layout
+import digitalImage from '~/assets/images/hardware-digital-sovereignty.jpg';
+import cloudImage from '~/assets/images/hardware-homelab.jpg';
+import nomadImage from '~/assets/images/hardware-remote.jpg';
+import laptopImage from '~/assets/images/hardware-nomad-laptop.jpg';
+
+const meta = {
+	title: 'Homelab Hardware',
+	description: 'Applications and Services Running on Your Local Machine',
+  image: digitalImage, // ✅ Import the image directly
+};
+
+const refurl = [
+  {
+    title: "Self-Hosted OS",
+    description: "Compare Operating Systems for Homelab",
+    href: "/self-hosted",
+    buttonText: "uixnet"
+  },
+  {
+    title: "Stack Components", 
+    description: "Vertical blueprint of software",
+    href: "/stack-components",
+    buttonText: "uixnet"
+  },
+  {
+    title: "Portable Apps", 
+    description: "Standalone open source & freeware",
+    href: "/portable",
+    buttonText: "uixnet"
+  },
+];
+
+---
+
+<BaseLayout {meta} >
+  <Header />
+  <HeroHardware {meta} />
+  <AppStats />
+
+  <article class="container mx-auto px-4 py-8 max-w-4xl">
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+
+      <div class="relative flex flex-col p-4">
+        <Picture 
+          src={digitalImage}
+          alt="Digital Sovereignty"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          class="w-full h-full object-cover rounded-lg"
+          loading = "lazy"
+        />
+      </div>
+
+      <div class="relative flex flex-col p-4 dark:border-zinc-700">
+
+        <h3 class="text-2xl font-semibold mb-4">The Vision</h3>
+        
+        <p class="mb-4">Digital sovereignty is about choice. Whether you’re safeguarding family photos 
+        or developing software while traveling, true independence begins when you control the foundational layers of your digital stack.</p> 
+        
+        <p class="mb-4">A home server streams movies, backs up memories, and automates your space. 
+        Meanwhile, the digital nomad codes in Lisbon or presents from Bali, securely connected from anywhere in the world.</p>
+
+        <h5 class="text-xl font-semibold mb-4">The Engine</h5>
+
+        <p>A homelab secures your autonomy, a risk-free space to build and experiment without cloud dependencies or third-party terms. 
+        For many, this evolves into a permanent home server: a silent, always-on backbone that serves the household while powering your remote workstation. 
+        Whether running on a sleek Mini-PC or a dedicated data center rack, the principle is absolute: 
+        you own the hardware, you control the data, and you set the rules.</p>
+
+      </div>
+
+    </section>
+
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+
+      <div class="relative flex flex-col p-4">
+
+        <h3 class="text-2xl font-semibold mb-4">The Personal Cloud</h3>
+
+        <p>You don’t need to code, you just need a "Plug-and-Play" experience to manage your home server and automation from anywhere in the world.</p>
+
+        <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 mb-4 space-y-1">
+          <li>The Anchor (Hardware): A Mini PC with an Intel N100 processor. It is silent, uses less power than a lightbulb, and fits in a desk drawer.</li>
+          <li>The Foundation (OS): Platforms like CasaOS, ZimaOS, Cosmos, Runtipi, or Umbrel. Each offers a polished, "one-click" interface that feels as intuitive as using an iPad.</li>
+          <li>The Setup: Connect the Mini PC to your router, flash the OS via USB, and manage your entire digital life through a standard web browser.</li>
+        </ul>
+
+        <div class="w-full flex items-center gap-2 bg-yellow-600/10 rounded-lg p-2">
+          <IconLocal name="fluent-color--lightbulb-24" class="w-5 h-5 inline-block" />
+          <div class="text-sm"><strong>Best for</strong> Families, friends, and beginners who want a GUI-first experience.</div>
+        </div>
+
+      </div>
+      
+      <div class="relative flex flex-col p-2">
+        <Picture 
+          src={cloudImage}
+          alt="Description of image"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          class="w-full h-full object-cover rounded-lg"
+          loading = "lazy"
+        />
+      </div>
+
+    </section>
+
+
+  
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+
+    <div class="relative flex flex-col p-4">
+        <Picture 
+          src={laptopImage}
+          alt="Description of image"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          class="w-full h-full object-cover rounded-lg"
+          loading = "lazy"
+        />
+    </div>
+    
+    <div class="relative flex flex-col p-4 dark:border-zinc-700">
+
+      <h3 class="text-2xl font-semibold mb-4">The Sovereign Nomad</h3>
+
+      <p>Your professional infrastructure for collaboration.</p>
+
+      <h5 class="text-lg font-semibold my-4">1. The Hardware Upgrade</h5>
+      
+      <p>For heavy developer workloads, prioritize high-thread-count CPUs. 
+      Utilize Dual NVMe drives with ZFS Mirroring to ensure your environment survives 
+      a hardware failure.</p>
+
+      <h5 class="text-lg font-semibold my-4">2. The Virtualization Foundation</h5>
+
+      <p>Use a Hypervisor to run multiple isolated environments:</p>
+
+      <ul class="list-image-arrow list-outside pl-2 m-4 space-y-1">
+        <li>Proxmox: It enables "snapshots," allowing you to "Time Travel" back to a working state if an update breaks your system.</li>
+        <li>Debian/Ubuntu Server: The rock-solid platform for a built-in VPN and reverse proxy.</li>
+      </ul>
+
+      <div class="w-full flex items-center gap-2 bg-yellow-600/10 rounded-lg p-2">
+        <IconLocal name="fluent-color--lightbulb-24" class="w-5 h-5 inline-block" />
+        <div class="text-sm"><strong>Best for</strong> Developers, digital nomads, and power users who need high-availability.</div>
+      </div>
+    </div>
+
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+
+    <div class="relative flex flex-col p-4">
+      <h3 class="text-2xl font-semibold mb-4">The Bridge: Remote Access</h3>
+      
+      <p class="mb-4">How to reach your home from the road, securely.</p>
+      
+      <p>Never "open ports" on your router; it exposes your home to the public internet. Instead, create a private, encrypted tunnel.</p>
+
+      <ul class="list-image-arrow list-outside pl-2 m-4 space-y-1">
+        <li>The Zero-Config Network: Tools like Tailscale or Pangolin work even without a fixed IP or behind restrictive CGNAT (mobile data). They create a "Mesh" where your devices see each other as if they were in the same room.</li>
+        <li>The VPN Standard: WireGuard is the modern backbone of remote access, faster and leaner than older protocols.</li>
+        <li>The Global Exit Node: Use your Homelab as an Exit Node. Browse the internet from a café in Lisbon while appearing as if you are on your home Wi-Fi, essential for bypasssing region-locked banking or streaming services.</li>
+      </ul>
+    </div>
+    
+    <div class="relative flex flex-col p-4">
+      <Picture 
+        src={nomadImage}
+        alt="Description of image"
+        sizes="(max-width: 768px) 100vw, 50vw"
+        class="w-full h-full object-cover rounded-lg"
+        loading = "lazy"
+      />
+    </div>
+
+    </section>
+
+    <hr class="h-[3px] border-none bg-radial-[at_50%_50%] from-zinc-200 to-zinc-50 dark:from-zinc-700 dark:to-zinc-950 to-100% my-16" />
+
+    <section class="mb-16">
+      <h2 class="text-center lg:text-4xl md:text-2xl font-semibold mb-8">Home Server</h2>
+
+      <div class="overflow-x-auto">
+      <table class="min-w-full border-separate border-spacing-2">
+          <thead class="border-none">
+          <tr class="border-b-2 border-b-zinc-700">
+              <th class="text-base font-medium">Feature</th>
+              <th class="text-base font-medium">Level 1: Family Cloud</th>
+              <th class="text-base font-medium">Level 2: Sovereign Nomad</th>
+          </tr>
+          </thead>
+          <tbody class="text-sm">
+          <tr>
+              <td class="p-2 font-medium">Primary Goal</td>
+              <td class="p-2 bg-amber-800/20 rounded-lg">Photo Backup / Simple Files</td>
+              <td class="p-2 bg-lime-800/20 rounded-lg">Dev Environments / Local AI</td>
+          </tr>
+          <tr>
+              <td class="p-2 font-medium">OS Choice</td>
+              <td class="p-2 bg-amber-800/20 rounded-lg">CasaOS / Umbrel</td>
+              <td class="p-2 bg-lime-800/20 rounded-lg">Proxmox / Debian</td>
+          </tr>
+          <tr>
+              <td class="p-2 font-medium">Complexity</td>
+              <td class="p-2 bg-amber-800/20 rounded-lg">Low (Point & Click)</td>
+              <td class="p-2 bg-lime-800/20 rounded-lg">High (CLI & Virtualization)</td>
+          </tr>
+          <tr>
+              <td class="p-2 font-medium">Hardware</td>
+              <td class="p-2 bg-amber-800/20 rounded-lg">Tiny/Mini/Micro PCs</td>
+              <td class="p-2 bg-lime-800/20 rounded-lg">Ryzen 7+ (32GB+ RAM)</td>
+          </tr>
+          </tbody>
+      </table>
+      </iv>
+    </section>
+
+    <section class="mb-16">
+
+      <h2 class="text-center text-2xl font-semibold mb-4">Hardware Recommendation</h2>
+      
+      <p class="text-center mb-8">Building a sovereign environment starts with selecting hardware that balances power, efficiency, and size.</p>
+
+      <table class="min-w-full border-separate border-spacing-2">
+          <thead class="border-none">
+          <tr class="border-b-2 border-b-zinc-700 text-base font-medium">
+              <th>Component</th>
+              <th>Level 1: Family Cloud</th>
+              <th>Level 2: Sovereign Nomad</th>
+          </tr>
+          </thead>
+          <tbody class="text-sm">
+          <tr>
+              <td class="p-2"><strong>Processor</strong></td>
+              <td class="p-2 bg-amber-800/20 rounded-lg">Intel N100 (4 Cores)</td>
+              <td class="p-2 bg-lime-800/20 rounded-lg">AMD Ryzen 7 8845HS+</td>
+          </tr>
+          <tr>
+              <td class="p-2"><strong>Memory (RAM)</strong></td>
+              <td class="p-2 bg-amber-800/20 rounded-lg">16GB DDR4/DDR5</td>
+              <td class="p-2 bg-lime-800/20 rounded-lg">32GB - 64GB DDR5</td>
+          </tr>
+          <tr>
+              <td class="p-2"><strong>Storage</strong></td>
+              <td class="p-2 bg-amber-800/20 rounded-lg">500GB NVMe + External HDD</td>
+              <td class="p-2 bg-lime-800/20 rounded-lg">1TB - 2TB Gen4 NVMe (Dual)</td>
+          </tr>
+          <tr>
+              <td class="p-2"><strong>Networking</strong></td>
+              <td class="p-2 bg-amber-800/20 rounded-lg">1GbE Ethernet</td>
+              <td class="p-2 bg-lime-800/20 rounded-lg">2.5GbE + Wi-Fi 6E/7</td>
+          </tr>
+          <tr>
+              <td class="p-2"><strong>Power Draw</strong></td>
+              <td class="p-2 bg-amber-800/20 rounded-lg">Ultra-Low (6W - 15W)</td>
+              <td class="p-2 bg-lime-800/20 rounded-lg">Balanced (35W - 65W)</td>
+          </tr>
+          </tbody>
+      </table>
+
+      <h5 class="text-center text-2xl font-semibold my-8">Recommended Entry Points</h5>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <div class="relative flex flex-col p-4 bg-white dark:bg-zinc-800/20 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-zinc-700">
+          <h5 class="text-lg font-semibold mt-0 mb-4">The Silent Companion</h5>
+          <p class="mb-4">Intel N100 (4 Cores / 4 Threads)</p>
+          <p><strong>Models:</strong> Beelink EQ13, Minisforum UN100</p>
+          <p class="my-2">Ideal for a silent, 24/7 "set and forget" server. It handles home automation, file storage, and light media streaming with minimal power draw.</p>
+        </div>
+
+        <div class="relative flex flex-col p-4 bg-white dark:bg-zinc-800/20 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-zinc-700">
+          <h5 class="text-lg font-semibold mt-0 mb-4">The Nomad Powerhouse</h5>
+          <p class="mb-4">AMD Ryzen 7 or 9 / Intel i7 or i9 (8+ Cores / 16+ Threads)</p>
+          <p><strong>Models:</strong> Minisforum UM880 Pro, Beelink SER8</p>
+          <p class="my-2">The ultimate mobile workstation. Built to run multiple virtual machines, compile complex code, and host professional developer environments simultaneously.</p>
+        </div>
+
+      </div>
+    
+      <h3 class="text-xl font-semibold my-8">Sovereign Setup Checklist</h3>
+      <p>To ensure your hardware remains accessible while you are "Autonomy in Motion," consider these essentials:</p>
+      
+      <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 space-y-1">
+          <li><strong>Smart Plug:</strong> Essential for remote "hard reboots" if the system freezes.</li>
+          <li><strong>High-Endurance USB:</strong> For a stable OS boot drive (Samsung Bar Plus recommended).</li>
+          <li><strong>Mini UPS:</strong> Protects your data from corruption during sudden power flickers.</li>
+      </ul>
+
+    </section>
+
+    <hr class="h-[3px] border-none bg-radial-[at_50%_50%] from-zinc-200 to-zinc-50 dark:from-zinc-700 dark:to-zinc-950 to-100% my-16" />
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4"><IconLocal name="fluent-color--link-multiple-24" class="w-6 h-6 inline-block" /> Trusted Resources</h2>
+      <p class="text-sm italic bg-zinc-100 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-900 rounded-md p-4 mb-4">The external sites are not affiliated with us. 
+         We include them because they provide reliable, transparent, 
+         and community-driven information that aligns with our commitment 
+         to honest, open-source tooling.
+      </p>
+    </section>
+
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4 mb-8">
+    {refurl.map((item) => (
+      <CardLink 
+        title={item.title}
+        description={item.description}
+        href={item.href}
+        buttonText={item.buttonText}
+      />
+    ))}
+    </div>
+
+  </article>
+
+  <Footer />
+</BaseLayout>

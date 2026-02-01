@@ -1,0 +1,180 @@
+---
+// src/pages/stack-privacy.astro
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import HeroPrivacy from '~/components/widgets/HeroPrivacy.astro';
+import { CardLink, CardSmall, Icon, IconLocal, Thumb } from '~/components';
+import Footer from '~/components/widgets/Footer.astro';
+import { SITE } from '~/config.mjs';
+
+const meta = {
+	title: 'Self-Host Privacy & Security',
+	description: 'Secure email, chat, calendar, and documents',
+};
+
+const items = [
+  {
+    title: "Tailscale Funnel",
+    description: "How Funnel works",
+    href: "https://tailscale.com/kb/1223/funnel",
+    buttonText: "tailscale.com"
+  },
+  {
+    title: "Cloudflare Tunnel", 
+    description: "Outbound-only connection",
+    href: "https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/",
+    buttonText: "cloudflare.com"
+  },
+  {
+    title: "learntohomelab", 
+    description: "How does learntohomelab work?",
+    href: "https://learntohomelab.com/",
+    buttonText: "learntohomelab.com"
+  },
+];
+
+---
+
+<BaseLayout {meta}>
+  <Header />
+  <HeroPrivacy meta={meta} />
+
+  <article class="container mx-auto px-4 py-8 max-w-4xl">
+
+    <header class="mb-16">
+      <p>
+      A suite of self-hosted tools that replace surveillance-heavy communication and productivity platforms, 
+      email, chat, calendars, documents, with private, encrypted alternatives you fully control.
+      </p>
+    </header>
+    
+    <section class="mb-16">
+      <h3 class="text-2xl font-semibold mb-4">Why Use It</h3>
+
+      <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 space-y-1">
+        <li>End-to-end privacy: No third party scans your messages, emails, or files.</li>
+        <li>Data sovereignty: Your communications stay on your server, not in a foreign data center.</li>
+        <li>Resilience: Avoid service outages, censorship, or account bans from centralized providers.</li>
+      </ul>
+    </section>
+
+    <section class="mb-16">
+      <h3 class="text-2xl font-semibold mb-4">Key Tools</h3>
+
+      <table class="min-w-full bg-black/20 border-separate border-spacing-2 rounded-md [&_th]:p-2 [&_td]:p-2">
+        <thead class="text-base font-medium border-b-2 border-zinc-500/20">
+          <tr>
+            <th>Purpose</th>
+            <th>Application</th>
+            <th>Actions</th>
+            <th>License</th>
+            <th class="text-nowrap">Self-Host</th>
+          </tr>
+        </thead>
+        <tbody class="text-xs [&_tr:hover]:bg-zinc-500/10 [&_tr]:transition-colors [&_tr]:duration-200 [&_td]:rounded-md">
+          <tr>
+            <td><strong>Secure Chat</strong></td>
+            <td>Matrix + Element</td>
+            <td>Decentralized, E2E-encrypted chat with voice/video. The sovereign alternative to Slack or WhatsApp.</td>
+            <td>Apache-2.0</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><strong>Email Server</strong></td>
+            <td>Mailcow</td>
+            <td>Full email stack: webmail, IMAP/SMTP, spam filtering. Own your digital identity.</td>
+            <td>GPL-3.0</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><strong>Email Server</strong></td>
+            <td>Mail-in-a-Box</td>
+            <td>Simple, opinionated email server with DNS setup included.</td>
+            <td>GPL-3.0</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><strong>Collaboration</strong></td>
+            <td>Nextcloud</td>
+            <td>Secure file sync, office docs, calendar, contacts. Replaces Dropbox + Google Workspace.</td>
+            <td>AGPLv3</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><strong>Collaboration</strong></td>
+            <td>Seafile</td>
+            <td>High-performance file sync with block-level updates. Better for large files.</td>
+            <td>GPLv2</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><strong>Private Editing</strong></td>
+            <td>CryptPad</td>
+            <td>Real-time collaborative editing with zero-knowledge encryption. No accounts needed.</td>
+            <td>AGPLv3</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><strong>Single Sign-On</strong></td>
+            <td>Authentik</td>
+            <td>Open-source identity provider for SSO across all your apps.</td>
+            <td>MIT</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><strong>Single Sign-On</strong></td>
+            <td>Zitadel</td>
+            <td>Cloud-native IAM with fine-grained access control.</td>
+            <td>Apache-2.0</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><strong>Password Vault</strong></td>
+            <td>Vaultwarden</td>
+            <td>A lightweight Bitwarden-compatible server. Secure your secrets with end-to-end encryption.</td>
+            <td>GPLv3</td>
+            <td>Yes</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="mb-16">
+      <h3 class="text-2xl font-semibold mb-4">Critical Practices</h3>
+
+      <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 space-y-1 mb-4">
+        <li>Always enable HTTPS (Tailscale Funnel or Let’s Encrypt).</li>
+        <li>Isolate sensitive services (e.g., email) from public exposure.</li>
+        <li>Back up encryption keys and user data regularly—your server is the only copy.</li>
+      </ul>
+
+      <h5 class="text-2xl font-semibold">Best For</h5>
+      <p>Remote teams, journalists, activists, families, and privacy-conscious individuals who refuse to trade personal data for “free” tools.</p>
+    </section>
+
+    <hr class="h-[3px] border-none bg-radial-[at_50%_50%] from-zinc-200 to-zinc-50 dark:from-zinc-700 dark:to-zinc-950 to-100% my-16" />
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4"><IconLocal name="fluent-color--link-multiple-24" class="w-6 h-6 inline-block" /> Trusted Resources</h2>
+      <p class="text-sm italic bg-zinc-100 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-900 rounded-md p-4 mb-4">The external sites are not affiliated with us. 
+         We include them because they provide reliable, transparent, 
+         and community-driven information that aligns with our commitment 
+         to honest, open-source tooling.
+      </p>
+    </section>
+
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4 mb-8">
+    {items.map((item) => (
+      <CardLink 
+        title={item.title}
+        description={item.description}
+        href={item.href}
+        buttonText={item.buttonText}
+      />
+    ))}
+    </div>
+
+  </article>
+
+  <Footer />
+</BaseLayout>

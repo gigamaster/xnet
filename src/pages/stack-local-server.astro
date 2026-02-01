@@ -1,0 +1,223 @@
+---
+// src/pages/stack-server.astro
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import HeroLocalServer from '~/components/widgets/HeroLocalServer.astro';
+import Picture from '~/components/core/Picture.astro';
+import { CardLink, CardSmall, Icon, IconLocal, Thumb } from '~/components';
+import Footer from '~/components/widgets/Footer.astro';
+import { SITE } from '~/config.mjs';
+
+// Page's Image for meta and layout
+import homelabOsImage from '~/assets/images/homeserver-os.jpg';
+
+const meta = {
+	title: 'Self-host Local Server',
+	description: 'Open-Source Private PaaS & Local Development',
+  image: homelabOsImage, // ✅ Import the image directly
+};
+
+const refUrl = [
+  {
+    title: "Docker",
+    description: "Container ecosystem, for everyone",
+    href: "https://www.docker.com/",
+    buttonText: "docker.com"
+  },
+  {
+    title: "DevKinsta", 
+    description: "Free Local Development Suite",
+    href: "https://kinsta.com/devkinsta/",
+    buttonText: "kinsta.com"
+  },
+  {
+    title: "LocalWP", 
+    description: "Develop PHP sites locally",
+    href: "https://localwp.com/",
+    buttonText: "localwp.com"
+  },
+  {
+    title: "Mamp",
+    description: "Macos local server environment",
+    href: "https://www.mamp.info/",
+    buttonText: "mamp.info"
+  },
+  {
+    title: "XAMPP", 
+    description: "Popular PHP development environment",
+    href: "https://www.apachefriends.org/",
+    buttonText: "apachefriends.org"
+  },
+  {
+    title: "Coolify", 
+    description: "Alternative to Vercel and Netlify",
+    href: "https://coolify.io/",
+    buttonText: "coolify.io"
+  },
+];
+
+---
+
+<BaseLayout {meta}>
+  <Header />
+  <HeroLocalServer {meta} />
+
+  <article class="container mx-auto px-4 py-8 max-w-4xl">
+
+    <header class="mb-16">
+      <p>
+      A local server setup that mimics Platform-as-a-Service (PaaS) convenience, like Heroku or Vercel, 
+      but runs entirely on your hardware. Move beyond manual file management and adopt "Git-push" 
+      workflows where your system handles containers, networking, and scaling automatically.
+      Deploy apps with full control and no paywalls.
+      </p>
+    </header>
+
+    <section class="mb-16">
+        
+        <h3 class="text-2xl font-semibold mb-4">Why Use It</h2>
+
+        <ul class="list-image-arrow list-outside pl-2 ml-4 mb-4 space-y-1">
+          <li>Break the Lock-in: Avoid cloud-provider dependency while keeping deployment fast and repeatable.</li>
+          <li>Production at Home: Run personal web apps, and internal tools without monthly subscriptions.</li>
+          <li>Developer Workflow: Ideal "push to deploy" simplicity without surrendering data ownership.</li>
+        </ul>
+
+        <h3 class="text-2xl font-semibold mb-4">The Toolkit</h3>
+
+        <ul class="list-image-arrow list-outside pl-2 ml-4 space-y-1">
+          <li>Local Development (DevKinsta, LocalWP): one-click environments for WordPress and PHP developers.</li>
+          <li>Traditional Stacks (MAMP, XAMPP): The classic "all-in-one" installers for PHP and MySQL.</li>
+          <li>Container (Docker): Package apps into isolated containers for "build once, run anywhere" portability.</li>
+          <li>Self-Hosted PaaS (Coolify, CapRover): Git-based deployments, databases, and SSL certificates.</li>
+        </ul>
+    </section>
+
+    <section class="mb-16">
+
+      <h3 class="text-center text-2xl font-semibold mb-4">Daily Sovereign Workspace</h3>
+
+      <p class="text-center mb-4">Choosing a local stack depends on whether you are <strong>writing code</strong> (Development) or <strong>hosting services</strong> (Deployment).</p>
+
+      <table class="min-w-full bg-black/20 border-separate border-spacing-2 rounded-md [&_th]:p-2 [&_td]:p-2 mb-8">
+        <thead class="text-base font-medium border-b-2 border-zinc-500/20">
+          <tr>
+            <th>Purpose</th>
+            <th>Application</th>
+            <th>Workflow</th>
+          </tr>
+        </thead>
+        <tbody class="text-xs [&_tr:hover]:bg-zinc-500/10 [&_tr]:transition-colors [&_tr]:duration-200 [&_td]:rounded-md">
+          <tr>
+            <td class="bg-lime-800/20"><strong>Learn the basics</strong></td>
+            <td class="bg-lime-800/20">XAMPP / MAMP</td>
+            <td>The simplest way to start with PHP and MySQL. No complex networking or containers required.</td>
+          </tr>
+          <tr>
+            <td class="bg-lime-800/20"><strong>Build for WordPress</strong></td>
+            <td class="bg-lime-800/20">LocalWP / DevKinsta</td>
+            <td>Purpose-built for WP/PHP. Features like one-click staging and SSL make it the "Owner’s" choice for speed.</td>
+          </tr>
+          <tr>
+            <td class="bg-yellow-700/20"><strong>Code with portability</strong></td>
+            <td class="bg-yellow-700/20">Docker</td>
+            <td>Developing, shipping, and running apps decoupled from your infrastructure so you can move them anywhere.</td>
+          </tr>
+          <tr>
+            <td class="bg-yellow-700/20"><strong>Host a Private Cloud</strong></td>
+            <td class="bg-yellow-700/20">Self-Hosted PaaS</td>
+            <td>Best for "Git-push" simplicity. Use <strong>Coolify</strong> or <strong>CapRover</strong> to automate your personal Platform as a Service.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ul class="text-sm list-image-arrow list-outside pl-2 ml-4 space-y-1">
+        <li><strong>Choose Traditional (XAMPP/MAMP)</strong> if you need a quick environment and want to avoid the learning curve of Linux or Docker.</li>
+        <li><strong>Choose PaaS (Coolify/CapRover)</strong> if you are building a permanent home for your apps and want a dashboard.</li>
+      </ul>
+
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16">
+
+      <div class="relative">
+        <Picture 
+          src={homelabOsImage}
+          alt="Self-hosted OS"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          class="w-full h-full object-cover rounded-lg"
+          loading = "lazy"
+        />
+      </div>
+
+      <div class="relative flex flex-col p-4">
+
+        <h3 class="text-2xl font-semibold mb-8">Self-Hosted Dev Environment</h3> 
+
+        <p class="mb-4">
+        Developers, makers, and small teams who want cloud-like ease, with full data ownership and zero recurring cost,
+        can use Forgejo for code, <a href="https://coder.com/cde" class="text-amber-600 hover:text-lime-600">Code-Server</a> for editing, and Coolify for deployment.
+        </p>
+        <p class="mb-4">
+        Coolify v4+ uses a modern, GitOps-focused, container-native deployment model.
+        Once live, this stack replaces corporate SaaS with high-performance, self-hosted alternatives.
+        </p>
+        <p>
+        You’ve just built a complete, end-to-end dev cycle, on hardware you own.
+        </p>
+      </div>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+
+      <div class="relative flex flex-col p-4 bg-white dark:bg-zinc-800/20 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-zinc-700">
+        <h4 class="text-2xl font-semibold flex items-center gap-2 mb-4"><IconLocal name="fluent-color--laptop-24" class="w-5 h-5 " /> Development</h4>
+        <ul class="space-y-2">
+          <li>
+          <a href="https://forgejo.org/" class="text-amber-600 hover:text-lime-600">Forgejo:</a> 
+          The community-led fork of Gitea. A lightweight Git platform that keeps your source code truly private.</li>
+          <li>
+          <a href="https://vscodium.com/" class="text-amber-600 hover:text-lime-600">vscodium:</a> 
+          + Remote-SSH (from Open VSX) Code on your server from any device without losing your configuration.</li>
+        </ul>
+      </div>
+
+      <div class="relative flex flex-col p-4 bg-white dark:bg-zinc-800/20 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-zinc-700">
+        <h4 class="text-2xl font-semibold mb-4 flex items-center gap-2"><IconLocal name="fluent-color--clipboard-24" class="w-5 h-5 inline-block" /> Management</h4>
+        <ul class="space-y-2">
+          <li>
+          <a href="https://vikunja.io/" class="text-amber-600 hover:text-lime-600">Vikunja:</a> 
+          The ultimate sovereign task manager.<br />Features Kanban boards, Gantt charts, and modern UI.</li>
+          <li>
+          <a href="https://www.focalboard.com/" class="text-amber-600 hover:text-lime-600">Focalboard:</a> 
+          A project management alternative to Trello/Notion for tracking sprints and design tasks.</li>
+        </ul>
+      </div>      
+    </section>
+
+    <hr class="h-[3px] border-none bg-radial-[at_50%_50%] from-zinc-200 to-zinc-50 dark:from-zinc-700 dark:to-zinc-950 to-100% my-16" />
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4"><IconLocal name="fluent-color--link-multiple-24" class="w-6 h-6 inline-block" /> Trusted Resources</h2>
+      <p class="text-sm italic bg-zinc-100 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-900 rounded-md p-4 mb-4">The external sites are not affiliated with us. 
+         We include them because they provide reliable, transparent, 
+         and community-driven information that aligns with our commitment 
+         to honest, open-source tooling.
+      </p>
+    </section>
+
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4 mb-8">
+    {refUrl.map((item) => (
+      <CardLink 
+        title={item.title}
+        description={item.description}
+        href={item.href}
+        buttonText={item.buttonText}
+      />
+    ))}
+    </div>
+
+  </article>
+
+  <Footer />
+</BaseLayout>

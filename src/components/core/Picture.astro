@@ -1,5 +1,5 @@
 ---
-import { getPicture } from '@astrojs/image';
+import { Image } from 'astro:assets';
 
 const {
 	src,
@@ -14,30 +14,18 @@ const {
 	...attrs
 } = Astro.props;
 
-let picture = null;
-try {
-	picture =
-		src &&
-		(await getPicture({
-			src,
-			widths,
-			formats,
-			aspectRatio,
-		}));
-} catch (e) {
-	// continue regardless of error
-}
-
-const { image = {}, sources = [] } = picture || {};
 ---
 
 {
-	src && image?.src && (
-		<picture {...attrs}>
-			{sources.map((attrs) => (
-				<source {...attrs} sizes={sizes} />
-			))}
-			<img {...image} {loading} {decoding} {alt} class={className} />
-		</picture>
+	src && (
+		<Image
+			src={src}
+			alt={alt}
+			sizes={sizes}
+			loading={loading}
+			decoding={decoding}
+			class={className}
+			{...attrs}
+		/>
 	)
 }

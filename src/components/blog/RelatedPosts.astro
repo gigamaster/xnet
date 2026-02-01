@@ -1,4 +1,5 @@
 ---
+import IconLocal from '~/components/atoms/IconLocal.astro';
 import Picture from '~/components/core/Picture.astro';
 
 import { findPostsByIds } from '~/utils/posts';
@@ -78,9 +79,27 @@ const processedRelatedPosts = await Promise.all(
                 <span class="inline-block mb-1 sm:mb-4">Related Articles</span>
             </h2>
 
-            <p class="text-gray-700 dark:text-slate-400 lg:text-sm lg:max-w-md">
-                Practical guides to set up, and run a local development environment with honest reviews and documentation that actually work.
+            <div class="flex flex-col text-zinc-700 dark:text-zinc-400 lg:text-sm">
+            <div class="flex space-x-4">
+                <a
+                href="/blog"
+                class="flex items-center hover:text-primary-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
+                >
+                <IconLocal name="fluent-color--news-24" class="w-5 h-5 mr-2" /> 
+                Back to Blog
+                </a>
+                <a
+                href="#top"
+                class="flex items-center hover:text-primary-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
+                >
+                <IconLocal name="top-page-arrow" class="w-5 h-5 mr-2" /> 
+                Page
+                </a>
+            </div>
+            <p class="mb-2">
+                Run a local-first environment.
             </p>
+            </div>
         </div>
 
         <div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-4 -mb-6">
@@ -89,11 +108,9 @@ const processedRelatedPosts = await Promise.all(
                     <article class="mb-6 transition">
                         <Picture
                             src={post.image}
-                            class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
-                            widths={[400, 900]}
+                            class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-zinc-400 dark:bg-zinc-700"
                             sizes="(max-width: 900px) 400px, 900px"
                             alt={post.title}
-                            aspectRatio="16:9"
                         />
                         <h3 class="mb-2 text-xl font-bold leading-snug sm:text-2xl font-heading">
                             <a
@@ -103,7 +120,7 @@ const processedRelatedPosts = await Promise.all(
                                 {post.title}
                             </a>
                         </h3>
-                        <p class="text-gray-700 dark:text-gray-400">{post.excerpt || post.description}</p>
+                        <p class="text-zinc-700 dark:text-zinc-400">{post.excerpt || post.description}</p>
                     </article>
                 ))
             }

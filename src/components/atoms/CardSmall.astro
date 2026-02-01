@@ -1,0 +1,31 @@
+---
+// src/components/atoms/CardSmall.astro
+import Icon from "@xtreat/astro-iconify";
+const { items, title } = Astro.props;
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+  {
+    items.map((item) => (
+      <a
+        href={item.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group block bg-white dark:bg-black rounded-xl border border-zinc-700/10 p-4 transition-all duration-300 hover:shadow-xl hover:border-zinc-500/20 hover:-translate-y-1"
+      >
+        <div class="flex items-center gap-2 mb-4">
+          <Icon 
+            icon={item.icon} 
+            class="w-6 h-6 text-zinc-500 flex-shrink-0" 
+          />
+          <h5 class="text-lg font-semibold text-blue-500 group-hover:text-lime-500 transition-colors duration-200">
+            {item.name}
+          </h5>
+        </div>
+        <p class="text-zinc-500 text-xs/5">
+          {item.description}
+        </p>
+      </a>
+    ))
+  }
+</div>

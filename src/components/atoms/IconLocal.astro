@@ -1,0 +1,19 @@
+---
+// src/components/atoms/IconLocal.astro
+const { name, class: className } = Astro.props;
+
+const icons = import.meta.glob('../../assets/icons/*.svg', { 
+  query: '?raw', 
+  import: 'default', 
+  eager: true 
+});
+
+const path = `../../assets/icons/${name}.svg`;
+const rawSvg = icons[path] as string;
+---
+
+{rawSvg ? (
+  <div class={`local-icon ${className || ''}`} set:html={rawSvg} />
+) : (
+  <span class="text-red-500">!</span>
+)}

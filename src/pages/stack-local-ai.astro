@@ -1,0 +1,177 @@
+---
+// src/pages/stack-components.astro
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import HeroLocalAi from '~/components/widgets/HeroLocalAi.astro';
+import { CardLink, CardSmall, Icon, IconLocal, Thumb } from '~/components';
+import Picture from '~/components/core/Picture.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import { SITE } from '~/config.mjs';
+
+// Images
+import stackaiImage from '~/assets/images/stack-local-ai-llm.jpg';
+
+const meta = {
+	title: 'Self-Host Local AI',
+	description: 'Run private, offline AI models on your hardware',
+  image: stackaiImage, // ✅ Import the image directly
+};
+
+const items = [
+  {
+    title: "AnythingLLM", 
+    description: "All-in-one AI application for everyone",
+    href: "https://anythingllm.com/",
+    buttonText: "anythingllm.com"
+  },
+  {
+    title: "ComfyUI",
+    description: "Powerful tool for generative AI",
+    href: "https://www.comfy.org/",
+    buttonText: "comfy.org"
+  },
+  {
+    title: "Local AI", 
+    description: "Complete AI stack without the cloud",
+    href: "https://localai.io/",
+    buttonText: "localai.io"
+  },
+  {
+    title: "LM Studio", 
+    description: "Run AI privately and for free",
+    href: "https://lmstudio.ai/",
+    buttonText: "lmstudio.ai"
+  },
+  {
+    title: "Ollama", 
+    description: "Easiest way to run run LLMs",
+    href: "https://ollama.com/",
+    buttonText: "ollama.com"
+  },
+  {
+    title: "Open WebUI", 
+    description: "Self-hosted AI platform",
+    href: "https://openwebui.com/",
+    buttonText: "openwebui.com"
+  },
+];
+
+---
+
+<BaseLayout {meta}>
+  <Header />
+  <HeroLocalAi {meta} />
+
+  <article class="container mx-auto px-4 py-8 max-w-4xl">
+
+    <header class="mb-16">
+      <p>
+      Explore the best self-hosted AI tools for your home lab, from LLMs to image generation. TSet up and connect various tools, like Ollama and OpenWebUI, for a private AI stack. Learn how these open-source options work together to create custom AI workflows.
+      </p>
+    </header>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16">
+      <div class="relative flex flex-col">
+        <Picture 
+          src={stackaiImage}
+          alt="Stack Local AI"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          class="w-full h-full object-cover rounded-lg"
+          loading = "lazy"
+        />
+      </div>
+      <div class="relative flex flex-col p-4">
+        <h2 class="text-2xl font-semibold mb-4">What It Is</h2>
+
+        <p class="mb-4">
+        Running AI models, like Llama 3, Mistral, or Phi, directly on your local machine or homelab server. 
+        No data leaves your device, enabling private chatbots, document analysis, coding assistants, or automation 
+        without relying on OpenAI or Anthropic.
+        </p>
+        
+        <h2 class="text-2xl font-semibold mb-4">Why Use It</h2>
+
+        <ul class="list-disc pl-6 mt-2 space-y-1">
+          <li>Privacy: Sensitive documents or ideas never touch external servers.</li>
+          <li>Cost control: Avoid per-token API fees during experimentation.</li>
+          <li>Customization: Fine-tune models on your own data or integrate them into personal workflows.</li>
+        </ul>
+      </div>
+    </section>
+
+    
+    <section class="mb-8">
+
+      <h2 class="text-2xl font-semibold mb-4">Hardware Requirements</h2>
+
+      <ul class="list-disc pl-6 mt-2 space-y-1 mb-4">
+        <li>GPU (Recommended): NVIDIA RTX 3060/4060 (12GB+ VRAM) for 7B-13B models; RTX 3090/4090 (24GB VRAM) for larger, faster models.</li>
+        <li>Apple Silicon: M1/M2/M3 chips with 16GB+ Unified Memory are excellent for local inference.</li>
+        <li>CPU & RAM: At least 16GB-32GB of system RAM, though inference will be slower than GPU-accelerated.</li>
+      </ul>
+
+      <h2 class="text-xl font-semibold mb-4">Hardware Note</h2>
+
+      <p class="text-sm italic mb-4">
+      The Ryzen 5 3500U is a 4-core, 8-thread Zen+ processor (12nm) with Radeon Vega 8 integrated graphics. 
+      It can handle 7B models using CPU-based inference tools like llama.cpp or LM Studio.
+      A 7B model in 4-bit quantization requires roughly 4GB to 6GB of RAM just for the model, plus system overhead. 
+      Therefore, 16GB of system RAM is highly recommended to prevent the system from becoming unresponsive.
+      Optimization to run effectively, you must use quantized models (e.g., GGUF format, Q4_K_M or smaller). 
+      </p>
+
+      <h2 class="text-2xl font-semibold mb-4">Deployment Strategies</h2>
+      
+      <ul class="list-disc pl-6 mt-2 space-y-1">
+        <li>Docker: Recommended for managing dependencies, especially for tools like Ollama or LocalAI.</li>
+        <li>Proxmox/LXC Containers: Ideal for advanced home lab users to segregate AI services and pass through GPU resources.</li>
+        <li><a href="/stack-public">Safe Public Access</a>: Securely expose your local AI endpoint to the internet without opening firewall ports.</li>
+      </ul>
+    </section>
+
+    <section class="mb-16">
+      <h2 class="text-2xl font-semibold mb-4">Key Tools</h2>
+
+      <p class="mb-4">
+      Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline. 
+      It is built around universal standards, supporting Ollama and OpenAI-compatible Protocols (specifically Chat Completions). 
+      This protocol-first approach makes it a powerful, provider-agnostic AI deployment solution for both local and cloud-based models.
+      </p>
+
+      <ul class="list-disc pl-6 mt-2 space-y-1 mb-4">
+        <li>Ollama: Simple CLI and API to run open-source LLMs (supports GPU acceleration).</li>
+        <li>LM Studio or Jan: Desktop GUIs for chatting with local models.</li>
+        <li>Text Generation WebUI: Advanced interface for model tuning, embeddings, and RAG.</li>
+      </ul>
+
+      <p class="text-sm bg-yellow-600/10 rounded-lg p-2">
+      💡  Best For writers, researchers, developers, and privacy-conscious users who want AI without surveillance or hidden paywalls.
+      </p>
+    </section>
+
+    <hr class="h-[3px] border-none bg-radial-[at_50%_50%] from-zinc-200 to-zinc-50 dark:from-zinc-700 dark:to-zinc-950 to-100% my-16" />
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4"><IconLocal name="fluent-color--link-multiple-24" class="w-6 h-6 inline-block" /> Trusted Resources</h2>
+      <p class="text-sm italic bg-zinc-100 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-900 rounded-md p-4 mb-4">The external sites are not affiliated with us. 
+         We include them because they provide reliable, transparent, 
+         and community-driven information that aligns with our commitment 
+         to honest, open-source tooling.
+      </p>
+    </section>
+
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4 mb-8">
+    {items.map((item) => (
+      <CardLink 
+        title={item.title}
+        description={item.description}
+        href={item.href}
+        buttonText={item.buttonText}
+      />
+    ))}
+    </div>
+  
+  </article>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,500 @@
+---
+// src/pages/applications.astro
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import HeroLocalServer from '~/components/widgets/HeroLocalServer.astro';
+import { CardLink, CardSmall, Icon, IconLocal, Thumb } from '~/components';
+import Footer from '~/components/widgets/Footer.astro';
+import { SITE } from '~/config.mjs';
+
+const meta = {
+	title: 'Self-Host Applications',
+	description: 'Self-host open source applications',
+};
+
+const refurl = [
+  {
+    title: "Self-Hosted",
+    description: "Self-Hosted Apps and Alternatives",
+    href: "https://selfh.st/apps/",
+    buttonText: "selfh.st"
+  },
+  {
+    title: "Portable Apps", 
+    description: "Most popular portable software",
+    href: "https://portableapps.com/",
+    buttonText: "portableapps.com"
+  },
+  {
+    title: "Open Source Alternatives", 
+    description: "Alternatives To Proprietary Software",
+    href: "https://www.opensourcealternative.to/",
+    buttonText: "opensourcealternative.to"
+  },
+  {
+    title: "AlternativeTo", 
+    description: "Crowdsourced recommendations",
+    href: "https://alternativeto.net/",
+    buttonText: "alternativeto.net"
+  },
+];
+
+const messaging = [
+  {
+    name: "Signal",
+    icon: "simple-icons:signal",
+    description: "Messaging app with strong, open-source, end-to-end encryption. A phone number is still required for registration.",
+    href: "https://signal.org/",
+  },
+  {
+    name: "Threema",
+    icon: "simple-icons:threema",
+    description: "Switzerland-based messenger that does not require a phone number or email address, for superior anonymity and privacy.",
+    href: "https://threema.com/",
+  },
+  {
+    name: "Session",
+    icon: "simple-icons:session",
+    description: "Anonymous, decentralized messaging app that does not require a phone number, using a Tor-like network.",
+    href: "https://getsession.org/",
+  },
+  {
+    name: "SimpleX",
+    icon: "simple-icons:simplex",
+    description: "Decentralized chat application that does not store any user identifiers, does not require a phone number.",
+    href: "https://simplex.chat/",
+  },
+];      
+
+const team = [
+  {
+    name: "Element (Matrix)",
+    icon: "simple-icons:matrix",
+    description: "Alternative to Slack/Teams that ensures messages remain private via end-to-end encryption.",
+    href: "https://element.io",
+  },
+  {
+    name: "Rocket.Chat",
+    icon: "simple-icons:rocketdotchat",
+    description: "An open-source, self-hosted platform for team communication with high security compliance.",
+    href: "https://rocket.chat",
+  },
+  {
+    name: "ProtonMail",
+    icon: "simple-icons:protonmail",
+    description: "A secure email alternative to Gmail/Outlook that uses end-to-end encryption and a strict no-logs policy.",
+    href: "https://proton.me/mail",
+  },
+  {
+    name: "Passbolt",
+    icon: "simple-icons:passbolt",
+    description: "Open-source password manager audited and built for team collaboration. Made in Europe. Privacy by default.",
+    href: "https://www.passbolt.com",
+  },
+];
+
+const photo = [
+  {
+    name: "Affinity",
+    icon: "streamline-logos:affinity-logo-solid",
+    description: "All professional photo, design, and layout software tools you need in one app, and free forever.",
+    href: "https://www.affinity.studio/",
+  },
+  {
+    name: "Immich",
+    icon: "simple-icons:immich",
+    description: "Self-hosted Alternative to o Google Photos,featuring automatic backups from mobile, AI face detection",
+    href: "https://immich.app/",
+  },
+  {
+    name: "GIMP",
+    icon: "simple-icons:gimp",
+    description: "Portable/Desktop, open-source raster graphics editor, similar to Photoshop.",
+    href: "https://www.gimp.org/",
+  },
+  {
+    name: "PhotoPrism",
+    icon: "arcticons:photoprism",
+    description: "Self-hosted app for browsing, organizing, and sharing photo collections, leveraging AI for automatic tagging.",
+    href: "https://www.photoprism.app/",
+  },
+];   
+
+const design = [
+  {
+    name: "Excalidraw",
+    icon: "simple-icons:matrix",
+    description: "Self-hosted virtual whiteboard for hand-drawn looking diagrams and sketches, with collaborative team sessions.",
+    href: "https://github.com/excalidraw/excalidraw",
+  },
+  {
+    name: "inkscape",
+    icon: "simple-icons:rocketdotchat",
+    description: "Professional vector graphics editor for creating illustrations, icons, and diagrams.",
+    href: "https://inkscape.org/",
+  },
+  {
+    name: "Penpot",
+    icon: "simple-icons:protonmail",
+    description: "Self-hosted web-based design and prototyping tool that focuses on designer-developer collaboration.",
+    href: "https://penpot.app/",
+  },
+  {
+    name: "Krita",
+    icon: "simple-icons:passbolt",
+    description: "Portable | Desktop for digital painting and illustration, offering advanced sketching and painting tools.",
+    href: "https://krita.org/",
+  },
+  // Add/remove any icon here later e.g. "logos:next.js", "mdi:shield-lock", etc.
+];
+
+const audio = [
+  {
+    name: "Audacity",
+    icon: "simple-icons:matrix",
+    description: "Portable/Desktop The most popular open-source digital audio editor and recorder, known for its extensive plug-in support.",
+    href: "https://www.audacityteam.org/",
+  },
+  {
+    name: "Ardour ",
+    icon: "simple-icons:rocketdotchat",
+    description: "Record, eEdit, and mix on Linux, macOS and Windows",
+    href: "https://ardour.org/",
+  },
+  {
+    name: "Audiobookshelf",
+    icon: "simple-icons:protonmail",
+    description: "Self-hosted dedicated server for managing and streaming audiobooks and podcasts",
+    href: "https://www.audiobookshelf.org/",
+  },
+  {
+    name: "Navidrome ",
+    icon: "simple-icons:passbolt",
+    description: "Self-hosted lightweight music streaming server that works with your personal music library.",
+    href: "https://www.navidrome.org/ ",
+  },
+];
+
+const video = [
+  {
+    name: "Kdenlive",
+    icon: "simple-icons:matrix",
+    description: "Portable | Desktop professional-level, non-linear video editor that supports multi-track editing and many formats.",
+    href: "https://kdenlive.org/ ",
+  },
+  {
+    name: "Shotcut",
+    icon: "simple-icons:rocketdotchat",
+    description: "Portable | Desktop cross-platform video editor with strong filter support and a customizable interface.",
+    href: "https://www.shotcut.org/",
+  },
+  {
+    name: "PeerTube",
+    icon: "simple-icons:protonmail",
+    description: "Self-hosted decentralized, federated video hosting platform (federation of servers) allowing users to host their own video sharing site.",
+    href: "https://github.com/Chocobozzz/PeerTube",
+  },
+  {
+    name: "AVideo",
+    icon: "simple-icons:passbolt",
+    description: "Self-hosted formerly YouPHPTube platform to host your own video sharing website, featuring video uploading, encoding, and streaming.",
+    href: "https://github.com/WWBN/AVideo",
+  },
+];
+
+const finance = [
+  {
+    name: "Element (Matrix)",
+    icon: "simple-icons:matrix",
+    description: "Alternative to Slack/Teams that ensures messages remain private via end-to-end encryption.",
+    href: "https://element.io",
+  },
+  {
+    name: "Rocket.Chat",
+    icon: "simple-icons:rocketdotchat",
+    description: "An open-source, self-hosted platform for team communication with high security compliance.",
+    href: "https://rocket.chat",
+  },
+  {
+    name: "ProtonMail",
+    icon: "simple-icons:protonmail",
+    description: "A secure email alternative to Gmail/Outlook that uses end-to-end encryption and a strict no-logs policy.",
+    href: "https://proton.me/mail",
+  },
+  {
+    name: "Passbolt",
+    icon: "simple-icons:passbolt",
+    description: "An open-source password manager for secure team collaboration.",
+    href: "https://www.passbolt.com",
+  },
+];
+
+const knowkedge = [
+  {
+    name: "Element (Matrix)",
+    icon: "simple-icons:matrix",
+    description: "Alternative to Slack/Teams that ensures messages remain private via end-to-end encryption.",
+    href: "https://element.io",
+  },
+  {
+    name: "Rocket.Chat",
+    icon: "simple-icons:rocketdotchat",
+    description: "An open-source, self-hosted platform for team communication with high security compliance.",
+    href: "https://rocket.chat",
+  },
+  {
+    name: "ProtonMail",
+    icon: "simple-icons:protonmail",
+    description: "A secure email alternative to Gmail/Outlook that uses end-to-end encryption and a strict no-logs policy.",
+    href: "https://proton.me/mail",
+  },
+  {
+    name: "Passbolt",
+    icon: "simple-icons:passbolt",
+    description: "An open-source password manager for secure team collaboration.",
+    href: "https://www.passbolt.com",
+  },
+];
+
+const localai = [
+  {
+    name: "Element (Matrix)",
+    icon: "simple-icons:matrix",
+    description: "Alternative to Slack/Teams that ensures messages remain private via end-to-end encryption.",
+    href: "https://element.io",
+  },
+  {
+    name: "Rocket.Chat",
+    icon: "simple-icons:rocketdotchat",
+    description: "An open-source, self-hosted platform for team communication with high security compliance.",
+    href: "https://rocket.chat",
+  },
+  {
+    name: "ProtonMail",
+    icon: "simple-icons:protonmail",
+    description: "A secure email alternative to Gmail/Outlook that uses end-to-end encryption and a strict no-logs policy.",
+    href: "https://proton.me/mail",
+  },
+  {
+    name: "Passbolt",
+    icon: "simple-icons:passbolt",
+    description: "An open-source password manager for secure team collaboration.",
+    href: "https://www.passbolt.com",
+  },
+];
+
+const network = [
+  {
+    name: "Element (Matrix)",
+    icon: "simple-icons:matrix",
+    description: "Alternative to Slack/Teams that ensures messages remain private via end-to-end encryption.",
+    href: "https://element.io",
+  },
+  {
+    name: "Rocket.Chat",
+    icon: "simple-icons:rocketdotchat",
+    description: "An open-source, self-hosted platform for team communication with high security compliance.",
+    href: "https://rocket.chat",
+  },
+  {
+    name: "ProtonMail",
+    icon: "simple-icons:protonmail",
+    description: "A secure email alternative to Gmail/Outlook that uses end-to-end encryption and a strict no-logs policy.",
+    href: "https://proton.me/mail",
+  },
+  {
+    name: "Passbolt",
+    icon: "simple-icons:passbolt",
+    description: "An open-source password manager for secure team collaboration.",
+    href: "https://www.passbolt.com",
+  },
+];
+
+const office = [
+  {
+    name: "Element (Matrix)",
+    icon: "simple-icons:matrix",
+    description: "Alternative to Slack/Teams that ensures messages remain private via end-to-end encryption.",
+    href: "https://element.io",
+  },
+  {
+    name: "Rocket.Chat",
+    icon: "simple-icons:rocketdotchat",
+    description: "An open-source, self-hosted platform for team communication with high security compliance.",
+    href: "https://rocket.chat",
+  },
+  {
+    name: "ProtonMail",
+    icon: "simple-icons:protonmail",
+    description: "A secure email alternative to Gmail/Outlook that uses end-to-end encryption and a strict no-logs policy.",
+    href: "https://proton.me/mail",
+  },
+  {
+    name: "Passbolt",
+    icon: "simple-icons:passbolt",
+    description: "An open-source password manager for secure team collaboration.",
+    href: "https://www.passbolt.com",
+  },
+];
+
+---
+
+<BaseLayout {meta}>
+  <Header />
+  <HeroLocalServer meta={meta} />
+
+  <article class="container mx-auto px-4 py-8 max-w-4xl">
+
+    <header class="mb-8">
+      <p>General-purpose software categorized by function, with many offering both desktop (portable) and self-hosted server options: from personal dashboards to custom web apps. 
+      Includes self-hosted alternatives to SaaS platforms, often built with Docker, PHP, Node.js, or Python, and managed via tools like Dockge or Umbrel.
+      </p>
+    </header>
+
+    <section class="mb-8 p-4 bg-linear-to-br from-zinc-100 to-white dark:from-zinc-900 dark:to-indigo-950/20 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-lg scroll-mt-6" id="communication-private">
+      <h2 class="text-2xl font-semibold mb-4">
+      <IconLocal name="fluent-color--chat-multiple-24" class="w-6 h-6 inline-block" /> Communication
+      </h2>
+      
+      <p>Private, decentralized alternatives to mainstream messaging, email, and video conferencing. Tools like Matrix/Element, Mailcow, and Jitsi enable end-to-end encrypted chat, secure email, and ad-free meetings without relying on Big Tech infrastructure.</p>
+        
+      <h5 class="text-xl text-center font-semibold my-8">Private & Secure Messenger Apps Alternatives</h5>
+
+      <CardSmall items={messaging} />
+
+      <h5 class="text-center text-xl font-semibold my-8">Private Business & Team Communication Tools</h5>
+
+      <CardSmall items={team} />
+
+    </section>
+
+    <section class="mb-8 p-6 bg-linear-to-br from-zinc-100 to-white dark:from-zinc-900 dark:to-indigo-950/20 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-lg" id="creative">
+      <h2 class="text-2xl font-semibold mb-4">
+      <IconLocal name="fluent-color--design-ideas-24" class="w-6 h-6 inline-block" /> Creative Software</h2>
+
+        <p>Self-hosted tools for design, audio, video, and publishing. Includes photo editors, digital audio workstations, vector graphics, 
+        and collaborative whiteboards, often containerized for offline or LAN-based creative workflows. 
+        </p>
+
+        <h5 class="text-center text-xl font-semibold my-8">Photo Editors and Management</h5>
+
+        <CardSmall items={photo} />
+
+        <h5 class="text-center text-xl font-semibold my-8">Design and Illustration</h5>
+
+        <CardSmall items={design} />
+
+        <h5 class="text-center text-xl font-semibold my-8">Audio Editors and Management</h5>
+
+        <CardSmall items={audio} />
+
+        <h5 class="text-center text-xl font-semibold my-8">Video Editors and Hosting</h5>
+      
+        <CardSmall items={video} />
+        
+        <h5 class="text-xl font-semibold my-4">Publishing and Content</h5>
+
+        <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 space-y-1">
+          <li><strong><a href="https://nextcloud.com/" rel="noopener" class="text-blue-600 hover:text-lime-600">Nextcloud (Self-hosted)</a></strong><br />
+          A full-featured suite for file hosting, collaboration, and document management.</li>
+          <li><strong><a href="https://docs.paperless-ngx.com/" rel="noopener" class="text-blue-600 hover:text-lime-600">Paperless-ngx (Self-hosted)</a></strong><br />
+          A community-supported open-source document management system.</li>
+          <li><strong><a href="https://www.seafile.com/" rel="noopener" class="text-blue-600 hover:text-lime-600">
+          Seafile</a></strong><br />
+          Known for high performance and reliability, especially with large files and extensive syncs, focusing on efficient file management and sharing.
+          </li>
+          <li><strong><a href="https://calibre-ebook.com/" rel="noopener" class="text-blue-600 hover:text-lime-600">Calibre / Calibre-Web (Portable/Self-hosted)</a></strong><br />
+          A powerful e-book management tool, with a web-based version for browsing and downloading library content.</li>
+          <li><strong><a href="https://www.bookstackapp.com/" rel="noopener" class="text-blue-600 hover:text-lime-600">BookStack (Self-hosted)</a></strong><br />
+          A simple, self-hosted platform for organizing documentation and knowledge.</li>
+        </ul>
+    </section>
+
+
+    <section class="mb-8 p-6 bg-linear-to-br from-zinc-100 to-white dark:from-zinc-900 dark:to-indigo-950/20 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-lg" id="finance">
+      <h2 class="text-2xl font-semibold mb-4">
+      <IconLocal name="fluent-color--coin-multiple-24" class="w-6 h-6 inline-block" /> Finance & Capital</h2>
+
+        <p>Personal and small-business financial management with full data ownership, free from cloud fees, ads, or data harvesting.</p>
+        <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 space-y-1">
+          <li>Firefly III, budgeting</li>
+          <li>Umbrel, Ronin, cryptocurrency nodes</li>
+          <li>Portfolio trackers</li>
+          <li>Accounting tools</li>
+        </ul>
+    </section>
+
+    <section class="mb-8 p-6 bg-linear-to-br from-zinc-100 to-white dark:from-zinc-900 dark:to-indigo-950/20 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-lg" id="knowledge">
+      <h2 class="text-2xl font-semibold mb-4"><IconLocal name="fluent-color--chat-multiple-24" class="w-6 h-6 inline-block" /> Knowledge Database</h2>
+        <p>Systems to capture, organize, and retrieve information over time, personal knowledge bases, designed for long-term access without vendor lock-in.</p>
+        <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 space-y-1">
+          <li>Standard Notes, Joplin, note-taking</li>
+          <li>Wiki.js, BookStack, wikis</li>
+          <li>LinkAce, bookmark managers</li>
+        </ul>
+    </section>
+
+    <section class="mb-8 p-6 bg-linear-to-br from-zinc-100 to-white dark:from-zinc-900 dark:to-indigo-950/20 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-lg" id="local-ai-llm">
+      <h2 class="text-2xl font-semibold mb-4"><IconLocal name="fluent-color--chat-multiple-24" class="w-6 h-6 inline-block" /> Local AI & LLMs</h2>
+        <p>Run open-source large language models (Llama 3, Mistral, Phi) directly on your hardware. 
+        Enables private chat, coding assistance, document analysis, and automation, no API keys or data leaks.</p>
+        <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 space-y-1">
+          <li>Ollama</li>
+          <li>LM Studio</li>
+          <li>vLLM</li>
+          <li>llama.cpp</li>
+          <li>llamafile</li>
+          <li>Jan</li>
+        </ul>
+    </section>
+
+    <section class="mb-8 p-6 bg-linear-to-br from-zinc-100 to-white dark:from-zinc-900 dark:to-indigo-950/20 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-lg" id="network">
+      <h2 class="text-2xl font-semibold mb-4"><IconLocal name="fluent-color--chat-multiple-24" class="w-6 h-6 inline-block" /> Network & Hosting</h2>
+        <p>Foundational tools to deploy, connect, and expose services securely, the backbone of any homelab.</p>
+        <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 space-y-1">
+          <li>Docker</li>
+          <li>Dockge</li>
+          <li>Dockge: Visual Docker Compose manager for custom apps.</li>
+          <li>Portainer</li>
+          <li>Caddy, Nginx Proxy Manager, reverse proxies</li>
+          <li>Tailscale Funnel, Cloudflare Tunnel, for secure tunneling</li>
+        </ul>
+    </section>
+
+    <section class="mb-8 p-6 bg-linear-to-br from-zinc-100 to-white dark:from-zinc-900 dark:to-indigo-950/20 border border-zinc-200 dark:border-zinc-800 rounded-lg shadow-lg" id="productivity">
+      <h2 class="text-2xl font-semibold mb-4"><IconLocal name="fluent-color--document-folder-24" class="w-6 h-6 inline-block" /> Productivity & Office</h2>
+        <p>Self-hosted replacements for cloud office suites, all under your control, with no subscription required.</p>
+        <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 space-y-1">
+          <li>Nextcloud, Seafile, file sync</li>
+          <li>CryptPad, OnlyOffice, collaborative editing</li>
+          <li>Planka, WeKan, task management</li>
+          <li>CalDAV/CardDAV, calendar and contact sync</li>
+        </ul>
+    </section>
+
+    <hr class="h-[3px] border-none bg-radial-[at_50%_50%] from-zinc-200 to-zinc-50 dark:from-zinc-700 dark:to-zinc-950 to-100% my-16" />
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4"><IconLocal name="fluent-color--link-multiple-24" class="w-6 h-6 inline-block" /> Trusted Resources</h2>
+      <p class="text-sm italic bg-zinc-100 dark:bg-indigo-900/20 border border-inrdigo-200 dark:border-indigo-900 rounded-md p-4 mb-4">The external sites are not affiliated with us. 
+         We include them because they provide reliable, transparent, 
+         and community-driven information that aligns with our commitment 
+         to honest, open-source tooling.
+      </p>
+    </section>
+
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4 mb-8">
+    {refurl.map((item) => (
+      <CardLink 
+        title={item.title}
+        description={item.description}
+        href={item.href}
+        buttonText={item.buttonText}
+      />
+    ))}
+    </div>
+
+  </article>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  buttonText?: string;
+}
+
+const { title, description, href, buttonText = "Learn More" } = Astro.props;
+---
+
+<a class="relative bg-zinc-900 block p-4 border border-zinc-800 rounded-lg w-full select-none shadow-lg hover:shadow-indigo-700/40 overflow-hidden" href={href} rel="noopener">
+  <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-sky-700 via-blue-900 to-indigo-900"></span>
+  
+  <div class="mb-2">
+    <h5 class="text-white text-1xl font-bold mt-0 mb-1">{title}</h5>
+    <p class="text-sm text-zinc-300 py-1">{description}</p>
+  </div>
+  
+  <div class="flex justify-end">
+    <button class="text-xs text-zinc-400 font-semibold border border-zinc-800 rounded-md hover:border-zinc-700 px-2 py-1">
+      {buttonText}
+    </button>
+  </div>
+</a>

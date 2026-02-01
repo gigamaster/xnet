@@ -1,0 +1,81 @@
+---
+import IconLocal from '~/components/atoms/IconLocal.astro';
+import { Image } from 'astro:assets';
+
+const { meta = {} } = Astro.props;
+
+const items = [
+
+	{
+		title: 'AnythingLLM',
+		description:
+			'Run the latest state-of-the-art LLMs, and chat with your documents privately.',
+		icon: 'ai-anything-llm',
+	},
+	{
+		title: 'LM Studio',
+		description:
+			'User-friendly desktop application for browsing and running Hugging Face models.',
+		icon: 'ai-lmstudio',
+	},
+	{
+		title: 'LocalAI',
+		description:
+			'REST API replacement for OpenAI, running on consumer hardware',
+		icon: 'ai-localai',
+	},
+	{
+		title: 'Open WebUI',
+		description:
+			'Run AI models on your own terms, connect to any model, local or cloud.',
+		icon: 'ai-open-webui',
+	},
+	{
+		title: 'ComfyUI',
+		description:
+			'Advanced GUI for Stable Diffusion image generation.',
+		icon: 'ai-comfyui',
+	},
+	{
+		title: 'ollama.com',
+		description:
+			'Lightweight, extensible framework to build and run language models on a local machine.',
+		icon: 'ai-ollama',
+	},
+];
+---
+
+<section class="relative">
+	<div class="absolute inset-0 bg-radial-[at_50%_25%] from-indigo-900 via-violet-950 to-zinc-900 to-90% pointer-events-none mb-16" aria-hidden="true"></div>
+	<div class="relative max-w-6xl mx-auto px-4">
+		<div class="text-zinc-300 py-4 pt-8">
+			<div class="mb-8 text-center">
+				<p class="text-base font-semibold tracking-wide uppercase">Stack</p>
+				{meta.title && 
+				<h2 class="text-zinc-100 text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+					{meta.title}
+				</h2>
+				}
+				{meta.description && 
+				<p class="max-w-3xl mx-auto text-center text-xl">
+					{meta.description}
+				</p>
+				}
+			</div>
+			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start my-8">
+				{
+					items.map(({ title, description, icon }) => (
+						<div class="relative flex flex-col p-6 bg-zinc-500/20 backdrop-blur-xs rounded-lg shadow-lg border border-zinc-700">
+							<div class="flex items-center mb-4">
+								<IconLocal name={icon} class="w-12 h-12" />
+
+								<div class="ml-4 text-xl font-bold">{title}</div>
+							</div>
+							<p class="text-md">{description}</p>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>

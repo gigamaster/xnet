@@ -1,0 +1,228 @@
+---
+// src/pages/stack-components.astro
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import HeroComponents from '~/components/widgets/HeroComponents.astro';
+import { CardLink, CardSmall, IconLocal, Thumb } from '~/components';
+import Picture from '~/components/core/Picture.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import { SITE } from '~/config.mjs';
+
+// Images
+import homelabOsImage from '~/assets/images/homeserver-os.jpg';
+
+const meta = {
+	title: 'Self-Hosting Components',
+	description: 'Build your stack with vetted apps, services, and databases',
+};
+
+const refUrl = [
+  {
+    title: "Stack Local Server",
+    description: "Deploy a local-first web server",
+    href: "/stack-local-server",
+    buttonText: "uixnet"
+  },
+  {
+  title: "Stack Local AI",
+    description: "Run Large Language Models locally",
+    href: "/stack-local-ai",
+    buttonText: "uixnet"
+  },
+  {
+    title: "Stack Public", 
+    description: "Expose local apps securely",
+    href: "/stack-public",
+    buttonText: "uixnet"
+  },
+  {
+    title: "Self-Hosted PaaS", 
+    description: "Deploy and manage containers",
+    href: "/stack-multimedia",
+    buttonText: "uixnet"
+  },
+  {
+    title: "Stack Multimedia", 
+    description: "Stream and share your personal media",
+    href: "/stack-multimedia",
+    buttonText: "uixnet"
+  },
+  {
+    title: "Stack Privacy & Security", 
+    description: "Sef-host personal data",
+    href: "/stack-multimedia",
+    buttonText: "uixnet"
+  },
+];
+---
+
+<BaseLayout {meta}>
+  <Header />
+  <HeroComponents meta={meta} />
+
+  <article class="container mx-auto px-4 py-8 max-w-4xl">
+
+    <header class="mb-16">        
+      <p class="mb-4">
+      To understand self-hosting, start with the stack: the vertical blueprint of software layers, OS, web server, database, and app, that work together to run a service.
+      </p>
+      <p>
+      Self-hosting means owning every layer, not renting a black-box from a provider. This shift turns you from a subscriber into a sovereign operator, fully in control of your data, privacy, and costs.
+      </p>
+    </header>
+    
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16">
+
+      <div class="relative flex flex-col">
+        <Picture 
+          src={homelabOsImage}
+          alt="Description of image"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          class="w-full h-full object-cover rounded-lg"
+          loading = "lazy"
+        />
+      </div>
+
+      <div class="relative flex flex-col p-4">
+
+        <h3 class="text-2xl font-semibold mb-4">Operating Systems</h3>
+        <p class="mb-4">
+        The OS is your homelab’s foundation, it shapes what you can do and what remains out of reach.
+        </p> 
+        <p class="mb-4">
+        Choose your OS like you’re choosing your Homelab’s future, because you are.
+        </p>
+
+        <ul class="list-image-arrow list-outside pl-2 space-y-1 ml-4 mb-4">
+          <li><b>Ready-to-Use</b>: CasaOS or UmbrelOS — polished dashboards, app stores, some features gated.</li>
+          <li><b>Virtualization</b>: Proxmox to run isolated containers and Virtual Machines side by side.</li>
+          <li><b>Storage-Optimized</b>: TrueNAS or OpenMediaVault, purpose-built for reliable file sharing, media libraries, and data integrity.</li>
+          <li><b>Expert Bare-metal</b>: Debian or Ubuntu Server provide lightweight, high-performance with no hidden locks.</li>
+        </ul>
+
+        <a href="/self-hosted" class="flex items-center text-blue-500 hover:text-lime-500 gap-2 ml-2">
+        <b>→</b> Explore Operating Systems
+        </a>
+      </div>
+    </section>
+    
+    
+    <section class="mb-16">
+
+      <h3 class="text-2xl font-semibold mb-4">Local Server</h3>
+
+      <p class="mb-4">
+      This is where you build your private infrastructure, the core of your homelab.
+      </p>
+
+      <ul class="list-image-arrow list-outside  space-y-1 pl-2 ml-4 mb-4">
+        <li><b>Classic</b>: LAMP stack (Linux, Apache, MySQL, PHP) is the proven gold standard for web reliability.</li>
+        <li><b>Containers</b>: Docker + Nginx enable modular, isolated services and easy portability.</li>
+        <li><b>Emerging</b>: Self-hosted Supabase alternatives and Stack Auth for modern, sovereign development.</li>
+      </ul>
+
+      <a href="/stack-local-server" class="flex items-center text-blue-500 hover:text-lime-500 gap-2 ml-2">
+      <b>→</b> Deploy your local stack
+      </a>      
+    </section>
+    
+
+    <section class="mb-16">
+
+      <h3 class="text-2xl font-semibold mb-4">Expose Your Stack</h3>
+
+      <p>Sharing your services shouldn't mean compromising your network. 
+      Safely connect to your homelab from anywhere.
+      Use zero-trust tools like Pangolin, Tailscale, Cloudflare, or WireGuard to create encrypted, private pathways. 
+      Your data stays local; only coordination happens in the cloud.</p>
+
+      <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 space-y-1 mb-4">
+        <li><b>Public Access</b>: Cloudflare Tunnel or Pangolin.net for seamless, secure entry points without port forwarding.</li>
+        <li><b>Private Mesh</b>: NetBird or Headscale to access your infrastructure from anywhere as if you were on your local WiFi.</li>
+        <li><b>Expert Tunnels</b>: FRP or Rathole for absolute control over your traffic through your own public-facing relay.</li>
+      </ul>   
+
+      <a href="/stack-local-server" class="flex items-center text-blue-500 hover:text-lime-500 gap-2 ml-2">
+      <b>→</b> Secure your public access
+      </a>
+    </section>
+
+    
+    <section class="mb-16">
+      
+      <h3 class="text-2xl font-semibold mb-4">Multimedia & Entertainment</h3>
+    
+      <p class="mb-4">
+      Apply your stack to real-world utility. Host private movie libraries, music servers, or photo archives with no ads, 
+      no algorithms, and no rent. 
+      This is sovereignty as a lifestyle: your media, your rules, your timeline.
+      </p>    
+
+      <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 space-y-1 mb-4">
+        <li><b>Media Center</b>: Jellyfin or Plex for a high-performance, private streaming experience.</li>
+        <li><b>Music & Audio</b>: Navidrome or Audiobookshelf to take your personal library on the road.</li>
+        <li><b>Photo Archives</b>: Immich or Photoprism—the sovereign alternative to Google Photos with AI-powered tagging and full privacy.</li>
+      </ul>
+
+      <a href="/stack-multimedia" class="flex items-center text-blue-500 hover:text-lime-500 gap-2 ml-2">
+      <b>→</b> Stream your personal media
+      </a>
+    </section>
+
+    <h5 class="text-center text-4xl mb-16">A Realistic Path to Digital Sovereignty</h5>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+
+      <div class="relative flex flex-col p-4 bg-white dark:bg-zinc-800/20 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-zinc-700">
+        
+        <h3 class="text-2xl font-semibold mb-4">Why Self-Host?</h3>
+
+        <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 space-y-1">
+          <li><b>Control & Privacy</b>: Keep data and operations within your own infrastructure.</li>
+          <li>Eliminate public cloud subscription fees and "pay-per-use" traps as your data grows.</li>
+          <li><b>Technical Mastery</b>: Deepen your skills by managing the same tools used by professional teams.</li>
+          <li><b>Total Customization</b>: Your hardware, your rules.<br />
+          Tailored to your family or project needs.</li>
+        </ul>
+      </div>
+
+      <div class="relative flex flex-col p-4 bg-white dark:bg-zinc-800/20 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-zinc-700">
+        
+        <h3 class="text-2xl font-semibold mb-4">The Challenges</h3> 
+
+        <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 space-y-1">
+          <li>Choose your OS and plan carefully</li>
+          <li><b>Complexity</b>: Orchestrating interdependent services requires a clear roadmap and patience.</li>
+          <li><b>Maintenance</b>: You are the admin. Security patches, updates, and backups are your responsibility.</li>
+          <li><b>Uptime</b>: Ensuring 24/7 reliability means addressing hardware or network outages on your own.</li>
+        </ul>
+      </div>
+
+    </section>       
+
+    <hr class="h-[3px] border-none bg-radial-[at_50%_50%] from-zinc-200 to-zinc-50 dark:from-zinc-700 dark:to-zinc-950 to-100% my-16" />
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4"><IconLocal name="fluent-color--link-multiple-24" class="w-6 h-6 inline-block" /> Trusted Resources</h2>
+      <p class="text-sm italic bg-zinc-100 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-900 rounded-md p-4 mb-4">The external sites are not affiliated with us. 
+         We include them because they provide reliable, transparent, 
+         and community-driven information that aligns with our commitment 
+         to honest, open-source tooling.
+      </p>
+    </section>
+
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4 mb-8">
+    {refUrl.map((item) => (
+      <CardLink 
+        title={item.title}
+        description={item.description}
+        href={item.href}
+        buttonText={item.buttonText}
+      />
+    ))}
+    </div>
+  
+  </article>
+
+  <Footer />
+</BaseLayout>

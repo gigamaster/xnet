@@ -1,6 +1,6 @@
 ---
 import { SITE, BLOG } from '~/config.mjs';
-
+import IconLocal from '~/components/atoms/IconLocal.astro';
 import Layout from '~/layouts/BlogLayout.astro';
 import BlogList from '~/components/blog/List.astro';
 import Pagination from '~/components/atoms/Pagination.astro';
@@ -18,16 +18,17 @@ export async function getStaticPaths({ paginate }) {
 		Array.isArray(post.tags) && post.tags.map((tag) => tags.add(tag.toLowerCase()));
 	});
 
-	return Array.from(tags).map((tag) =>
-		paginate(
-			posts.filter((post) => Array.isArray(post.tags) && post.tags.includes(tag)),
-			{
-				params: { tag: cleanSlug(tag), tags: TAG_BASE || undefined },
-				pageSize: BLOG.postsPerPage,
-				props: { tag },
-			}
-		)
-	);
+	const paths = [];
+	for (const tag of tags) {
+		const tagPosts = posts.filter((post) => Array.isArray(post.tags) && post.tags.includes(tag));
+		const paginated = paginate(tagPosts, {
+			params: { tag: cleanSlug(tag), tags: TAG_BASE || undefined },
+			pageSize: BLOG.postsPerPage,
+			props: { tag },
+		});
+		paths.push(...paginated);
+	}
+	return paths;
 }
 
 const { page, tag } = Astro.props;
@@ -44,7 +45,7 @@ const meta = {
 
 <Layout meta={meta}>
 	<Fragment slot="title">
-		Tag: {tag}
+	<IconLocal name="fluent-color--pin-24" class="w-10 h-10 inline-block" />	Tag: {tag}
 	</Fragment>
 	<BlogList posts={page.data} />
 	<Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />

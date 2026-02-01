@@ -1,0 +1,314 @@
+---
+// src/pages/stack-public.astro
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import HeroPublic from '~/components/widgets/HeroPublic.astro';
+import { CardLink, CardSmall, Icon, IconLocal, Thumb } from '~/components';
+import Footer from '~/components/widgets/Footer.astro';
+import { SITE } from '~/config.mjs';
+
+// Page's Image for meta and layout
+import stackPublicImage from '~/assets/images/hardware-remote.jpg';
+
+const meta = {
+	title: 'Self-Host Public Access',
+	description: 'Share local apps securely with public access',
+  image: stackPublicImage, // ✅ Import the image directly
+};
+
+const refUrl = [
+  {
+    title: "Cloudflare Tunnel", 
+    description: "Outbound-only connection",
+    href: "https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/",
+    buttonText: "cloudflare.com"
+  },
+  {
+    title: "Netbird", 
+    description: "Zero Trust Network Access",
+    href: "https://netbird.io/",
+    buttonText: "netbird.io"
+  },
+  {
+    title: "Ngrok", 
+    description: "How does ngrok work?",
+    href: "https://ngrok.com/docs/how-ngrok-works",
+    buttonText: "ngrok.com"
+  },
+  {
+    title: "Pangolin", 
+    description: "Remote access networks anywhere",
+    href: "https://pangolin.net/",
+    buttonText: "pangolin.net"
+  },
+  {
+    title: "Tailscale Funnel",
+    description: "How Funnel works",
+    href: "https://tailscale.com/kb/1223/funnel",
+    buttonText: "tailscale.com"
+  },
+  {
+    title: "Zerotier", 
+    description: "Simple. Resilient. Secure.",
+    href: "https://www.zerotier.com/",
+    buttonText: "zerotier.com"
+  },
+];
+
+---
+
+<BaseLayout {meta}>
+  <Header />
+  <HeroPublic meta={meta} />
+
+  <article class="container mx-auto px-4 py-8 max-w-4xl">
+
+    <header class="mb-16">
+      <p>
+      A secure way to share locally hosted appllications with the internet, without port forwarding, public IPs, or manual SSL certificates. 
+      Using encrypted tunnels, you can make select services publicly available while keeping your network locked down
+      </p>
+    </header>
+    
+    <section class="mb-8">
+      <h3 class="text-2xl font-semibold mb-4">Why Use It</h3>
+
+      <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 space-y-1">
+        <li>Share confidently: Publish a portfolio, blog, or demo for clients or collaborators, no cloud hosting required.</li>
+        <li>Access anywhere: Reach your homelab from a café in Lisbon or a co-working space in Bali, securely and instantly.</li>
+        <li>Stay safe: Avoid the risks of traditional port forwarding, which leaves services exposed to scans and brute-force attacks.</li>
+      </ul>
+    </section>
+
+    <section class="mb-16">
+      
+      <h3 class="text-2xl font-semibold mb-4">Key Tools</h3>
+
+      <ul class="list-image-arrow list-outside pl-2 ml-4 space-y-1">
+        <li>Tailscale Funnel (Free): Automatic HTTPS via *.ts.net, zero config, and seamless integration with your private tailnet. Ideal for personal projects.</li>
+        <li>Cloudflare Tunnel: Zero-trust access with custom domains, identity policies, and enterprise-grade security. Great for semi-public tools.</li>
+        <li>Ngrok (Free tier): Quick, temporary tunnels for testing, but not recommended for long-term or sensitive use.</li>
+      </ul>
+
+      <p class="text-sm bg-yellow-600/10 rounded-lg my-8 p-2">
+      💡 For digital nomads & homelabbers: Tailscale Funnel offers the best balance of simplicity, privacy, and reliability.
+      </p>
+    </section>
+
+    <section class="mb-16">
+
+      <h3 class="text-2xl font-semibold mb-2">Sharing Your Local Stack</h3>
+      
+      <p class="mb-4">Alternatives to Tailscale Funnel: From Beginner to Expert</p>
+      
+      <p class="mb-8">
+      Sharing local applications usually requires a trade-off between simplicity and sovereignty. 
+      While "Turnkey" tunnels get you online in seconds, they often turn you into a <b>Digital Tenant</b>. 
+      For those seeking <b>Absolute Ownership</b>, manual tunneling through your own hardware is the gold standard.
+      </p>
+
+      <table class="min-w-full bg-black/20 border-separate border-spacing-2 rounded-md [&_th]:p-2 [&_td]:p-2 mb-16">
+        <caption class="mb-8">Network Sharing: Ownership vs. Digital Tenancy</caption>
+        <thead class="text-base font-medium border-b-2 border-zinc-500/20">
+          <tr>
+            <th>Solution</th>
+            <th>Level</th>
+            <th>Sovereignty</th>
+            <th>The Digital Tenant Risk</th>
+          </tr>
+        </thead>
+        <tbody class="text-xs [&_tr:hover]:bg-zinc-500/10 [&_tr]:transition-colors [&_tr]:duration-200 [&_td]:rounded-md">
+          <tr>
+            <td><b>Cloudflare Tunnel</b></td>
+            <td class="bg-lime-800/20">Beginner</td>
+            <td class="bg-red-700/20"><b>Digital Tenant</b></td>
+            <td>Cloudflare terminates your SSL; they can technically "see" your unencrypted traffic.</td>
+          </tr>
+          <tr>
+            <td><b>Pinggy / Ngrok</b></td>
+            <td class="bg-lime-800/20">Beginner</td>
+            <td class="bg-red-700/20"><b>Digital Tenant</b></td>
+            <td>Reliance on third-party relay servers and restrictive bandwidth caps.</td>
+          </tr>
+          <tr>
+            <td><b>Pangolin.net (Cloud)</b></td>
+            <td class="bg-orange-600/20">Intermediate</td>
+            <td class="bg-lime-800/20"><b>Owner (Hybrid)</b></td>
+            <td>Uses their dashboard for coordination/DNS, but you maintain the WireGuard keys.</td>
+          </tr>
+          <tr>
+            <td><b>NetBird</b></td>
+            <td class="bg-orange-600/20">Intermediate</td>
+            <td class="bg-lime-800/20"><b>Owner</b></td>
+            <td>Peer-to-peer mesh. You own the data, but usually rely on their coordination cloud.</td>
+          </tr>
+          <tr>
+            <td><b>Headscale</b></td>
+            <td class="bg-red-700/20">Advanced</td>
+            <td class="bg-lime-800/20"><b>Absolute Owner</b></td>
+            <td>None. A self-hosted "brain" for Tailscale clients. You own the entire coordination.</td>
+          </tr>
+          <tr>
+            <td><b>FRP / Rathole</b></td>
+            <td class="bg-red-700/20">Expert</td>
+            <td class="bg-lime-800/20"><b>Absolute Owner</b></td>
+            <td>None. You own the entry point (VPS) and the tunnel. Total protocol freedom.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="text-2xl font-semibold mb-4">The Sovereign Choice</h3>
+
+      <p class="mb-4"><b>The Tenant:</b> Use Cloudflare or Pinggy if you need a quick public link for a demo or a temporary site. It is simplicity at the cost of a middleman.</p>
+
+      <p class="mb-4"><b>The Owner:</b> Use FRP or Rathole with a small VPS. This works across any network, bypasses restrictive firewalls, and ensures that no corporate entity ever holds the keys to your traffic.</p>
+
+      <blockquote>
+      <b>Your choice defines your reality:</b> data sovereignty, scalability, total cost, portability, maintainability, and the freedom to tinker.
+      </blockquote>
+    </section>
+
+    <section class="mb-16">
+      <div class="overflow-x-auto">
+        <table class="min-w-full bg-black/20 border-separate border-spacing-2 rounded-md [&_th]:p-2 [&_td]:p-2">
+          <caption class="caption-top mb-8">
+            Choose the Right Tool to Safely Share Your Self-Hosted Apps<br />
+            Comparing Secure Tunneling Tools: Tailscale Funnel, Cloudflare Tunnel, and Ngrok
+          </caption>
+          <thead class="text-base font-medium border-b-2 border-zinc-500/20">
+            <tr class="border-b-2 border-b-zinc-700">
+              <th>Feature</th>
+              <th>Tailscale Funnel</th>
+              <th>Cloudflare Tunnel</th>
+              <th>Ngrok</th>
+            </tr>
+          </thead>
+          <tbody class="text-xs [&_tr:hover]:bg-zinc-500/10 [&_tr]:transition-colors [&_tr]:duration-200 [&_td]:rounded-md">
+            <tr>
+              <td class="font-medium">Cost</td>
+              <td>Free (with Tailscale account)</td>
+              <td>Free tier available; paid plans for advanced features</td>
+              <td>Free tier (limited); paid for custom domains & concurrency</td>
+            </tr>
+            <tr>
+              <td class="font-medium">HTTPS / SSL</td>
+              <td class="bg-lime-800/20">✅ Automatic: Let’s Encrypt, <code>*.ts.net</code></td>
+              <td class="bg-lime-800/20">✅ Automatic: domain support</td>
+              <td class="bg-lime-800/20">✅ Free tier: <code>*.ngrok.io</code></td>
+            </tr>
+            <tr>
+              <td class="font-medium">Custom Domain</td>
+              <td class="bg-red-700/20">❌ No (only <code>*.ts.net</code>)</td>
+              <td class="bg-lime-800/20">✅ Yes (free with Cloudflare DNS)</td>
+              <td class="bg-lime-800/20">✅ Paid plans only</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Authentication</td>
+              <td class="bg-lime-800/20">✅ Optional (Identity-aware proxy)</td>
+              <td class="bg-lime-800/20">✅ Advanced (Zero Trust, SSO, IP rules)</td>
+              <td class="bg-orange-600/20">⚠️ Basic auth in paid plans only</td>
+            </tr>
+            <tr>
+              <td class="font-medium text-nowrap">Setup Complexity</td>
+              <td class="bg-lime-800/20">Easy (<code>tailscale funnel 443 3000</code>)</td>
+              <td class="bg-orange-600/20">Moderate (Cloudflare account + CLI)</td>
+              <td class="bg-lime-800/20">Easy (<code>ngrok http 3000</code>)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Long-Term Use</td>
+              <td class="bg-lime-800/20 rounded-lg">✅ Designed for it</td>
+              <td class="bg-lime-800/20 rounded-lg">✅ Enterprise-grade</td>
+              <td class="bg-red-700/20 rounded-lg">❌ Free URLs change on restart</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Private Network</td>
+              <td class="bg-lime-800/20 rounded-lg">✅ Built-in (part of Tailscale mesh)</td>
+              <td class="bg-red-700/20 rounded-lg">❌ No (public-only by design)</td>
+              <td class="bg-red-700/20 rounded-lg">❌ No</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Best For</td>
+              <td>Digital nomads, homelabbers sharing personal apps</td>
+              <td>Teams, public-facing services with custom domains</td>
+              <td>Quick testing, demos, temporary sharing</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="mb-16">
+
+      <h2 class="text-2xl font-semibold mb-2">When Not to Go Public</h2>
+      <p class="mb-4">
+      Keep services private when they weren’t built for public access—even if sharing seems convenient.
+      </p>
+
+      <p class="text-sm bg-yellow-600/10 rounded-lg p-2 mb-4">
+      💡 <strong>Rule of thumb</strong>: If it wasn’t designed for public use, don’t expose it, even “temporarily” !
+      </p>
+
+      <h5 class="text-lg font-semibold mb-4">Why It Matters</h4>
+
+      <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 mb-4 space-y-1">
+        <li>Prevent leaks: Admin panels, logs, or databases can expose credentials or personal data.</li> 
+        <li>Reduce attack surface: Every public endpoint is a target. Minimize exposure.</li>  
+        <li>Avoid legal risk: Personal or client data may trigger GDPR or privacy laws if publicly reachable.</li>
+      </ul>
+
+      <h5 class="text-lg font-semibold mb-4">Never Expose These (Even Behind Passwords)</h5>
+
+      <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 mb-4 space-y-1">
+        <li>Admin dashboards: Portainer, phpMyAdmin, router UIs</li>
+        <li>Databases: MySQL, PostgreSQL, MongoDB (even with passwords)</li>
+        <li>Databases: MySQL, PostgreSQL, MongoDB</li>
+        <li>Internal tools: Vaultwarden, Nextcloud, dev/test environments with real data</li>  
+      </ul>
+
+      <h5 class="text-lg font-semibold mb-4">If You Must Go Public: Do It Right</h5>
+
+        <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 mb-4 space-y-1">
+          <li>Only expose apps designed for public use (e.g., portfolio sites, public APIs)</li>
+          <li>Add strong auth: OAuth, Authentik, or 2FA—never rely on passwords alone</li>
+          <li>Isolate public apps: Run them in a separate container/network with zero access to internal services</li>
+          <li>Secure tunneling: Pangolin, Tailscale, Cloudflare Tunnel, or WireGuard, no open ports, no router changes</li>
+        </ul>
+        
+      <h5 class="text-lg font-semibold mb-4">Better Than Public: Private Access for Trusted Users</h5>       
+      <p class="mb-4">  
+      For digital nomads, creators, or homelabbers managing sensitive or family data:
+      </p>
+      <p class="mb-4"> 
+      → Use Pangolin, Tailscale or ZeroTier to share securely without a public IP.<br>
+      → Serve public content via read-only APIs (e.g., a portfolio pulling from a private CMS).
+      </p>
+      
+      <p>Best for: Those who value long-term security over short-term convenience—and understand that true control means choosing who gets access, not just how.</p>
+
+    </section>
+    
+    <hr class="h-[3px] border-none bg-radial-[at_50%_50%] from-zinc-200 to-zinc-50 dark:from-zinc-700 dark:to-zinc-950 to-100% my-16" />
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4"><IconLocal name="fluent-color--link-multiple-24" class="w-6 h-6 inline-block" /> Trusted Resources</h2>
+      <p class="text-sm italic bg-zinc-100 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-900 rounded-md p-4 mb-4">
+      The external sites are not affiliated with us. We include them because they provide reliable, transparent, 
+         and community-driven information that aligns with our commitment to honest, open-source tooling.
+      </p>
+    </section>
+
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4 mb-8">
+    {refUrl.map((item) => (
+      <CardLink 
+        title={item.title}
+        description={item.description}
+        href={item.href}
+        buttonText={item.buttonText}
+      />
+    ))}
+    </div>
+
+  </article>
+
+  <Footer />
+</BaseLayout>
