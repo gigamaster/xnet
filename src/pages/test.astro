@@ -127,18 +127,20 @@ const items = [
       <section class="border rounded-lg bg-zinc-900 border-zinc-800 w-full mb-8 p-6">
 
         <h4 class="text-white text-2xl font-bold mb-4">Component Thumb</h4>
-        <p class="mb-8">External image url requires width={400} height={400} values!</p>
+        <p class="mb-8">External image url requires width=400 height=400 values!</p>
         
         <div class="flex items-center gap-2 mb-8">
           <Thumb 
             thumbSrc="https://placehold.co/400x400"
-            width={400} height={400} 
+            width={400} 
+            height={400} 
             thumbAlt="Description"
             thumbClass="w-8 h-8 border-2 block border-emerald-600 rounded-md"
           />
           <Thumb 
             thumbSrc="https://placehold.co/800x600"
-            width={800} height={600} 
+            width={800} 
+            height={600} 
             thumbAlt="Description"
             thumbClass="w-10 h-10 inline-block border-2 border-red-600 shadow-md"
           />
@@ -147,7 +149,8 @@ const items = [
         <div class="mb-8">
         <Code code={`<Thumb 
         thumbSrc="https://placehold.co/800x600"
-        width={800} height={600} 
+        width={800} 
+        height={600} 
         thumbAlt="Description"
         thumbClass="w-10 h-10 inline-block border-2 border-red-600 shadow-md"
         />`} lang="html" />
@@ -156,7 +159,7 @@ const items = [
         <h4 class="text-2xl my-4">thumbSrc + thumbFull</h4>
 
         <div class="flex items-center gap-2 mb-8">
-          <Thumb thumbSrc="https://placehold.co/720x720" fullSrc="https://placehold.co/720x720" width={700} height={700} thumbAlt="test thumb" fullAlt="test full" thumbClass="w-32 h-32" />
+          <Thumb thumbSrc="https://placehold.co/720x720" width={700} height={700} fullSrc="https://placehold.co/720x720" thumbAlt="test thumb" fullAlt="test full" thumbClass="w-32 h-32" />
           <Thumb thumbSrc="https://placehold.co/640x480" width={640} height={480} thumbAlt="test div 1" thumbClass="w-24 h-24" />
         </div>
 

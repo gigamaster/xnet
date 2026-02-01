@@ -4,9 +4,8 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import Header from '~/components/widgets/Header.astro';
 import HeroLocalServer from '~/components/widgets/HeroLocalServer.astro';
 import Picture from '~/components/core/Picture.astro';
-import { CardLink, CardSmall, Icon, IconLocal, Thumb } from '~/components';
+import { CardLink, IconLocal } from '~/components';
 import Footer from '~/components/widgets/Footer.astro';
-import { SITE } from '~/config.mjs';
 
 // Page's Image for meta and layout
 import homelabOsImage from '~/assets/images/homeserver-os.jpg';
@@ -75,7 +74,7 @@ const refUrl = [
 
     <section class="mb-16">
         
-        <h3 class="text-2xl font-semibold mb-4">Why Use It</h2>
+        <h3 class="text-2xl font-semibold mb-4">Why Use It</h3>
 
         <ul class="list-image-arrow list-outside pl-2 ml-4 mb-4 space-y-1">
           <li>Break the Lock-in: Avoid cloud-provider dependency while keeping deployment fast and repeatable.</li>

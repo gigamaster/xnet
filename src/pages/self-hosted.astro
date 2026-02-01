@@ -5,11 +5,9 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import Header from '~/components/widgets/Header.astro';
 import HeroSelfhost from '~/components/widgets/HeroSelfhost.astro';
 import AppStats from '~/components/widgets/AppStats.astro';
-import Picture from '~/components/core/Picture.astro';
-import { CardLink, Icon, IconLocal, Thumb } from '~/components';
+import { CardLink, IconLocal, Thumb } from '~/components';
 import OsHomelab from '~/components/widgets/OsHomelab.astro';
 import Footer from '~/components/widgets/Footer.astro';
-import { SITE } from '~/config.mjs';
 
 // images
 import homelabImage from '~/assets/images/hero.jpg';
@@ -165,7 +163,7 @@ const osData = [
 
     <section class="mb-16">
 
-      <p class="mb-4"">
+      <p class="mb-4">
       Self-hosted operating systems and platforms offer turnkey home servers with user-friendly interfaces, 
       pre-configured apps, and simplified maintenance. 
       They promise an ideal solution: polished dashboards, private cloud storage, and media streaming, all 

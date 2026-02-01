@@ -1,11 +1,11 @@
 ---
 pubDate: "Nov 27 2025"
 title: "Local LLM for Low-RAM Laptops"
-author: "xNet Team"
 description: "3 lightweight, open-source LLMs that actually run on 8–16 GB RAM—no GPU needed"
-image: "~/assets/images/colors.jpg"
-category: "Tutorial"
-tags: [llm, digital nomad]
+image: "~/assets/images/local-ai-llm.jpg"
+author: "gigamaster"
+category: "tutorial"
+tags: [app, llm, digital nomad]
 ---
 
 You don’t need 32 GB of RAM to run a useful local AI.  
@@ -15,19 +15,19 @@ Here’s the shortlist for 2025:
 
 ---
 
-#### ✅ **Gemma 3 (1B)** — *Best for ultra-light setups*  
+#### ✅ **Gemma 3 (1B)** *Best for ultra-light setups*  
 - Runs on **8 GB RAM** (even less with 4-bit quantization)  
-- **128K context**—great for long docs  
+- **128K context** great for long docs  
 - Text-only, but fluent, fast, and open (Google, Apache 2.0)  
 → Use if: You need basic Q&A, summarization, or coding help on an older machine.
 
-#### ✅ **SmolLM2 (1.7B)** — *Best quality in small size*  
+#### ✅ **SmolLM2 (1.7B)** *Best quality in small size*  
 - Needs ~12–16 GB RAM  
 - Beats most 1–2B models in reasoning and code  
 - Open weights, fine-tuned for on-device use  
 → Use if: You want the smartest small model that still runs on CPU.
 
-#### ✅ **DeepSeek R1 (1.5B)** — *Best for math & logic*  
+#### ✅ **DeepSeek R1 (1.5B)** *Best for math & logic*  
 - Built for problem-solving (outperforms GPT-4o on AIME math)  
 - ~16 GB RAM recommended  
 - Distilled from Qwen—lean but sharp  

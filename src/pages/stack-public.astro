@@ -3,9 +3,8 @@
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import Header from '~/components/widgets/Header.astro';
 import HeroPublic from '~/components/widgets/HeroPublic.astro';
-import { CardLink, CardSmall, Icon, IconLocal, Thumb } from '~/components';
+import { CardLink, IconLocal } from '~/components';
 import Footer from '~/components/widgets/Footer.astro';
-import { SITE } from '~/config.mjs';
 
 // Page's Image for meta and layout
 import stackPublicImage from '~/assets/images/hardware-remote.jpg';
@@ -248,7 +247,7 @@ const refUrl = [
       💡 <strong>Rule of thumb</strong>: If it wasn’t designed for public use, don’t expose it, even “temporarily” !
       </p>
 
-      <h5 class="text-lg font-semibold mb-4">Why It Matters</h4>
+      <h5 class="text-lg font-semibold mb-4">Why It Matters</h5>
 
       <ul class="list-image-arrow list-outside pl-2 ml-4 mt-2 mb-4 space-y-1">
         <li>Prevent leaks: Admin panels, logs, or databases can expose credentials or personal data.</li> 

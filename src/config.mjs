@@ -5,7 +5,8 @@ export const SITE = {
 	basePathname: '/xnet',
 
 	title: 'UI Xnet — Tools for Digital Nomad Independence',
-	description: 'Local homelab, portable, web apps, tools, ai, llm, everything you need to build, run, and share on your terms',
+	description:
+		'Local homelab, portable, web apps, tools, ai, llm, everything you need to build, run, and share on your terms',
 
 	googleAnalyticsId: false, // or "G-XXXXXXXXXX",
 	googleSiteVerificationId: '', // ex. 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
@@ -22,7 +23,7 @@ export const BLOG = {
 
 	post: {
 		disabled: false,
-		pathname: '', // empty for /some-post, value for /pathname/some-post 
+		pathname: '', // empty for /some-post, value for /pathname/some-post
 	},
 
 	category: {
