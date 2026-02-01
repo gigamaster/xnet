@@ -1,7 +1,7 @@
 export const SITE = {
 	name: 'UI Xnet',
 
-	origin: 'https://gigamaster.github.io/xnet/',
+	origin: 'https://gigamaster.github.io',
 	basePathname: '/xnet',
 
 	title: 'UI Xnet — Tools for Digital Nomad Independence',
