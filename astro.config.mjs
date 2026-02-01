@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url';
 
 import { defineConfig } from 'astro/config';
 
-import sitemap from '@astrojs/sitemap';
+// import sitemap from '@astrojs/sitemap';
 
 import partytown from '@astrojs/partytown';
 
@@ -19,7 +19,8 @@ export default defineConfig({
 	// Astro uses this full URL to generate your sitemap and canonical URLs in your final build
 	site: SITE.origin,
 	base: SITE.basePathname,
-
+    trailingSlash: 'always',
+	outdir: 'dist',
 	output: 'static',
 	islands: true,
 	images: {
