@@ -3,9 +3,9 @@ pubDate: "October 10 2025"
 title: "Backup Strategy for Digital Nomads"
 description: "A practical, offline-first backup approach using Git and USB, no cloud, no lock-in, full recovery in minutes."
 image: "~/assets/images/hero.jpg"
-author: "xNet Team"
-category: "Tutorials"
-tags: [backup, data, digital nomad]
+author: "gigamaster"
+category: "tutorial"
+tags: [app, backup, software, digital nomad]
 ---
 
 ## The Hybrid Approach
@@ -27,7 +27,7 @@ That’s why the best real-world strategy is **hybrid**:
   Databases, binary assets, full app folders, Python venvs, or portable tools go on an **encrypted USB drive** (or portable SSD).  
   → *Why?* No internet needed. Works offline. Survives platform bans.
 
-> **Key rule**: If it’s text and structured—Git. If it’s binary, large, or stateful—USB.
+> **Key rule**: If it’s text and structured: Git. If it’s binary, large, or stateful: USB.
 
 ## Tools That Just Work 
 
@@ -71,5 +71,3 @@ If no: simplify your backup.
 
 > **Backups aren’t about fear. They’re about freedom.**  
 > With this setup, your work travels with you, physically, privately, and permanently.
-
-[[Top]](#top)
