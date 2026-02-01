@@ -4,4 +4,4 @@
 
 [build.environment]
   NODE_VERSION = "22"
-  NPM_FLAGS = "--version"  # make npm version show during build logs
+  NPM_FLAGS = "--include=dev"  # install devDependencies for Astro build
